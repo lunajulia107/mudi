@@ -1,0 +1,35 @@
+// =============================================================
+// main.scss — Entry point Mudi 
+// =============================================================
+
+// 1. Tokens (CSS custom properties — sempre primeiro)
+@use 'tokens';
+
+// 2. Reset e base
+@use 'base';
+
+// 3. Keyframes
+@use 'animations';
+
+// 4. Componentes atômicos
+@use 'top-bar';
+@use 'pills';
+@use 'buttons';
+@use 'forms';
+
+// 5. Layout — Phone mockup
+@use 'phone';
+
+// 6. Navegação
+@use 'nav';
+
+// 7. Modais e feedback
+@use 'modal';
+
+// 8. Telas por página
+@use 'onboarding';
+@use 'feed';
+@use 'vagas';
+@use 'mentoria';
+@use 'chat';
+@use 'perfil';

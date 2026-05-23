@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mudi</title>
+    <link rel="icon" type="image/x-icon" href="/images/brand/mudi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="sass/main.css" />
+  </head>
+  <body>
+
+    <header class="top-bar">
+      <nav class="mode-toggle" aria-label="Seleção de tema">
+        <button class="mode-btn" aria-pressed="false" onclick="setMode('dark')">
+          <i class="bi bi-moon-fill"></i> Dark
+        </button>
+        <button class="mode-btn active" aria-pressed="true"
+          onclick="setMode('light')">
+          <i class="bi bi-sun-fill"></i> Light
+        </button>
+      </nav>
+    </header>
+
+    <main class="phone-wrap" aria-label="Vagas Mudi">
+      <img class="phone-wrap__mockup" src="images/mockup.png" alt
+        aria-hidden="true">
+
+      <article class="phone" id="phone">
+
+        <!-- Header -->
+        <header class="feed-header">
+          <div class="feed-header__logo">
+            <img src="images/brand/logo.png" alt="Mudi">
+          </div>
+          <div class="feed-header__actions">
+            <a href="chat.html" class="btn-icon"
+              aria-label="Chat da comunidade">
+              <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+            </a>
+            <button class="btn-icon" aria-label="Notificações"
+              style="position:relative;">
+              <i class="bi bi-bell-fill" aria-hidden="true"></i>
+              <span class="notif-dot" aria-hidden="true"></span>
+            </button>
+            <a href="perfil.html" aria-label="Meu perfil">
+              <div class="avatar avatar--green">
+                <img src="/images/geral//samara.svg" alt="Foto da Samara Duarte.">
+              </div>
+            </a>
+          </div>
+        </header>
+
+        <!-- ── Lista de vagas ── -->
+        <section id="vagas-list" aria-label="Vagas disponíveis">
+          <header class="page-header">
+            <h1 class="page-title">
+              Vagas <span class="notif-dot"
+                style="position:static;display:inline-block;"
+                aria-label="Novas vagas"></span>
+            </h1>
+            <div class="search-bar">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <label class="visually-hidden" for="search-vagas">Buscar
+                vagas</label>
+              <input id="search-vagas" type="search"
+                placeholder="Procurar vagas" />
+            </div>
+            <div class="filter-row" role="group" aria-label="Filtros">
+              <button class="filter-chip on" aria-selected="true"
+                onclick="toggleChip(this)">
+                Todas
+              </button>
+              <button class="filter-chip" aria-selected="false"
+                onclick="toggleChip(this)">
+                UI/UX Design
+              </button>
+              <button class="filter-chip" aria-selected="false"
+                onclick="toggleChip(this)">
+                Híbrido
+              </button>
+              <button class="filter-chip" aria-selected="false"
+                onclick="toggleChip(this)">
+                Remoto
+              </button>
+              <button class="filter-chip" aria-selected="false"
+                onclick="toggleChip(this)">
+                Júnior
+              </button>
+              <button class="filter-chip" aria-selected="false"
+                onclick="toggleChip(this)">
+                Pleno
+              </button>
+              <button class="filter-chip" aria-selected="false"
+                onclick="toggleChip(this)">
+                CLT
+              </button>
+            </div>
+          </header>
+
+          <div class="scroll-area">
+            <ul class="vaga-list" id="vaga-list-ul"
+              aria-label="Lista de vagas"></ul>
+
+            <!-- Carregar mais -->
+            <div
+              style="display:flex;justify-content:center;padding:var(--gap-md) 0 var(--gap-sm);">
+              <button class="btn-sm btn-sm--ghost" id="btn-load-more"
+                onclick="loadMore()">
+                <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                Carregar mais
+              </button>
+            </div>
+
+            <div class="scroll-spacer"></div>
+          </div>
+
+          <nav class="bottom-nav" aria-label="Navegação principal">
+            <a class="nav-item" href="feed.html" aria-label="Feed">
+              <div class="nav-icon-wrap"><i class="bi bi-grid-fill"
+                  aria-hidden="true"></i></div>
+              <span class="nav-label">Feed</span>
+            </a>
+            <a class="nav-item active" href="vagas.html" aria-current="page"
+              aria-label="Vagas">
+              <div class="nav-icon-wrap"><i class="bi bi-briefcase-fill"
+                  aria-hidden="true"></i></div>
+              <span class="nav-label">Vagas</span>
+            </a>
+            <a class="nav-item" href="mentoria.html" aria-label="Mentoria">
+              <div class="nav-icon-wrap"><i class="bi bi-star-fill"
+                  aria-hidden="true"></i></div>
+              <span class="nav-label">Mentoria</span>
+            </a>
+            <a class="nav-item" href="perfil.html" aria-label="Perfil">
+              <div class="nav-icon-wrap"><i class="bi bi-person-fill"
+                  aria-hidden="true"></i></div>
+              <span class="nav-label">Perfil</span>
+            </a>
+          </nav>
+        </section>
+
+        <!-- ── Detalhe da vaga ── -->
+        <section class="detail-view" id="vaga-detail" aria-hidden="true"
+          aria-label="Detalhe da vaga">
+          <header class="detail-header">
+            <button class="back-btn" onclick="hideVaga()" aria-label="Voltar">
+              <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            </button>
+            <h2 class="detail-title" id="vd-title">Vaga</h2>
+          </header>
+
+          <div class="detail-scroll">
+
+            <!-- Empresa + título -->
+            <div
+              style="display:flex;align-items:center;gap:var(--gap-md);margin-bottom:var(--gap-md);">
+              <div class="vaga-logo"
+                style="width:52px;height:52px;border-radius:14px;"
+                id="vd-logo"></div>
+              <div>
+                <p
+                  style="font-size:17px;font-weight:700;color:var(--text-contrast);"
+                  id="vd-title2"></p>
+                <p style="font-size:13px;color:var(--text-muted);"
+                  id="vd-company"></p>
+              </div>
+            </div>
+
+            <!-- Pills -->
+            <div class="vaga-tags" id="vd-tags"
+              style="flex-wrap:wrap;margin-bottom:var(--gap-md);"></div>
+
+            <!-- Salário -->
+            <div class="salary-box">
+              <p class="salary-box__value" id="vd-salary"></p>
+              <p class="salary-box__label">Faixa salarial mensal</p>
+            </div>
+
+            <!-- Sobre a empresa -->
+            <p class="section-label">Sobre a empresa</p>
+            <p class="body-text" id="vd-about-company"></p>
+
+            <!-- Sobre a vaga -->
+            <p class="section-label">Sobre a vaga</p>
+            <p class="body-text" id="vd-about-role"></p>
+
+            <!-- Responsabilidades -->
+            <p class="section-label">O que você vai fazer</p>
+            <ul class="requirements-list" id="vd-responsibilities"></ul>
+
+            <!-- Requisitos obrigatórios -->
+            <p class="section-label">Requisitos obrigatórios</p>
+            <ul class="requirements-list" id="vd-requirements"></ul>
+
+            <!-- Diferenciais -->
+            <p class="section-label">Diferenciais</p>
+            <ul class="requirements-list" id="vd-optional"></ul>
+
+            <!-- Benefícios -->
+            <p class="section-label">Benefícios</p>
+            <ul class="requirements-list" id="vd-benefits"></ul>
+
+            <!-- Crescimento -->
+            <p class="section-label">Oportunidade de crescimento</p>
+            <div class="growth-box" id="vd-growth">
+              <p id="vd-growth-text"></p>
+            </div>
+
+            <!-- Processo seletivo -->
+            <p class="section-label">Processo seletivo</p>
+            <ul class="process-steps" id="vd-process"></ul>
+
+            <!-- Contato -->
+            <p class="section-label">Contato na empresa</p>
+            <div class="vaga-contact">
+              <div class="avatar" style="width:42px;height:42px;font-size:15px;"
+                id="vd-recruiter-avatar"></div>
+              <div class="vaga-contact__info">
+                <p class="vaga-contact__name" id="vd-recruiter-name"></p>
+                <p class="vaga-contact__role" id="vd-recruiter-role"></p>
+              </div>
+              <a href="chat.html" class="btn-sm btn-sm--purple"
+                aria-label="Enviar mensagem">
+                <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <!-- Rodapé fixo -->
+            <div class="detail-cta-bar">
+              <button id="cta-btn" class="btn-primary btn-primary--green"
+                style="flex:1;"
+                onclick="showToast('✓ Candidatura enviada pelo Mudi!')">
+                <i class="bi bi-send-fill" aria-hidden="true"></i> Candidatar-se
+                pelo Mudi
+              </button>
+              <button class="btn-outline btn-outline--icon" id="btn-save"
+                onclick="toggleSave(this)" aria-label="Salvar vaga">
+                <i class="bi bi-bookmark" id="save-icon" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <output class="toast" id="toast" role="status"
+            aria-live="polite"></output>
+        </section>
+
+      </article>
+    </main>
+
+    <script>
+      const vagas = [
+        {
+          title: 'UI/UX Designer',
+          logoUrl: '/images/geral/vagas/elo.svg',
+          logoFallback: 'EL', logoFallbackColor: '#FFD700',
+          company: 'Elo', location: 'São Paulo, SP',
+          salary: 'R$ 3.500 – 5.500',
+          isNew: true,
+          pills: ['Júnior', 'CLT', 'Híbrido'],
+          aboutCompany: 'A Elo é a primeira bandeira de cartões 100% brasileira, presente em mais de 2 milhões de estabelecimentos. O time de digital vem crescendo e investindo em experiência do usuário.',
+          aboutRole: 'Você vai atuar no time de design criando interfaces para o app do portador Elo — telas de gastos, benefícios e cashback. Trabalho próximo com produto e engenharia.',
+          responsibilities: ['Criar e refinar telas e componentes no Figma', 'Garantir consistência visual entre plataformas iOS e Android', 'Colaborar com times de produto e engenharia no handoff', 'Apoiar a evolução do Design System da Elo'],
+          requirements: [{ text: 'Portfólio com cases de UI ou comunicação visual', req: true }, { text: 'Domínio de Figma', req: true }, { text: 'Senso estético apurado e atenção a detalhes', req: true }, { text: 'Capacidade de trabalhar em equipe multidisciplinar', req: true }],
+          optional: [{ text: 'Experiência com produtos financeiros ou fintechs' }, { text: 'Noções de acessibilidade digital' }],
+          benefits: [{ text: 'Plano de saúde e odontológico sem coparticipação' }, { text: 'VR + VA — R$ 950/mês' }, { text: 'PLR semestral' }, { text: 'Gympass' }, { text: 'Programa de desenvolvimento interno' }],
+          growth: 'Time em expansão com plano de carreira estruturado — progressão para Pleno em 18–24 meses.',
+          process: ['Triagem de portfólio', 'Entrevista com RH (30 min)', 'Apresentação de case para o time', 'Entrevista com liderança', 'Oferta'],
+          recruiter: { name: 'Beatriz Almeida', photo: '/images/geral/usuarias/beatriz.svg', role: 'Talent Acquisition · Elo', initial: 'B', color: '#F59E0B' },
+          type: 'mudi',
+        },
+        {
+          title: 'UI/UX Designer',
+          logoUrl: '/images/geral/vagas/google.svg',
+          logoFallback: 'GO', logoFallbackColor: '#4285F4',
+          company: 'Google', location: 'São Paulo, SP',
+          salary: 'R$ 4.000 – 6.000',
+          isNew: true,
+          pills: ['Júnior', 'CLT', 'Híbrido'],
+          aboutCompany: 'O Google Brasil tem um dos maiores times de design da região, com foco em produtos locais como Google Pay, Maps e Search. Ambiente de alto nível técnico e muita autonomia.',
+          aboutRole: 'Vaga no time de Google Pay Brasil. Você vai apoiar a criação e refinamento de interfaces de pagamento para o cotidiano dos brasileiros, trabalhando próximo de designers sênior.',
+          responsibilities: ['Criar e refinar interfaces do Google Pay sob orientação de designers sênior', 'Colaborar com times de produto e engenharia no handoff', 'Contribuir para o Design System global adaptado para LATAM', 'Participar de revisões de design com o time'],
+          requirements: [{ text: 'Portfólio com cases de UI documentados', req: true }, { text: 'Inglês intermediário para leitura e reuniões', req: true }, { text: 'Domínio de Figma', req: true }, { text: 'Atenção a detalhes e consistência visual', req: true }],
+          optional: [{ text: 'Experiência com pagamentos ou fintechs' }, { text: 'Conhecimento de acessibilidade (WCAG)' }, { text: 'Inglês fluente' }],
+          benefits: [{ text: 'Plano de saúde premium sem coparticipação' }, { text: 'Refeição gratuita no escritório (SP)' }, { text: 'Bônus anual + participação em resultados' }, { text: 'Verba de educação — R$ 5.000/ano' }, { text: 'Licença parental de 6 meses para qualquer gênero' }],
+          growth: 'Ambiente de alto aprendizado — progressão para Pleno em 18 meses com mentoria de designers sênior.',
+          process: ['Triagem de portfólio pelo time de design', 'Phone screen com RH (30 min)', 'Portfólio review com designer sênior (1h)', 'Design challenge + apresentação (2h)', 'Entrevistas finais com liderança', 'Oferta'],
+          recruiter: { name: 'Isabela Nunes', photo: '/images/geral/usuarias/isabela.svg', role: 'Talent Acquisition · Google Brasil', initial: 'I', color: '#4285F4' },
+          type: 'mudi',
+        },
+        {
+          title: 'Diretora de Arte',
+          logoUrl: '/images/geral/vagas/ifood.svg',
+          logoFallback: 'iF', logoFallbackColor: '#EA1D2C',
+          company: 'iFood', location: 'Osasco, SP',
+          salary: 'R$ 3.500 – 5.500',
+          isNew: true,
+          pills: ['Júnior', 'CLT', 'Remoto'],
+          aboutCompany: 'O iFood conecta mais de 300 mil restaurantes a milhões de consumidores. O time de criação desenvolve campanhas, e-mail marketing e materiais institucionais para múltiplas plataformas.',
+          aboutRole: 'Você vai atuar no time de criação do iFood desenvolvendo peças para campanhas digitais, e-mail marketing e materiais de evento, trabalhando próximo de designers sênior.',
+          responsibilities: ['Criar peças para campanhas digitais e e-mail marketing', 'Desenvolver KVs e materiais para eventos e ações de marca', 'Garantir consistência com o guia de identidade do iFood', 'Apoiar o time de UI na criação de assets para o app'],
+          requirements: [{ text: 'Portfólio com cases de comunicação visual ou direção de arte', req: true }, { text: 'Domínio de Photoshop e Illustrator', req: true }, { text: 'Noções de Figma', req: true }, { text: 'Senso estético apurado e atenção a detalhes', req: true }],
+          optional: [{ text: 'Experiência com e-mail marketing' }, { text: 'Noções de motion design ou animação' }],
+          benefits: [{ text: 'Plano de saúde Bradesco sem coparticipação' }, { text: 'Gympass Gold' }, { text: 'Crédito mensal de R$ 300 no iFood' }, { text: 'Home office kit completo (cadeira + monitor)' }, { text: 'Day off no aniversário' }],
+          growth: 'Time em expansão — progressão para Pleno em 12–18 meses com acompanhamento de liderança.',
+          process: ['Triagem de portfólio', 'Entrevista comportamental com RH (30 min)', 'Apresentação de case para o time', 'Papo com a liderança de criação', 'Oferta'],
+          recruiter: { name: 'Juliana Melo', photo: '/images/geral/usuarias/juliana.svg', role: 'People & Talent · iFood', initial: 'J', color: '#EF4444' },
+          type: 'external',
+        },
+        {
+          title: 'UI/UX Designer',
+          logoUrl: '/images/geral/vagas/itau.svg',
+          logoFallback: 'IT', logoFallbackColor: '#EC7000',
+          company: 'Itaú Unibanco', location: 'São Paulo, SP',
+          salary: 'R$ 8.000 – 12.000',
+          isNew: false,
+          pills: ['Pleno', 'CLT', 'Híbrido'],
+          aboutCompany: 'O Itaú é o maior banco privado da América Latina. O time de design digital tem mais de 300 pessoas trabalhando nos apps Itaú PF, PJ e produtos de investimentos.',
+          aboutRole: 'Vaga no squad de interfaces do app Itaú PF. Você vai criar e refinar telas com foco em clareza visual e consistência — de fluxos de pagamento até comunicação dentro do app.',
+          responsibilities: ['Criar e refinar interfaces do app Itaú PF', 'Garantir consistência com o Design System do Itaú', 'Colaborar com times de produto e engenharia no handoff', 'Documentar padrões e decisões de design'],
+          requirements: [{ text: 'Portfólio com cases de UI mobile', req: true }, { text: 'Domínio avançado de Figma', req: true }, { text: 'Experiência com Design Systems', req: true }, { text: 'Atenção a detalhes e consistência visual', req: true }],
+          optional: [{ text: 'Experiência com produtos financeiros' }, { text: 'Conhecimento de acessibilidade digital' }, { text: 'Noções de motion design' }],
+          benefits: [{ text: 'Plano de saúde e odontológico sem coparticipação' }, { text: 'VR + VA — R$ 1.200/mês' }, { text: 'PLR até 2 salários por ano' }, { text: 'Previdência privada com match do Itaú' }, { text: 'Gympass + programa de bem-estar' }],
+          growth: 'Plano de carreira consolidado — trilha IC ou gestão, com revisão anual de salário e promoção.',
+          process: ['Triagem de portfólio pelo RH', 'Entrevista comportamental (45 min)', 'Desafio de design com 1 semana de prazo', 'Apresentação do desafio para o time', 'Entrevista final com liderança', 'Oferta'],
+          recruiter: { name: 'Fernanda Queiroz', photo: '/images/geral/usuarias/fernanda.svg', role: 'Talent Acquisition · Itaú', initial: 'F', color: '#3B82F6' },
+          type: 'external',
+        },
+        {
+          title: 'Diretora de Arte',
+          logoUrl: '/images/geral/vagas/mercado-livre.svg',
+          logoFallback: 'ML', logoFallbackColor: '#FFE600',
+          company: 'Mercado Livre', location: 'São Paulo, SP',
+          salary: 'R$ 7.000 – 10.000',
+          isNew: false,
+          pills: ['Pleno', 'CLT', 'Remoto'],
+          aboutCompany: 'O Mercado Livre é a maior plataforma de e-commerce e fintech da América Latina, com operações em 18 países. O time de criação desenvolve campanhas e peças visuais em escala.',
+          aboutRole: 'Você vai atuar no time de criação do Mercado Livre desenvolvendo campanhas digitais, e-mail marketing e comunicação visual do ecossistema Mercado Pago e Mercado Livre.',
+          responsibilities: ['Liderar a criação de campanhas digitais e e-mail marketing', 'Desenvolver KVs e materiais para ações de marca', 'Garantir consistência com o guia de identidade visual', 'Colaborar com times de marketing e produto'],
+          requirements: [{ text: 'Portfólio com cases de direção de arte digital', req: true }, { text: 'Domínio de Photoshop, Illustrator e Figma', req: true }, { text: 'Experiência com e-mail marketing e campanhas digitais', req: true }, { text: 'Capacidade de trabalhar em múltiplos projetos simultâneos', req: true }],
+          optional: [{ text: 'Experiência com e-commerce ou marketplace' }, { text: 'Noções de motion design' }, { text: 'Espanhol básico' }],
+          benefits: [{ text: 'Plano de saúde premium sem coparticipação' }, { text: 'VR + VA — R$ 1.100/mês' }, { text: 'Stock options' }, { text: 'Verba de educação — R$ 3.000/ano' }, { text: 'Gympass' }],
+          growth: 'Empresa com crescimento acelerado — progressão para Sênior em 18 meses com possibilidade de atuação regional.',
+          process: ['Triagem de portfólio', 'Entrevista com RH (30 min)', 'Desafio criativo assíncrono', 'Apresentação do desafio para o time', 'Entrevista com liderança', 'Oferta'],
+          recruiter: { name: 'Carolina Souza', photo: '/images/geral/usuarias/carolina.svg', role: 'Tech Recruiter · Mercado Livre', initial: 'C', color: '#00C896' },
+          type: 'external',
+        },
+        {
+          title: 'UI/UX Designer',
+          logoUrl: '/images/geral/vagas/meta.svg',
+          logoFallback: 'MT', logoFallbackColor: '#0866FF',
+          company: 'Meta', location: 'São Paulo, SP',
+          salary: 'R$ 4.000 – 6.500',
+          isNew: false,
+          pills: ['Júnior', 'CLT', 'Remoto'],
+          aboutCompany: 'A Meta conecta bilhões de pessoas pelo mundo por meio do Facebook, Instagram e WhatsApp. O escritório de São Paulo é estratégico para produtos focados na América Latina.',
+          aboutRole: 'Vaga no time de design do Instagram Brasil. Você vai apoiar a criação e refinamento de interfaces para features focadas no mercado brasileiro, sob orientação de designers sênior.',
+          responsibilities: ['Criar e refinar interfaces do Instagram Brasil', 'Colaborar com times de produto e engenharia no handoff', 'Contribuir para o Design System global do Instagram', 'Participar de revisões de design com o time'],
+          requirements: [{ text: 'Portfólio com cases de UI documentados', req: true }, { text: 'Inglês intermediário para leitura e reuniões', req: true }, { text: 'Domínio de Figma', req: true }, { text: 'Atenção a detalhes e consistência visual', req: true }],
+          optional: [{ text: 'Experiência com produtos de redes sociais ou conteúdo' }, { text: 'Conhecimento de acessibilidade e design inclusivo' }, { text: 'Inglês fluente' }],
+          benefits: [{ text: 'Plano de saúde premium sem coparticipação' }, { text: 'Refeição gratuita no escritório' }, { text: 'Bônus anual + RSUs (ações)' }, { text: 'Verba de educação — R$ 8.000/ano' }, { text: 'Licença parental de 6 meses para qualquer gênero' }],
+          growth: 'Ambiente de alto aprendizado — progressão para Pleno em 18 meses com mentoria de designers sênior.',
+          process: ['Triagem de portfólio', 'Recruiter screen (30 min)', 'Portfólio review com designer sênior (1h)', 'Design exercise assíncrono', 'Entrevistas finais com liderança', 'Oferta'],
+          recruiter: { name: 'Larissa Campos', photo: '/images/geral/usuarias/larissa.svg', role: 'Talent Acquisition · Meta Brasil', initial: 'L', color: '#0866FF' },
+          type: 'external',
+        },
+        {
+          title: 'UI/UX Designer',
+          logoUrl: '/images/geral/vagas/natura.svg',
+          logoFallback: 'NA', logoFallbackColor: '#FF6B35',
+          company: 'Natura', location: 'São Paulo, SP',
+          salary: 'R$ 7.000 – 9.500',
+          isNew: false,
+          pills: ['Pleno', 'CLT', 'Híbrido'],
+          aboutCompany: 'A Natura é a maior empresa de cosméticos da América Latina e referência global em sustentabilidade. O time de digital cuida dos produtos Natura, Avon e The Body Shop.',
+          aboutRole: 'Você vai atuar no time de design digital da Natura criando interfaces para os apps e plataformas do grupo, com foco em simplicidade e acessibilidade.',
+          responsibilities: ['Criar e refinar interfaces para os apps do grupo Natura', 'Garantir consistência com os Design Systems das marcas', 'Colaborar com times de produto, dados e engenharia', 'Garantir acessibilidade para diferentes perfis de usuário'],
+          requirements: [{ text: 'Portfólio com cases de UI mobile documentados', req: true }, { text: 'Domínio de Figma', req: true }, { text: 'Sensibilidade para design inclusivo e acessível', req: true }, { text: 'Experiência com Design Systems', req: true }],
+          optional: [{ text: 'Experiência com marcas de beleza ou lifestyle' }, { text: 'Conhecimento de acessibilidade (WCAG)' }, { text: 'Noções de motion design' }],
+          benefits: [{ text: 'Plano de saúde e odontológico Bradesco' }, { text: 'VR + VA — R$ 900/mês' }, { text: 'Desconto de 50% em produtos Natura, Avon e TBS' }, { text: 'Programa de saúde mental (Zenklub)' }, { text: 'PLR semestral' }],
+          growth: 'Posição no squad de maior impacto do time digital — progressão para Sênior em 18 meses.',
+          process: ['Análise de portfólio', 'Entrevista com RH (45 min)', 'Apresentação de case para o time', 'Bate-papo com liderança', 'Oferta'],
+          recruiter: { name: 'Camila Pires', photo: '/images/geral/usuarias/camila.svg', role: 'Talent Acquisition · Natura', initial: 'C', color: '#F59E0B' },
+          type: 'mudi',
+        },
+        {
+          title: 'UI/UX Designer',
+          logoUrl: '/images/geral/vagas/nubank.svg',
+          logoFallback: 'NU', logoFallbackColor: '#8A05BE',
+          company: 'Nubank', location: 'São Paulo, SP',
+          salary: 'R$ 8.000 – 15.000',
+          isNew: false,
+          pills: ['Pleno', 'CLT', 'Híbrido'],
+          aboutCompany: 'O Nubank é uma das maiores fintechs do mundo, com mais de 90 milhões de clientes na América Latina. Design aqui é estratégia de negócio.',
+          aboutRole: 'Vaga no squad de crescimento do app, responsável por criar e refinar interfaces para fluxos de onboarding e ativação de novos clientes.',
+          responsibilities: ['Criar e refinar interfaces do app Nubank', 'Garantir consistência com o Design System do Nubank', 'Colaborar com times de produto e engenharia no handoff', 'Contribuir para a evolução de componentes do DS'],
+          requirements: [{ text: 'Portfólio com cases de UI mobile', req: true }, { text: 'Domínio avançado de Figma — Auto Layout, Variables, Components', req: true }, { text: 'Experiência com Design Systems', req: true }, { text: 'Atenção obsessiva a detalhes visuais', req: true }],
+          optional: [{ text: 'Experiência com produtos financeiros' }, { text: 'Inglês intermediário' }, { text: 'Noções de motion design' }],
+          benefits: [{ text: 'Plano de saúde e odontológico sem coparticipação (Bradesco)' }, { text: 'VR + VA — R$ 1.100/mês' }, { text: 'Stock options após 6 meses' }, { text: 'Licença parental estendida — 6 meses para qualquer gênero' }, { text: 'Subsídio de home office (R$ 2.000 na entrada)' }],
+          growth: 'Plano de carreira com ciclos semestrais de feedback. Progressão para Sênior em 18–24 meses.',
+          process: ['Triagem de portfólio', 'Desafio técnico assíncrono (1 semana)', 'Entrevista com o time de design (1h)', 'Entrevista com PM e liderança (45 min)', 'Oferta'],
+          recruiter: { name: 'Rafaela Torres', photo: '/images/geral/usuarias/rafaela.svg', role: 'Tech Recruiter · Nubank', initial: 'R', color: '#7C3AED' },
+          type: 'mudi',
+        },
+        {
+          title: 'Diretora de Arte',
+          logoUrl: '/images/geral/vagas/shopee.svg',
+          logoFallback: 'SH', logoFallbackColor: '#EE4D2D',
+          company: 'Shopee', location: 'São Paulo, SP',
+          salary: 'R$ 6.500 – 9.000',
+          isNew: false,
+          pills: ['Pleno', 'CLT', 'Híbrido'],
+          aboutCompany: 'A Shopee é uma das maiores plataformas de e-commerce do Sudeste Asiático e está em forte expansão no Brasil. O time de criação local desenvolve campanhas adaptadas para o consumidor brasileiro.',
+          aboutRole: 'Você vai liderar a criação visual de campanhas digitais, e-mail marketing e materiais promocionais da Shopee Brasil, garantindo consistência e qualidade em todas as peças.',
+          responsibilities: ['Liderar a criação de campanhas digitais e e-mail marketing', 'Desenvolver KVs e materiais para ações promocionais', 'Garantir consistência com a identidade visual da Shopee', 'Colaborar com times de marketing e produto'],
+          requirements: [{ text: 'Portfólio com cases de direção de arte digital', req: true }, { text: 'Domínio de Photoshop, Illustrator e Figma', req: true }, { text: 'Experiência com campanhas digitais em escala', req: true }, { text: 'Capacidade de trabalhar em ritmo acelerado', req: true }],
+          optional: [{ text: 'Experiência com e-commerce ou marketplace' }, { text: 'Noções de motion design' }, { text: 'Inglês básico para comunicação com times regionais' }],
+          benefits: [{ text: 'Plano de saúde sem coparticipação' }, { text: 'VR + VA — R$ 1.000/mês' }, { text: 'Bônus por performance' }, { text: 'Desconto em compras na Shopee' }, { text: 'Programa de saúde mental' }],
+          growth: 'Empresa em expansão acelerada no Brasil — progressão para Sênior em 18 meses.',
+          process: ['Triagem de portfólio', 'Entrevista com RH (30 min)', 'Desafio criativo (1 semana)', 'Apresentação para o time', 'Entrevista final com liderança', 'Oferta'],
+          recruiter: { name: 'Priscila Monteiro', photo: '/images/geral/usuarias/priscila.svg', role: 'Talent Acquisition · Shopee Brasil', initial: 'P', color: '#EE4D2D' },
+          type: 'external',
+        },
+      ];
+      
+      // ── Render lista ──
+      const ul = document.getElementById('vaga-list-ul');
+      const dates = ['Há 1 dia', 'Há 1 dia', 'Há 2 dias', 'Há 1 semana', 'Há 3 dias', 'Há 2 semanas', 'Há 1 semana', 'Há 3 semanas', 'Há 8 dias'];
+
+      vagas.forEach((v, i) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <button class="vaga-card" onclick="showVaga(${i})" aria-label="${v.title} em ${v.company}">
+            ${v.isNew ? '<span class="vaga-new">NOVA</span>' : ''}
+            <div class="vaga-top">
+              <div class="vaga-logo">
+                <img src="${v.logoUrl}" alt="${v.company}"
+                  onerror="this.outerHTML='<span style=\'font-weight:700;font-size:13px;color:${v.logoFallbackColor}\'>${v.logoFallback}</span>'">
+              </div>
+              <div>
+                <p class="vaga-title">${v.title}</p>
+                <p class="vaga-company">${v.company} · ${v.location}</p>
+              </div>
+            </div>
+            <div class="vaga-tags">${v.pills.map(p => `<span class="pill pill--gray">${p}</span>`).join('')}</div>
+            <div class="vaga-footer">
+              <span class="vaga-salary">${v.salary}</span>
+              <time class="vaga-date">${dates[i]}</time>
+            </div>
+          </button>`;
+        ul.appendChild(li);
+      });
+
+      // ── Funções ──
+      function setMode(mode) {
+        document.documentElement.setAttribute('data-theme', mode);
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+          const active = btn.textContent.trim().toLowerCase().startsWith(mode === 'dark' ? 'd' : 'l');
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-pressed', active);
+        });
+      }
+
+      function toggleChip(el) {
+        document.querySelectorAll('.filter-chip').forEach(c => {
+          c.classList.remove('on');
+          c.setAttribute('aria-selected', 'false');
+        });
+        el.classList.add('on');
+        el.setAttribute('aria-selected', 'true');
+      }
+
+      function openModal(id)  { document.getElementById(id).classList.add('open'); }
+      function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+      function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg; t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2500);
+      }
+
+      function toggleSave(btn) {
+        const saved = btn.classList.toggle('saved');
+        document.getElementById('save-icon').className = saved ? 'bi bi-bookmark-fill' : 'bi bi-bookmark'; 
+        if (saved) showToast('✓ Vaga salva!');
+      }
+
+      function loadMore() {
+        const btn = document.getElementById('btn-load-more');
+        btn.innerHTML = '<i class="bi bi-check-lg"></i> Todas as vagas carregadas';
+        btn.disabled = true;
+      }
+
+      function showVaga(idx) {
+        const v = vagas[idx];
+
+        document.getElementById('vd-title').textContent   = v.title;
+        document.getElementById('vd-title2').textContent  = v.title;
+        document.getElementById('vd-company').textContent = `${v.company} · ${v.location}`;
+        document.getElementById('vd-salary').textContent  = v.salary;
+
+        const logoEl = document.getElementById('vd-logo');
+        logoEl.innerHTML = `<img src="${v.logoUrl}" alt="${v.company}" style="width:100%;height:100%;object-fit:contain;"
+          onerror="this.outerHTML='<span style=\\'font-weight:800;font-size:18px;color:${v.logoFallbackColor}\\'>${v.logoFallback}</span>'">`;
+
+        document.getElementById('vd-tags').innerHTML = v.pills.map(p =>
+          `<span class="pill pill--gray">${p}</span>`).join('');
+
+        document.getElementById('vd-about-company').textContent = v.aboutCompany;
+        document.getElementById('vd-about-role').textContent    = v.aboutRole;
+
+        document.getElementById('vd-responsibilities').innerHTML = v.responsibilities.map(r => `
+          <li class="req-item">${r}</li>`).join('');
+
+        document.getElementById('vd-requirements').innerHTML = v.requirements.map(r => `
+          <li class="req-item">${r.text}</li>`).join('');
+
+        document.getElementById('vd-optional').innerHTML = v.optional.map(r => `
+          <li class="req-item req-item--optional">${r.text}</li>`).join('');
+
+        document.getElementById('vd-benefits').innerHTML = v.benefits.map(b => `
+          <li class="req-item">${b.text}</li>`).join('');
+
+        document.getElementById('vd-growth-text').textContent = v.growth;
+
+        document.getElementById('vd-process').innerHTML = v.process.map((s, i) => `
+          <li class="process-step">
+            <span class="process-step__num">${i + 1}</span>
+            <span class="process-step__label">${s}</span>
+          </li>`).join('');
+
+        const av = document.getElementById('vd-recruiter-avatar');
+        av.innerHTML = `<img src="${v.recruiter.photo}" alt="Foto da ${v.recruiter.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+        av.style.background = 'none';
+        document.getElementById('vd-recruiter-name').textContent = v.recruiter.name;
+        document.getElementById('vd-recruiter-role').textContent = v.recruiter.role;
+
+        document.getElementById('btn-save').classList.remove('saved');
+        document.getElementById('save-icon').className = 'bi bi-bookmark'; 
+
+        document.getElementById('vagas-list').style.display = 'none';
+        const d = document.getElementById('vaga-detail');
+        d.classList.add('show');
+        d.removeAttribute('aria-hidden');
+        d.querySelector('.detail-scroll').scrollTop = 0;
+
+        const ctaBtn = document.getElementById('cta-btn');
+        if (v.type === 'mudi') { 
+          ctaBtn.style.flex = '1';
+          ctaBtn.onclick = () => showToast('✓ Candidatura enviada pelo Mudi!');
+          ctaBtn.innerHTML = '<i class="bi bi-send-fill" aria-hidden="true"></i> Candidatar-se pelo Mudi';
+        } else { 
+          ctaBtn.style.flex = '1';
+          ctaBtn.onclick = () => showToast('Abrindo vaga externa...');
+          ctaBtn.innerHTML = '<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Candidatura externa';
+        }
+      }
+
+      function hideVaga() {
+        document.getElementById('vagas-list').style.display = '';
+        const d = document.getElementById('vaga-detail');
+        d.classList.remove('show');
+        d.setAttribute('aria-hidden', 'true');
+      } 
+    </script>
+  </body>
+</html>

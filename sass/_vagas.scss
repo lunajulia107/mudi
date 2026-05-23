@@ -1,0 +1,384 @@
+// =============================================================
+// _vagas.scss — Tela vagas.html
+// =============================================================
+
+#vagas-list {
+  background: var(--bg-surface);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.vaga-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  li { width: 100%; }
+}
+
+// ── Card de vaga ───────────────────────────────────────────────
+.vaga-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  margin: 0 var(--gap-md) var(--gap-sm);
+  padding: var(--gap-md);
+  position: relative;
+  text-align: left;
+  transition: box-shadow var(--transition-fast);
+  width: calc(100% - 32px);
+
+  &:hover { box-shadow: var(--shadow-md); }
+}
+
+.vaga-new {
+  background: var(--color-secondary);
+  border-radius: var(--radius-action);
+  color: var(--color-gray-6);
+  font-size: var(--font-size-2xs);
+  font-weight: 800;
+  letter-spacing: .04em;
+  padding: 2px 8px;
+  position: absolute;
+  right: var(--gap-md);
+  text-transform: uppercase;
+  top: var(--gap-md);
+}
+
+.vaga-top {
+  align-items: center;
+  display: flex;
+  gap: var(--gap-md);
+}
+
+.vaga-logo {
+  align-items: center;
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-input);
+  display: flex;
+  flex-shrink: 0;
+  height: 44px;
+  justify-content: center;
+  overflow: hidden;
+  width: 44px;
+
+  img { height: 100%; object-fit: cover; width: 100%; }
+}
+
+.vaga-title   { color: var(--text-contrast); font-size: 14px; font-weight: 700; }
+.vaga-company { color: var(--text-muted); font-size: var(--font-size-xs); margin-top: 2px; }
+
+.vaga-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-xs);
+}
+
+.vaga-footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vaga-salary { color: var(--color-primary); font-size: 14px; font-weight: 700; }
+.vaga-date   { color: var(--text-muted); font-size: var(--font-size-xs); }
+
+// ── Detalhe da vaga ────────────────────────────────────────────
+.detail-view {
+  background: var(--bg-surface);
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+  transition: opacity var(--transition-normal), transform var(--transition-slow);
+  z-index: 9;
+
+  &.show { opacity: 1; pointer-events: all; transform: translateX(0); }
+}
+
+.detail-header {
+  align-items: center;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--gap-sm);
+  padding: var(--gap-2xl) var(--gap-lg) var(--gap-md);
+}
+
+.detail-title { color: var(--text-contrast); flex: 1; font-size: 15px; font-weight: 700; }
+
+.detail-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--gap-lg) var(--gap-xl);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+// ── Salary box ─────────────────────────────────────────────────
+.salary-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  margin-bottom: var(--gap-md);
+  padding: var(--gap-md);
+}
+
+.salary-box__value {
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.salary-box__label { color: var(--text-muted); font-size: var(--font-size-xs); }
+
+// ── Seção labels ───────────────────────────────────────────────
+.section-label {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: .06em;
+  margin-bottom: var(--gap-sm);
+  margin-top: var(--gap-lg);
+  text-transform: uppercase;
+}
+
+.body-text {
+  color: var(--text-main);
+  font-size: 13px;
+  line-height: 1.65;
+  margin-bottom: var(--gap-md);
+}
+
+// ── Requisitos e listas ────────────────────────────────────────
+.requirements-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  list-style: none;
+  margin-bottom: var(--gap-md);
+}
+
+.req-item {
+  border-left: 2px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: var(--gap-xs);
+  padding-left: var(--gap-sm); 
+}
+
+.req-badge {
+  background: rgba(139, 83, 254, .1);
+  border-radius: var(--radius-action);
+  color: var(--color-primary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  margin-left: 6px;
+  padding: 1px 7px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+// ── Crescimento ────────────────────────────────────────────────
+.growth-box {
+  background: rgba(139, 83, 254, .06);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-input) var(--radius-input) 0;
+  color: var(--text-main);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: var(--gap-lg);
+  padding: var(--gap-sm) var(--gap-md);
+}
+
+// ── Processo seletivo — timeline ───────────────────────────────
+.process-steps {
+  list-style: none;
+  margin-bottom: var(--gap-lg);
+  padding-left: 10px;
+  position: relative;
+
+  &::before {
+    background: var(--border-color);
+    bottom: 6px;
+    content: '';
+    left: 10px;
+    position: absolute;
+    top: 6px;
+    width: 1px;
+  }
+}
+
+.process-step {
+  align-items: flex-start;
+  display: flex;
+  gap: var(--gap-sm);
+  margin-bottom: var(--gap-md);
+  padding-left: var(--gap-md);
+  position: relative;
+
+  &::before {
+    background: var(--bg-surface);
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    content: '';
+    height: 10px;
+    left: -1px;
+    position: absolute;
+    top: 4px;
+    width: 10px;
+  }
+}
+
+.process-step__num   { color: var(--text-muted); font-size: 11px; font-weight: 700; min-width: 16px; }
+.process-step__label { color: var(--text-main); font-size: 13px; line-height: 1.4; }
+
+// ── Contato da vaga ────────────────────────────────────────────
+.vaga-contact {
+  align-items: center;
+  background: rgba(139, 83, 254, .06);
+  border: 1px solid rgba(139, 83, 254, .2);
+  border-radius: var(--radius-card);
+  display: flex;
+  gap: var(--gap-sm);
+  margin-bottom: 72px;
+  margin-top: var(--gap-sm);
+  padding: var(--gap-sm) var(--gap-md);
+
+  &__info { flex: 1; min-width: 0; }
+  &__name { color: var(--text-contrast); font-size: 13px; font-weight: 600; }
+  &__role { color: var(--text-muted); font-size: var(--font-size-xs); }
+}
+
+// ── Rodapé fixo de candidatura ─────────────────────────────────
+.detail-cta-bar {
+  align-items: center;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  bottom: 0;
+  display: flex;
+  gap: var(--gap-sm);
+  left: 0;
+  padding: var(--gap-sm) var(--gap-xl) 30px;
+  position: fixed;
+  width: 100%;
+
+  .btn-primary { font-size: 13px; padding: 14px var(--gap-md); }
+  .btn-outline  { height: 48px; padding: 0; width: 48px !important; }
+}
+
+// ── Candidatura preview ────────────────────────────────────────
+.profile-preview {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  display: flex;
+  gap: var(--gap-sm);
+  margin-bottom: var(--gap-md);
+  padding: var(--gap-sm) var(--gap-md);
+}
+
+.profile-preview__name   { color: var(--text-contrast); font-size: 14px; font-weight: 600; }
+.profile-preview__status { color: var(--text-muted); font-size: 12px; }
+
+// ── Choice buttons (modal candidatura) ────────────────────────
+.apply-choice { display: flex; flex-direction: column; gap: var(--gap-sm); }
+
+.choice-btn {
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  display: flex;
+  gap: var(--gap-md);
+  padding: var(--gap-md);
+  text-align: left;
+  width: 100%;
+
+  &__icon  { color: var(--color-primary); flex-shrink: 0; font-size: 20px; }
+  &__inner { display: flex; flex-direction: column; gap: 3px; }
+  &__title { color: var(--text-contrast); font-size: 14px; font-weight: 700; }
+  &__desc  { color: var(--text-muted); font-size: 12px; line-height: 1.4; }
+}
+
+// ── Page header ────────────────────────────────────────────────
+.page-header {
+  flex-shrink: 0;
+  padding: var(--gap-md) var(--gap-md) 0;
+}
+
+.page-title {
+  color: var(--text-contrast);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--gap-sm);
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--gap-md);
+  margin-top: calc(var(--gap-xs) * -1);
+}
+
+// ── Notif dot ──────────────────────────────────────────────────
+.notif-dot {
+  background: var(--color-error);
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px; 
+  margin-left: 3px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 10px;
+} 
+
+.notif-dot--green { background: var(--color-secondary) !important; }
+
+// ── Stat grid ──────────────────────────────────────────────────
+.stat-grid {
+  display: grid;
+  gap: var(--gap-sm);
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: var(--gap-lg);
+}
+
+.stat-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: var(--gap-md);
+  text-align: center;
+}
+
+.stat-box__num {
+  color: var(--text-contrast);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+
+  &--purple { color: var(--color-purple); }
+  &--green  { color: var(--color-secondary); }
+}
+
+.stat-box__lbl { color: var(--text-muted); font-size: var(--font-size-xs); margin-top: 2px; }

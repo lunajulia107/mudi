@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mudi</title>
+    <link rel="icon" type="image/x-icon" href="/images/brand/mudi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="sass/main.css" />
+  </head>
+  <body>
+
+    <header class="top-bar">
+      <nav class="mode-toggle" aria-label="Seleção de tema">
+        <button class="mode-btn" aria-pressed="false" onclick="setMode('dark')">
+          <i class="bi bi-moon-fill"></i> Dark
+        </button>
+        <button class="mode-btn active" aria-pressed="true" onclick="setMode('light')">
+          <i class="bi bi-sun-fill"></i> Light
+        </button>
+      </nav>
+    </header>
+
+    <main class="phone-wrap" aria-label="Chat Mudi">
+      <img class="phone-wrap__mockup" src="images/mockup.png" alt aria-hidden="true">
+
+      <article class="phone" id="phone">
+
+        <header class="feed-header">
+          <div class="feed-header__logo">
+            <img src="images/brand/logo.png" alt="Mudi">
+          </div>
+          <div class="feed-header__actions">
+            <button class="btn-icon" aria-label="Notificações (1 nova)" style="position:relative;">
+              <i class="bi bi-bell-fill" aria-hidden="true"></i>
+              <span class="notif-dot" aria-hidden="true"></span>
+            </button>
+            <a href="perfil.html" aria-label="Meu perfil">
+              <div class="avatar avatar--green">
+                <img src="/images/geral/usuarias/samara.svg" alt="Samara Duarte">
+              </div>
+            </a>
+          </div>
+        </header>
+
+        <div id="chat-wrap">
+
+          <!-- ── LISTA DE CANAIS ── -->
+          <div id="channel-list">
+            <div class="channel-list-header">
+              <h1 class="channel-list-title">Comunidade</h1>
+            </div>
+
+            <div class="search-bar" style="margin:0 var(--gap-md) var(--gap-sm);">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <label class="visually-hidden" for="search-chat">Buscar canal</label>
+              <input id="search-chat" type="search" placeholder="Procurar canal ou membro..." />
+            </div>
+
+            <div class="scroll-area">
+              <p class="section-label" style="padding:0 var(--gap-md);">Canais</p>
+
+              <button class="channel-item active" onclick="openChannel('ui-design')"
+                aria-label="Canal UI Design, 4 mensagens não lidas">
+                <div class="channel-icon"><i class="bi bi-palette-fill" aria-hidden="true"></i></div>
+                <div class="channel-info">
+                  <p class="channel-name"># ui-design</p>
+                  <p class="channel-preview">Andressa: Alguém usa Variables no Figma?</p>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-time">14:52</span>
+                  <span class="channel-badge">4</span>
+                </div>
+              </button>
+
+              <button class="channel-item" onclick="openChannel('portfolio')"
+                aria-label="Canal Portfólio, 2 mensagens não lidas">
+                <div class="channel-icon"><i class="bi bi-collection-fill" aria-hidden="true"></i></div>
+                <div class="channel-info">
+                  <p class="channel-name"># portfólio</p>
+                  <p class="channel-preview">Julia: Que feedback dariam nesse case?</p>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-time">11:20</span>
+                  <span class="channel-badge">2</span>
+                </div>
+              </button>
+
+              <button class="channel-item" onclick="openChannel('vagas')"
+                aria-label="Canal Vagas, 3 mensagens não lidas">
+                <div class="channel-icon"><i class="bi bi-briefcase-fill" aria-hidden="true"></i></div>
+                <div class="channel-info">
+                  <p class="channel-name"># vagas</p>
+                  <p class="channel-preview">Luana: Elo abriu vaga de UI Designer!</p>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-time">13:30</span>
+                  <span class="channel-badge">3</span>
+                </div>
+              </button>
+
+              <button class="channel-item" onclick="openChannel('carreira')"
+                aria-label="Canal Carreira, 1 mensagem não lida">
+                <div class="channel-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></div>
+                <div class="channel-info">
+                  <p class="channel-name"># carreira</p>
+                  <p class="channel-preview">Andressa: Como negociar Júnior → Pleno...</p>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-time">10:05</span>
+                  <span class="channel-badge">1</span>
+                </div>
+              </button>
+
+              <button class="channel-item" onclick="openChannel('ia-design')"
+                aria-label="Canal IA no Design">
+                <div class="channel-icon"><i class="bi bi-stars" aria-hidden="true"></i></div>
+                <div class="channel-info">
+                  <p class="channel-name"># ia-no-design</p>
+                  <p class="channel-preview">Camila: Testei o Firefly pra gerar assets...</p>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-time">09:40</span>
+                </div>
+              </button>
+
+              <p class="section-label" style="padding:var(--gap-sm) var(--gap-md) 0;">Mensagens</p>
+
+              <!-- DM Amanda Torres — mentora -->
+              <button class="channel-item" onclick="openChannel('dm-amanda')"
+                aria-label="Mensagem direta com Amanda Torres, 1 não lida">
+                <div class="avatar" style="width:40px;height:40px;flex-shrink:0;overflow:hidden;border-radius:50%;">
+                  <img src="/images/geral/usuarias/amanda.svg" alt="Amanda Torres" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="channel-info">
+                  <p class="channel-name">Amanda Torres <span class="pill pill--purple" style="padding: 0 4px;">Mentora</span></p>
+                  <p class="channel-preview">Me manda o link do portfólio antes...</p>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-time">Ontem</span>
+                  <span class="channel-badge">1</span>
+                </div>
+              </button>
+
+              <!-- DM Julia Luna -->
+              <button class="channel-item" onclick="openChannel('dm-julia')"
+                aria-label="Mensagem direta com Julia Luna">
+                <div class="avatar" style="width:40px;height:40px;flex-shrink:0;overflow:hidden;border-radius:50%;">
+                  <img src="/images/geral/usuarias/julia.svg" alt="Julia Luna" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="channel-info">
+                  <p class="channel-name">Julia Luna</p>
+                  <p class="channel-preview">Amei o case da maquininha!</p>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-time">Ter</span>
+                </div>
+              </button>
+
+              <!-- DM Rafaela Mendes -->
+              <button class="channel-item" onclick="openChannel('dm-rafaela')"
+                aria-label="Mensagem direta com Rafaela Mendes">
+                <div class="avatar" style="width:40px;height:40px;flex-shrink:0;overflow:hidden;border-radius:50%;">
+                  <img src="/images/geral/usuarias/rafaela.svg" alt="Rafaela Mendes" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="channel-info">
+                  <p class="channel-name">Rafaela Mendes</p>
+                  <p class="channel-preview">Vc vai no evento da Cielo semana que vem?</p>
+                </div>
+                <div class="channel-meta">
+                  <span class="channel-time">Seg</span>
+                </div>
+              </button>
+
+              <div class="scroll-spacer"></div>
+            </div>
+
+            <nav class="bottom-nav" aria-label="Navegação principal">
+              <a class="nav-item" href="feed.html" aria-label="Feed">
+                <div class="nav-icon-wrap"><i class="bi bi-grid-fill" aria-hidden="true"></i></div>
+                <span class="nav-label">Feed</span>
+              </a>
+              <a class="nav-item" href="vagas.html" aria-label="Vagas">
+                <div class="nav-icon-wrap"><i class="bi bi-briefcase-fill" aria-hidden="true"></i></div>
+                <span class="nav-label">Vagas</span>
+              </a>
+              <a class="nav-item" href="mentoria.html" aria-label="Mentoria">
+                <div class="nav-icon-wrap"><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+                <span class="nav-label">Mentoria</span>
+              </a>
+              <a class="nav-item" href="perfil.html" aria-label="Perfil">
+                <div class="nav-icon-wrap"><i class="bi bi-person-fill" aria-hidden="true"></i></div>
+                <span class="nav-label">Perfil</span>
+              </a>
+            </nav>
+          </div>
+
+          <!-- ── CONVERSA ── -->
+          <div id="chat-view" aria-label="Conversa" aria-live="polite">
+            <header class="chat-header">
+              <button class="back-btn" onclick="closeChannel()" aria-label="Voltar para canais">
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+              </button>
+              <div style="width: 100%;">
+                <p class="chat-header__title" id="ch-name"></p>
+                <p class="chat-header__sub">
+                  <span class="online-dot" aria-hidden="true"></span>
+                  <span id="ch-members"></span>
+                </p>
+              </div>
+              <button class="btn-icon" aria-label="Membros do canal">
+                <i class="bi bi-people-fill" aria-hidden="true"></i>
+              </button>
+            </header>
+
+            <div class="chat-messages" id="chat-messages"></div>
+
+            <div class="chat-input-bar">
+              <button class="btn-icon" aria-label="Anexar arquivo">
+                <i class="bi bi-paperclip" aria-hidden="true"></i>
+              </button>
+              <label class="visually-hidden" for="chat-input">Mensagem</label>
+              <input class="chat-input" id="chat-input" type="text"
+                placeholder="Mensagem..."
+                onkeydown="if(event.key==='Enter') sendMsg()" />
+              <button class="chat-send-btn" onclick="sendMsg()" aria-label="Enviar mensagem">
+                <i class="bi bi-send-fill" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </main>
+
+    <script>
+      const P = {
+        samara:   { photo: '/images/geral/usuarias/samara.svg',   cls: 'avatar--green'    },
+        amanda:   { photo: '/images/geral/usuarias/amanda.svg',   cls: 'avatar--purple'   },
+        andressa: { photo: '/images/geral/usuarias/andressa.svg', cls: 'avatar--purple'   },
+        camila:   { photo: '/images/geral/usuarias/camila.svg',   cls: 'avatar--green'    },
+        carol:    { photo: '/images/geral/usuarias/carol.svg',    cls: 'avatar--green'    },
+        julia:    { photo: '/images/geral/usuarias/julia.svg',    cls: 'avatar--purple'   },
+        luana:    { photo: '/images/geral/usuarias/luana.svg',    cls: 'avatar--gradient' },
+        rafaela:  { photo: '/images/geral/usuarias/rafaela.svg',  cls: 'avatar--pink'     },
+      };
+
+      const msg = (who, text, time) => ({ who, text, time, own: false });
+      const own = (text, time)      => ({ who: 'samara', text, time, own: true });
+
+      const channels = {
+
+        'ui-design': {
+          name: '# ui-design', members: '36 membros online',
+          messages: [
+            msg('andressa', 'Meninas, alguém já testou as Variables do Figma pra tokens de cor? Tô tentando implementar aqui no produto.', '10:10'),
+            msg('carol',    'Uso no dia a dia! Vale criar uma biblioteca separada só pra tokens. Fica muito mais fácil de escalar.', '10:18'),
+            msg('andressa', 'E você conecta direto nos componentes ou mantém separado?', '10:25'),
+            msg('carol',    'Conecto sim — te mando um template que criei se quiser 😊', '10:31'),
+            msg('julia',    'Do lado dev isso faz TODA diferença no handoff. Quando o design usa tokens o código flui muito melhor 🙏', '10:45'),
+            own('Que incrível! Já anotei tudo. Carol manda sim esse template, preciso muito kk', '14:52'),
+          ]
+        },
+
+        'portfolio': {
+          name: '# portfólio', members: '22 membros online',
+          messages: [
+            msg('julia',    'Meninas, finalizei meu case de handoff automatizado Figma→GitHub. Que feedback vocês dariam? behance.net/julialuna', '11:00'),
+            msg('andressa', 'Amei a estrutura! Só acho que a parte de resultado poderia ter métricas mais concretas. Quanto tempo economizou de fato?', '11:15'),
+            msg('julia',    'Boa! Reduziu 40% o tempo de handoff. Vou colocar isso no case.', '11:22'),
+            own('Julia que case incrível! A organização visual ficou muito limpa. Coloca uma foto de antes/depois do processo, ajuda demais a mostrar o impacto visual 👏', '11:35'),
+            msg('camila',   'Concordo com a Samara! O contexto de antes/depois é o que prende a atenção de quem lê.', '11:50'),
+          ]
+        },
+
+        'vagas': {
+          name: '# vagas', members: '29 membros online',
+          messages: [
+            msg('luana',    'Gente, a Elo abriu vaga de UI Designer! Salário bem competitivo e é híbrido. Alguém vai se candidatar?', '09:05'),
+            msg('camila',   'Vi também! A cultura da Elo é muito boa. Vale muito a candidatura.', '09:20'),
+            msg('andressa', 'Alguém sabe se eles pedem portfólio direto na candidatura?', '09:35'),
+            msg('luana',    'Pede sim. Foca em cases de UI com foco em produto financeiro se tiver.', '09:42'),
+            own('Vi essa vaga aqui no Mudi! Tô pensando em mandar candidatura, meu case da Cielo encaixa bem. Alguma dica pra personalizar a mensagem?', '13:30'),
+            msg('andressa', 'Menciona diretamente o produto deles e conecta com o que você já fez na Cielo — fintech com fintech faz muito sentido!', '13:45'),
+          ]
+        },
+
+        'carreira': {
+          name: '# carreira', members: '41 membros online',
+          messages: [
+            msg('andressa', 'Tópico do dia: como vocês negociaram a transição de Júnior para Pleno? Tô ajudando uma mentorada com isso.', '09:00'),
+            msg('luana',    'No meu caso fui direto com dados: trouxe exemplos de entregas que eram de nível Pleno e pedi revisão formal. Funcionou!', '09:15'),
+            msg('carol',    'Importante também ter clareza sobre o que ainda falta desenvolver. Fiz uma lista e apresentei junto — mostra maturidade.', '09:28'),
+            own('Que thread boa! Tô exatamente nessa fase. Meu maior gap ainda é ter cases mais documentados — tô trabalhando nisso. Alguém indica referência pra documentar melhor os projetos?', '10:05'),
+            msg('luana',    'Recomendo muito o canal da Fabricio Teixeira no YouTube. Ele tem vídeos específicos sobre documentação de case pra portfolio.', '10:20'),
+            msg('andressa', 'E o livro Portfolios for Graphic Designers — tem uma lógica muito boa de narrativa de projeto.', '10:35'),
+          ]
+        },
+
+        'ia-design': {
+          name: '# ia-no-design', members: '18 membros online',
+          messages: [
+            msg('camila',   'Testei o Firefly pra gerar assets texturizados e ficou incrível! Alguém usa IA no workflow de design?', '09:30'),
+            msg('julia',    'Uso o ChatGPT pra escrever copy de interface e o Firefly pra variações de imagem. Economiza muito tempo na exploração.', '09:45'),
+            msg('camila',   'Firefly é perfeito por estar integrado ao Photoshop. Usei bastante pra remover fundos e gerar texturas.', '09:58'),
+            own('Quero entrar muito nesse mundo! Tenho interesse em fazer uma pós com foco em IA aplicada ao design. Alguém já pesquisou cursos?', '10:10'),
+            msg('andressa', 'Vi um curso aqui na própria Mudi — Conceitos Básicos de IA e depois IA aplicada ao Design. Tô fazendo e é muito bom!', '10:20'),
+            msg('camila',   'Confirmo! Fiz o de Conceitos Básicos e já mudou minha visão sobre como usar IA no processo criativo.', '10:35'),
+          ]
+        },
+
+        'dm-amanda': {
+          name: 'Amanda Torres', members: 'Online agora',
+          messages: [
+            msg('amanda', 'Oi Samara! Vi que você me adicionou como mentora no Mudi. Que bom ter você aqui 😊', '16:00'),
+            own('Oi Amanda! Sim, seu perfil me chamou muito atenção — especialmente a experiência com produto em big tech. É exatamente onde quero crescer.', '16:05'),
+            msg('amanda', 'Adorei! Me conta um pouco sobre onde você está hoje e o que quer trabalhar nas nossas sessões.', '16:12'),
+            own('Sou Product Designer Pleno na Nubank, trabalho com fluxos de investimento e design system. Quero evoluir pra liderança e melhorar muito minha documentação de cases.', '16:18'),
+            msg('amanda', 'Perfeito! Documentação de case é exatamente onde a maioria trava na transição de Pleno pra Sênior. Me manda o link do portfólio antes da nossa primeira sessão que a gente começa por aí 💜', '16:25'),
+          ]
+        },
+
+        'dm-julia': {
+          name: 'Julia Luna', members: 'Visto há 5 min',
+          messages: [
+            msg('julia',  'Samara! Vi seu post do case de Design System no feed. Amei demais a parte dos tokens de cor 😍', 'Ter 09:30'),
+            own('Julia!! Que bom que gostou! Ainda tô documentando melhor mas queria mostrar o processo.', 'Ter 09:45'),
+            msg('julia',  'Amei o case da maquininha! Aquela parte do handoff ficou muito clara pra quem é dev. A gente sofre muito quando o design não documenta os estados 😂', 'Ter 09:50'),
+            own('Hahaha aprendi isso trabalhando com você! Agora não passo nada sem documentar hover, erro e loading 😅', 'Ter 09:58'),
+            msg('julia',  'Exatamente!! Aliás, viu o meu post novo de handoff automatizado Figma→GitHub? Queria muito sua opinião de designer!', 'Ter 10:05'),
+            own('Vi sim! Deixei comentário no post. Ficou incrível — especialmente o fluxo de aprovação. Que tecnologia você usou?', 'Ter 10:15'),
+          ]
+        },
+
+        'dm-rafaela': {
+          name: 'Rafaela Mendes', members: 'Visto há 30 min',
+          messages: [
+            msg('rafaela', 'Oi Samara! Vc vai no evento da Cielo semana que vem? Disseram que vai ter workshop de IA pra time de criação 👀', 'Seg 09:10'),
+            own('Oi Rafa!! Acho que sim! Você sabe mais detalhes? Tô ansiosa pra ver o conteúdo.', 'Seg 09:25'),
+            msg('rafaela', 'Disseram que vai ser sobre uso de IA no processo criativo — geração de assets, automação de resize e até criação de variações de campanha. Exatamente o que a gente precisa kk', 'Seg 09:32'),
+            own('Aaaa perfeito!! Já vou bloquear a agenda. Vai junto? Podemos ir juntas 😊', 'Seg 09:40'),
+            msg('rafaela', 'Combinado!! Vou sim! Te chamo na segunda de manhã antes de entrar.', 'Seg 09:45'),
+          ]
+        },
+
+      };
+
+      function buildAvatar(who, size = 34) {
+        const p = P[who];
+        return `<div class="avatar ${p.cls}" style="width:${size}px;height:${size}px;font-size:${Math.floor(size*0.35)}px;flex-shrink:0;overflow:hidden;">
+          <img src="${p.photo}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+        </div>`;
+      }
+
+      function renderMsg(m) {
+        const div = document.createElement('div');
+        div.className = 'chat-bubble' + (m.own ? ' chat-bubble--own' : '');
+
+        const names = {
+          samara: 'Você', amanda: 'Amanda Torres', andressa: 'Andressa Oliveira',
+          camila: 'Camila Bonilha', carol: 'Carol Mendes', julia: 'Julia Luna',
+          luana: 'Luana Santos', rafaela: 'Rafaela Mendes',
+        };
+
+        if (m.own) {
+          div.innerHTML = `
+            ${buildAvatar('samara')}
+            <div class="chat-bubble__body">
+              <div class="chat-bubble__meta" style="justify-content:flex-end;">
+                <time class="chat-bubble__time">${m.time}</time>
+                <span class="chat-bubble__name">Você</span>
+              </div>
+              <div class="chat-bubble__msg">${m.text}</div>
+            </div>`;
+        } else {
+          div.innerHTML = `
+            ${buildAvatar(m.who)}
+            <div class="chat-bubble__body">
+              <div class="chat-bubble__meta">
+                <span class="chat-bubble__name">${names[m.who]}</span>
+                <time class="chat-bubble__time">${m.time}</time>
+              </div>
+              <div class="chat-bubble__msg">${m.text}</div>
+            </div>`;
+        }
+        return div;
+      }
+
+      function openChannel(id) {
+        const ch = channels[id];
+        if (!ch) return;
+
+        document.getElementById('ch-name').textContent    = ch.name;
+        document.getElementById('ch-members').textContent = ch.members;
+        document.getElementById('chat-input').placeholder = `Mensagem para ${ch.name}...`;
+
+        const msgs = document.getElementById('chat-messages');
+        msgs.innerHTML = '<div class="chat-date-sep"><span>Hoje</span></div>';
+        ch.messages.forEach(m => msgs.appendChild(renderMsg(m)));
+        msgs.scrollTop = msgs.scrollHeight;
+
+        document.getElementById('channel-list').style.display = 'none';
+        document.getElementById('chat-view').classList.add('show');
+      }
+
+      function closeChannel() {
+        document.getElementById('channel-list').style.display = '';
+        document.getElementById('chat-view').classList.remove('show');
+      }
+
+      function sendMsg() {
+        const input = document.getElementById('chat-input');
+        const text  = input.value.trim();
+        if (!text) return;
+        const msgs = document.getElementById('chat-messages');
+        const now  = new Date();
+        const time = now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0');
+        msgs.appendChild(renderMsg({ who: 'samara', text, time, own: true }));
+        msgs.scrollTop = msgs.scrollHeight;
+        input.value = '';
+      }
+
+      function setMode(mode) {
+        document.documentElement.setAttribute('data-theme', mode);
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+          const active = btn.textContent.trim().toLowerCase().startsWith(mode === 'dark' ? 'd' : 'l');
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-pressed', active);
+        });
+      }
+    </script>
+  </body>
+</html>

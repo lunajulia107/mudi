@@ -1,0 +1,263 @@
+// =============================================================
+// _forms.scss — Inputs, campos e filtros
+// =============================================================
+
+// ── Campo de texto ─────────────────────────────────────────────
+.input {
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-input); 
+  box-sizing: border-box;
+  color: var(--text-contrast);
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--gap-sm);
+  outline: none;
+  padding: 12px 14px;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  width: 100%;
+
+  &::placeholder { color: var(--text-disabled); }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(139, 83, 254, .12);
+  }
+
+  &:invalid:not(:placeholder-shown) {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px rgba(234, 25, 107, .10);
+  }
+}
+
+// Variante escura (onboarding dark slides)
+.input--dark {
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .12);
+  color: var(--color-white);
+
+  &::placeholder { color: rgba(255, 255, 255, .3); }
+  &:focus        { border-color: var(--color-primary); }
+}
+
+// ── Select ─────────────────────────────────────────────────────
+.input-select {
+  appearance: none;
+  background: var(--bg-input) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath fill='%23888' d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") no-repeat right 14px center;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-input); 
+  box-sizing: border-box;
+  color: var(--text-contrast);
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--gap-sm);
+  outline: none;
+  padding: 12px 36px 12px 14px;
+  transition: border-color var(--transition-normal);
+  width: 100%;
+
+  &:focus { border-color: var(--color-primary); }
+}
+
+// Variante escura
+.input-select--dark {
+  background-color: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .12);
+  color: var(--color-white);
+}
+
+.input-count {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--gap-sm);
+  margin-top: calc(var(--gap-xs) * -1);
+  text-align: right;
+}
+
+// ── Label visível ──────────────────────────────────────────────
+.field-label {
+  color: var(--text-muted);
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: .04em;
+  margin-bottom: var(--gap-xs);
+  text-transform: uppercase;
+}
+
+.field-label--dark {
+  color: rgba(255, 255, 255, .5);
+}
+
+// ── Search bar ─────────────────────────────────────────────────
+.search-bar {
+  align-items: center;
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-action); 
+  display: flex;
+  gap: var(--gap-sm);
+  margin-bottom: var(--gap-sm);
+  padding: 9px 14px;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(139, 83, 254, .10);
+  }
+
+  input {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    flex: 1;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-md);
+    outline: none;
+
+    &::placeholder { color: var(--text-disabled); }
+  }
+
+  .bi { color: var(--text-muted); flex-shrink: 0; font-size: 15px; }
+}
+
+// ── Filter chips ───────────────────────────────────────────────)
+.filter-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--gap-xs);
+  margin-bottom: var(--gap-md);
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.filter-chip {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-action); 
+  color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 6px 14px;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+  &.on,
+  &[aria-selected="true"] {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+  }
+}
+
+// ── Tabs de autenticação ───────────────────────────────────────
+.tab-row {
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-input); 
+  display: flex;
+  flex-shrink: 0;
+  gap: 3px;
+  margin-bottom: var(--gap-md);
+  padding: 3px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-action); 
+  color: var(--text-muted);
+  cursor: pointer;
+  flex: 1;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: 9px;
+  transition: all var(--transition-normal);
+
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+ 
+  &--active,
+  &[aria-selected="true"] {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+}
+
+.auth-form--hidden { display: none; }
+
+// ── Divisor "ou continue com" ─────────────────────────────────
+.auth-divider {
+  align-items: center;
+  display: flex;
+  gap: var(--gap-sm);
+  margin: var(--gap-sm) 0 var(--gap-md);
+
+  &__line {
+    flex: 1;
+    height: 1px;
+
+    // adapta ao tema
+    background: var(--border-color);
+  }
+
+  &__text {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+}
+
+// variante para slide escuro do onboarding
+.auth-divider--dark {
+  .auth-divider__line { background: rgba(255, 255, 255, .12); }
+  .auth-divider__text { color: rgba(255, 255, 255, .4); }
+}
+
+// ── Rodapé legal ───────────────────────────────────────────────
+.auth-legal {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  line-height: 1.7;
+  margin-top: var(--gap-md);
+  text-align: center;
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.auth-legal--dark {
+  color: rgba(255, 255, 255, .3);
+  a { color: var(--color-purple-light); }
+}
+
+// ── Upload area ──────────────────────────────────────────────── 
+.upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-card); 
+  cursor: pointer;
+  margin-bottom: var(--gap-md);
+  padding: var(--gap-lg);
+  text-align: center;
+  transition: border-color var(--transition-normal);
+
+  &:hover, &:focus-within { border-color: var(--color-secondary); }
+
+  &__icon  { font-size: 24px; margin-bottom: 4px; }
+  &__label { color: var(--text-muted); font-size: var(--font-size-sm); }
+}

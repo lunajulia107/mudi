@@ -1,0 +1,105 @@
+// =============================================================
+// _tokens.scss — Design tokens Mudi v2
+// Apenas cores brutas no :root. Aliases nomeados por função.
+// Propriedades em ordem alfabética dentro de cada grupo.
+// =============================================================
+
+:root {
+
+  // ── Paleta base ────────────────────────────────────────────
+  --color-black:        #1D2331;
+  --color-blue:         #4A6CF7;
+  --color-gray-0:       #F8F8F8;
+  --color-gray-1:       #EEEEEE;
+  --color-gray-2:       #E0E0E0;
+  --color-gray-3:       #868585;
+  --color-gray-4:       #444444;
+  --color-gray-5:       #1A1A1A;
+  --color-gray-6:       #111111;
+  --color-green:        #8EFF01;
+  --color-green-light:  #B5FF58;
+  --color-pink:         #EA196B;
+  --color-purple:       #8B53FE;
+  --color-purple-dark:  #6B3FCC;
+  --color-purple-light: #BDA8EA;
+  --color-white:        #F2F2F2;
+  --color-yellow:       #FCF52B;
+
+  // ── Superfícies ────────────────────────────────────────────
+  --bg-card:    var(--color-white);
+  --bg-input:   rgba(0, 0, 0, .04);
+  --bg-page:    var(--color-gray-1);
+  --bg-surface: var(--color-white);
+
+  // ── Bordas ─────────────────────────────────────────────────
+  --border-color: var(--color-gray-2);
+
+  // ── GRAMÁTICA DE FORMAS ──────────────────────────────────── 
+  --radius-action:  999px;
+  --radius-input:    12px;
+  --radius-card:     16px;
+  --radius-surface:  20px;
+
+  // ── Feedback semântico ─────────────────────────────────────
+  --color-error:   var(--color-pink);
+  --color-info:    var(--color-blue);
+  --color-primary:   var(--color-purple);
+  --color-secondary: var(--color-green);
+  --color-success: var(--color-green);
+  --color-warning: var(--color-yellow);
+
+  // ── Texto ──────────────────────────────────────────────────
+  --text-contrast: var(--color-gray-5);
+  --text-disabled: var(--color-gray-3);
+  --text-main:     var(--color-gray-5);
+  --text-muted:    var(--color-gray-3);
+
+  // ── Tipografia ─────────────────────────────────────────────
+  --font-primary:  'Poppins', sans-serif;
+  --font-size-2xs: 9px;
+  --font-size-xs:  11px;
+  --font-size-sm:  12px;
+  --font-size-md:  14px;
+  --font-size-lg:  16px;
+  --font-size-xl:  20px;
+  --font-size-2xl: 24px;
+
+  // ── Espaçamentos ───────────────────────────────────────────
+  --gap-2xs: 2px;
+  --gap-xs:  4px;
+  --gap-sm:  8px;
+  --gap-md:  16px;
+  --gap-lg:  24px;
+  --gap-xl:  32px;
+  --gap-2xl: 48px;
+
+  // ── Sombras ────────────────────────────────────────────────
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, .06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, .10);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, .18);
+
+  // ── Transições ─────────────────────────────────────────────
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow:   0.4s cubic-bezier(.4, 0, .2, 1);
+
+  // ── Mockup blend ───────────────────────────────────────────
+  // dark  → screen   : pixels pretos viram transparentes
+  // light → multiply : fundo branco se funde com a página
+  --mockup-blend: screen;
+}
+
+// ── Tema escuro ────────────────────────────────────────────────
+[data-theme="dark"] {
+  --bg-card:    #222222;
+  --bg-input:   rgba(255, 255, 255, .07);
+  --bg-page:    var(--color-gray-6);
+  --bg-surface: var(--color-gray-5);
+
+  --border-color: #333333; 
+
+  --text-contrast: var(--color-white);
+  --text-disabled: #555555;
+  --text-main:     #CCCCCC;
+  --text-muted:    #888888;
+}

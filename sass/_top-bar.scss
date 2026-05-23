@@ -1,0 +1,45 @@
+// =============================================================
+// _top-bar.scss — Header global com seletor de tema
+// =============================================================
+
+.top-bar {
+  align-items: center;
+  display: flex;
+  gap: var(--gap-sm);
+  justify-content: center;
+}
+
+// Container do toggle — pill — é ação de seleção
+.mode-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-action); 
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+}
+
+// Botão individual do toggle — pill — AÇÃO
+.mode-btn {
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-action); 
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  gap: 4px;
+  padding: 5px 14px;
+  transition: all var(--transition-normal);
+
+  .bi { font-size: 13px; }
+
+  &.active,
+  &[aria-pressed="true"] {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+}

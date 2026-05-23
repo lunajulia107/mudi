@@ -1,0 +1,281 @@
+// =============================================================
+// _onboarding.scss — Slides de onboarding (01-onboarding.html)
+// =============================================================
+
+// ── Slides ─────────────────────────────────────────────────────
+.ob-slide {
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: var(--gap-2xl) var(--gap-lg) var(--gap-lg);
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(100%);
+  transition:
+    opacity 0.4s ease,
+    transform var(--transition-slow);
+
+  &.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+  &.exit   { opacity: 0; transform: translateX(-60px); }
+
+  &--purple { background: var(--color-primary); }
+ 
+  &--splash {
+    align-items: center;
+    background: var(--color-primary);
+    justify-content: center;
+  } 
+
+  &--auth { 
+    background: var(--bg-surface); 
+    overflow-y: auto;
+    padding-bottom: var(--gap-xl);
+
+    .ob-title { 
+      color: var(--text-contrast);  
+      margin-top: var(--gap-lg); 
+    }
+  }
+}
+
+.ob-illus {
+  align-items: center;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: var(--radius-surface); 
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: var(--gap-md);
+  height: 372px;
+  justify-content: end;
+  margin-bottom: var(--gap-lg);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  // foto de pessoa real (placeholder)
+  &--photo {
+    border: 1px solid rgba(255, 255, 255, .2); 
+    padding: 0;
+
+    img {
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .ob-illus__overlay {
+      background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 50%);
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .ob-illus__caption {
+      bottom: var(--gap-md);
+      left: var(--gap-md);
+      position: absolute;
+    }
+  }
+}
+
+.ob-splash {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+// Cada path = uma letra: M · u · d · i
+.ob-splash__logo path {
+  fill: transparent;
+  stroke: var(--color-white);
+  stroke-width: 3;
+  stroke-dasharray: 2000; // valor alto garante que cobre qualquer path
+  stroke-dashoffset: 2000;
+}
+
+// Delay escalonado — letra por letra
+.ob-splash__logo path:nth-child(1) {
+  animation: draw 0.8s ease forwards 0s,
+             fill  0.3s ease forwards 0.8s;
+}
+.ob-splash__logo path:nth-child(2) {
+  animation: draw 0.8s ease forwards 0.6s,
+             fill  0.3s ease forwards 1.4s;
+}
+.ob-splash__logo path:nth-child(3) {
+  animation: draw 0.8s ease forwards 1.2s,
+             fill  0.3s ease forwards 2.0s;
+}
+.ob-splash__logo path:nth-child(4) {
+  animation: draw 0.8s ease forwards 1.8s,
+             fill  0.3s ease forwards 2.6s;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fill {
+  to { fill: var(--color-white); stroke: transparent; }
+}
+
+// ── Avatar (slide 1) ───────────────────────────────────────────
+.ob-avatar {
+  align-items: center;
+  background: rgba(142, 255, 1, .08);
+  border: 2px solid rgba(142, 255, 1, .3);
+  border-radius: 50%;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  overflow: hidden;
+  width: 100px;
+
+  img { height: 100%; object-fit: cover; width: 100%; }
+
+  &__inner {
+    align-items: center;
+    background: rgba(142, 255, 1, .18);
+    border: 2px solid rgba(142, 255, 1, .5);
+    border-radius: 50%;
+    display: flex;
+    height: 66px;
+    justify-content: center;
+    overflow: hidden;
+    width: 66px;
+
+    img { height: 100%; object-fit: cover; width: 100%; }
+  }
+}
+
+// ── Chat (slide 2) ─────────────────────────────────────────────
+.ob-chat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  width: 85%;
+
+  &__bubble {
+    border-radius: var(--radius-card); 
+    font-size: 11px;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 85%;
+    padding: 10px 14px;
+
+    &--in { 
+      align-self: flex-start; 
+      background: rgba(255, 255, 255, 0.72); 
+      border: 1px solid rgba(255, 255, 255, 0.2); 
+      color: var(--color-gray-5);
+    }
+
+    &--out  { 
+      align-self: flex-end; 
+      background: var(--color-green); 
+      border: 1px solid rgba(255,255,255,.1); 
+      color: var(--color-gray-6); font-weight: 500; 
+    }
+  }
+}
+
+// ── Comunidade (slide 3) ───────────────────────────────────────
+.ob-community {
+  align-items: center;
+  display: flex;
+
+  &__avatar { 
+    align-items: center;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    flex-shrink: 0;
+    height: 40px;
+    justify-content: center;
+    margin-right: -12px;
+    overflow: hidden;
+    width: 40px;
+
+    img { height: 100%; object-fit: cover; width: 100%; }
+
+    &--dark  { background: var(--color-gray-6); }
+    &--green { background: var(--color-green); }
+    &--white { background: var(--color-white); }
+
+    &--more {
+      align-items: center;
+      background: rgba(255,255,255,.2);
+      border: 2px solid rgba(255,255,255,.5);
+      color: var(--color-white);
+      display: flex;
+      font-family: var(--font-primary);
+      font-size: var(--font-size-xs);
+      font-weight: 700;
+      justify-content: center;
+      margin-left: -12px;
+      margin-right: 0;
+    }
+  }
+}
+
+.ob-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+  justify-content: center;
+  padding: 0 var(--gap-sm);
+}
+
+// ── Dots de progresso ──────────────────────────────────────────
+.ob-dots {
+  display: flex;
+  flex-shrink: 0;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: var(--gap-md);
+}
+
+.ob-dot {
+  background: rgba(255, 255, 255, .25);
+  border-radius: var(--radius-action); 
+  height: 5px;
+  transition: all 0.3s ease;
+  width: 5px;
+
+  &--active { width: 22px; }
+  &--green  { background: var(--color-green); }
+  &--light  { background: rgba(255, 255, 255, .3); }
+  &--white  { background: var(--color-white); }
+}
+
+// ── Tipografia dos slides ──────────────────────────────────────
+.ob-title {
+  color: rgba(255, 255, 255, .95);
+  flex-shrink: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: var(--gap-sm);
+
+  &--white  { color: var(--color-white); }
+  &--dark   { color: var(--text-contrast); }
+}
+
+.ob-body {
+  color: rgba(255, 255, 255, .6);
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  margin-bottom: var(--gap-lg);
+
+  &--white { color: rgba(255, 255, 255, .75); }
+  &--dark  { color: var(--text-muted); }
+}
+
+.ob-footer { display: flex; flex-direction: column; margin-top: auto; }
+

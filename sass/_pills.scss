@@ -1,0 +1,105 @@
+// =============================================================
+// _pills.scss — Badges e tags
+// =============================================================
+
+.pill {
+  align-items: center;
+  border-radius: var(--radius-action);  
+  display: inline-flex;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  gap: 4px;
+  padding: 4px 12px;
+  white-space: nowrap;
+
+  // ── Variantes ───────────────────────────────────────────────
+
+  &--glass {
+    background: rgba(255, 255, 255, .15);
+    border: 1px solid rgba(255, 255, 255, .2);
+    color: var(--color-white);
+  }
+
+  &--gray {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+  }
+
+  &--green {
+    background: rgba(142, 255, 1, .12);
+    border: 1px solid rgba(142, 255, 1, .3);
+    color: #5db800;  
+  }
+
+  // adapta no dark
+  [data-theme="dark"] &--green {
+    color: var(--color-green);
+  }
+
+  &--green-solid {
+    background: var(--color-secondary);
+    color: var(--color-gray-6);
+  }
+
+  &--purple {
+    background: rgba(139, 83, 254, .12);
+    border: 1px solid rgba(139, 83, 254, .3);
+    color: var(--color-primary);
+  }
+
+  &--blue {
+    background: rgba(74, 108, 247, .12);
+    border: 1px solid rgba(74, 108, 247, .3);
+    color: var(--color-blue);
+  }
+
+  &--yellow {
+    background: rgba(252, 245, 43, .15);
+    border: 1px solid rgba(252, 245, 43, .35);
+    color: #a89400;
+  }
+
+  [data-theme="dark"] &--yellow { color: var(--color-yellow); }
+
+  &--pink {
+    background: rgba(234, 25, 107, .12);
+    border: 1px solid rgba(234, 25, 107, .3);
+    color: var(--color-pink);
+  }
+
+  // tag de nível
+  &--level {
+    background: rgba(139, 83, 254, .08);
+    border: 1px solid rgba(139, 83, 254, .2);
+    color: var(--color-primary);
+    font-size: var(--font-size-2xs);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+}
+
+// ── Skill tag (perfil — substitui barras de porcentagem) ─────── 
+.skill-tag {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-action);  
+  color: var(--text-main);
+  display: inline-flex;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  gap: var(--gap-xs);
+  padding: 6px 14px;
+  transition: border-color var(--transition-normal), background var(--transition-normal);
+
+  .bi { color: var(--color-primary); font-size: 13px; }
+
+  &--highlighted {
+    background: rgba(139, 83, 254, .08);
+    border-color: rgba(139, 83, 254, .3);
+    color: var(--color-primary);
+  }
+}

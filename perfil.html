@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mudi</title>
+    <link rel="icon" type="image/x-icon" href="/images/brand/mudi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="sass/main.css" />
+  </head>
+  <body>
+
+    <header class="top-bar">
+      <nav class="mode-toggle" aria-label="Seleção de tema">
+        <button class="mode-btn" aria-pressed="false" onclick="setMode('dark')">
+          <i class="bi bi-moon-fill"></i> Dark
+        </button>
+        <button class="mode-btn active" aria-pressed="true"
+          onclick="setMode('light')">
+          <i class="bi bi-sun-fill"></i> Light
+        </button>
+      </nav>
+    </header>
+
+    <main class="phone-wrap">
+      <img class="phone-wrap__mockup" src="images/mockup.png" alt
+        aria-hidden="true">
+
+      <article class="phone" id="phone">
+        
+        <header class="feed-header">
+          <div class="feed-header__logo">
+            <img src="images/brand/logo.png" alt="Mudi">
+          </div>
+          <div class="feed-header__actions">
+            <a href="chat.html" class="btn-icon"
+              aria-label="Chat da comunidade">
+              <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+            </a>
+            <button class="btn-icon" aria-label="Menu de opções"
+              onclick="openModal('modal-menu')">
+              <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+
+        <div class="scroll-area">
+
+          <!-- ── Hero ── -->
+          <section class="profile-hero" aria-label="Perfil de Samara Duarte">
+
+            <div class="profile-cover" aria-hidden="true">
+              <img src="/images/geral/perfil/cover.svg" alt="Imagem de capa do perfil de Samara Duarte.">
+            </div>
+
+            <div class="profile-top">
+              <div class="profile-avatar-wrap">
+                <div class="profile-avatar" aria-label="Foto de Samara Duarte">
+                  <img src="/images/geral/usuarias/samara.svg" alt="Foto da Samara Duarte.">
+                </div>
+
+                <button class="btn-sm btn-sm--purple" aria-label="Editar perfil">
+                  <i class="bi bi-pencil" aria-hidden="true"></i> Editar
+                </button>
+              </div>
+            </div>
+
+            <h1 class="profile-name">Samara Duarte</h1>
+            <p class="profile-headline"></p>
+
+            <p class="profile-headline">
+              Direção de Arte · Design de Mídias Digitais · UI/UX Designer
+              <br />
+            </p>
+
+            <p class="profile-location">
+              <i class="bi bi-geo-alt-fill"></i> Barueri, SP - Brasil
+            </p>
+
+            <p class="profile-location" style="color: var(--color-primary)">
+              <span>
+                12 Projetos ·
+              </span>
+              <span>
+                1028 Seguidores ·
+              </span>
+              <span>
+                514 Seguindo
+              </span>
+            </p>
+
+            <!-- Botões -->
+            <div style="margin-bottom: var(--gap-md);">
+              <button class="btn-sm btn-sm--ghost">
+                <i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar seção
+              </button>
+              <a href="chat.html" class="btn-sm btn-sm--purple">
+                Ver perfil público
+              </a>
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- ── Sobre ── -->
+          <section aria-label="Sobre">
+            <h2 class="section-title">Sobre</h2>
+            <div class="about-section">
+              <p class="about-text">
+                Estudo Design de Mídias Digitais e tenho formações em Design de
+                Interiores e um background em Design de Jogos. <br /><br />
+                Amo criar, desenvolver e explorar o mundo do design digital,
+                sempre por dentro das tendências e trazendo novas ideias a cada
+                projeto.
+              </p>
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- ── Projetos em destaque ── -->
+          <section aria-label="Projetos em destaque">
+            <div class="section-header">
+              <h2 class="section-title">Em destaque</h2>
+              <button class="btn-sm btn-sm--ghost"
+                onclick="openModal('modal-project')"
+                style="margin-right:var(--gap-md);">
+                <i class="bi bi-plus-lg" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="featured-scroll" role="list">
+
+              <article class="featured-card" role="listitem" tabindex="0">
+                <div class="featured-card__thumb" style="background:#0052CC;">
+                  <span
+                    style="color:#fff;font-size:40px;font-weight:900;">Bē</span>
+                </div>
+                <div class="featured-card__info">
+                  <p class="featured-card__label">Portfólio</p>
+                  <p class="featured-card__title">Portfólio Behance</p>
+                  <a class="featured-card__url"
+                    href="https://www.behance.net/samara_duarte?">https://www.behance.net/samara_duarte?</a>
+                </div>
+              </article>
+
+              <article class="featured-card" role="listitem" tabindex="0">
+                <div class="featured-card__thumb" style="background:#101014;">
+                  <img src="/images/geral/perfil/artstation.svg"
+                    alt="ArtStation">
+                </div>
+
+                <div class="featured-card__info">
+                  <p class="featured-card__label">Portfólio</p>
+                  <p class="featured-card__title">Portfólio Ilustração</p>
+                  <a class="featured-card__url"
+                    href="https://www.artstation/samara_duarte?">https://www.artstation/samara_duarte?</a>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- ── Habilidades ── -->
+          <section aria-label="Habilidades">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="skills-section">
+              <div class="skill-group">
+                <p class="skill-group__label">Hard Skills</p>
+                <div class="skill-tags" role="list">
+                  <span class="skill-tag" role="listitem">Direção de Arte</span>
+                  <span class="skill-tag" role="listitem">UI/UX Design</span>
+                  <span class="skill-tag" role="listitem">Ilustração
+                    Digital</span>
+                  <span class="skill-tag" role="listitem">Marketing
+                    Digital</span>
+                </div>
+              </div>
+
+              <div class="skill-group">
+                <p class="skill-group__label">Soft Skills</p>
+                <div class="skill-tags" role="list">
+                  <span class="skill-tag" role="listitem">Empatia</span>
+                  <span class="skill-tag" role="listitem">Escuta ativa</span>
+                  <span class="skill-tag" role="listitem">Comunicação
+                    visual</span>
+                  <span class="skill-tag" role="listitem">Criatividade</span>
+                  <span class="skill-tag" role="listitem">Pensamento
+                    crítico</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- Ferramentas -->
+          <section aria-label="Ferramentas">
+            <h2 class="section-title">Ferramentas</h2>
+
+            <div class="skills-section">
+              <div class="skill-group">
+                <div class="skill-tags" role="list">
+                  <span class="skill-tag" role="listitem">Figma</span>
+                  <span class="skill-tag" role="listitem">Illustrator</span>
+                  <span class="skill-tag" role="listitem">Photoshop</span>
+                  <span class="skill-tag" role="listitem">Canva</span>
+                  <span class="skill-tag" role="listitem">Miro</span>
+                  <span class="skill-tag" role="listitem">Notion</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- ── Experiência ── -->
+          <section aria-label="Experiência profissional">
+            <h2 class="section-title">Experiência</h2>
+            <div class="exp-section">
+
+              <!-- Cielo — agrupado -->
+              <div class="exp-group">
+                <div class="exp-group__header">
+                  <div class="exp-logo">
+                    <img src="/images/geral/perfil/cielo.svg" alt="Cielo">
+                  </div>
+                  <div>
+                    <p class="exp-company--group">Cielo</p>
+                    <p class="exp-period">1 ano 10 meses · Híbrido</p>
+                  </div>
+                  <span class="pill pill--purple"
+                    style="margin-left:auto;">Atual</span>
+                </div>
+                <div class="exp-group__items">
+                  <div class="exp-subitem">
+                    <span class="exp-subitem__dot" aria-hidden="true"></span>
+                    <div>
+                      <p class="exp-role">Analista de Criação Júnior</p>
+                      <p class="exp-period">set 2025 - Atual · 8 m</p>
+                      <p class="exp-period">Barueri, SP - Brasil</p>
+                      <p class="exp-desc">
+                        • Campanhas digitais <br />
+                        • Peças de performance <br />
+                        • Design System <br />
+                        • Análise de briefing <br />
+                        • Planejamento via Jira <br />
+                        • Apoio em UI das maquininhas Cielo
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exp-subitem">
+                    <span class="exp-subitem__dot" aria-hidden="true"></span>
+                    <div>
+                      <p class="exp-role">Estagiária de Direção de Arte</p>
+                      <p class="exp-period">jul 2024 – set 2025 · 1 ano 3
+                        meses</p>
+                      <p class="exp-period">Barueri, SP - Brasil</p>
+                      <p class="exp-desc">
+                        • E-mail marketing <br />
+                        • KVs e peças de campanha <br />
+                        • Peças para redes sociais <br />
+                        • Banners e apresentações comerciais <br />
+                        • Ativações internas e externas
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Supermix Concreto S/A — agrupado -->
+              <div class="exp-group">
+                <div class="exp-group__header">
+                  <div class="exp-logo">
+                    <img src="/images/geral/perfil/supermix.svg" alt="Supermix">
+                  </div>
+                  <div>
+                    <p class="exp-company--group">Supermix Concreto S/A</p>
+                    <p class="exp-period">Presencial</p>
+                  </div>
+                </div>
+                <div class="exp-group__items">
+                  <div class="exp-subitem">
+                    <span class="exp-subitem__dot" aria-hidden="true"></span>
+                    <div>
+                      <p class="exp-role">Auxiliar Administrativo Pleno</p>
+                      <p class="exp-period">out 2023 - jun 2024 · 9 meses</p>
+                      <p class="exp-period">Barueri, SP - Brasil</p>
+                      <p class="exp-desc">
+                        • Análise de dados de estoque <br />
+                        • Gerenciamento e inventário mensal <br />
+                        • Análise de preços <br />
+                        • Planejamento de reuniões <br />
+                        • SAP 4HANA <br />
+                        • Acompanhamento de concretagens noturnas
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exp-subitem">
+                    <span class="exp-subitem__dot" aria-hidden="true"></span>
+                    <div>
+                      <p class="exp-role">Auxiliar Administrativo Júnior</p>
+                      <p class="exp-period">mar 2022 - ago 2023 · 1 ano 6
+                        meses</p>
+                      <p class="exp-period">Barueri, SP - Brasil</p>
+                      <p class="exp-desc">
+                        • Organização de planilhas <br />
+                        • Lançamento de notas fiscais <br />
+                        • Acompanhamento de estoque e transferências <br />
+                        • SAP ECC/BW
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exp-subitem">
+                    <span class="exp-subitem__dot" aria-hidden="true"></span>
+                    <div>
+                      <p class="exp-role">Jovem Aprendiz</p>
+                      <p class="exp-period">dez 2020 - mar 2022 · 1 ano 4
+                        meses</p>
+                      <p class="exp-period">Barueri, SP - Brasil</p>
+                      <p class="exp-desc">
+                        • Organização de planilhas <br />
+                        • Lançamento de notas fiscais <br />
+                        • Acompanhamento de estoque e transferências <br />
+                        • SAP ECC/BW
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Concept Artist — agrupado -->
+              <div class="exp-group">
+                <div class="exp-group__header">
+                  <div class="exp-logo">
+                    <img src="/images/geral/perfil/camafeu.svg"
+                      alt="Camafeu Escola de Arte e Design">
+                  </div>
+                  <div>
+                    <p class="exp-company--group">Camafeu Escola de Arte e
+                      Design</p>
+                    <p class="exp-period">1 ano 1 mês · Híbrido</p>
+                  </div>
+                </div>
+                <div class="exp-group__items">
+                  <div class="exp-subitem">
+                    <span class="exp-subitem__dot" aria-hidden="true"></span>
+                    <div>
+                      <p class="exp-role">Concept Artist</p>
+                      <p class="exp-period">fev 2020 - fev 2021 · 1 ano 1
+                        mês</p>
+                      <p class="exp-period">Barueri, SP - Brasil</p>
+                      <p class="exp-desc">
+                        • Arte finalista em curta <br />
+                        • Concept art de personagens <br />
+                        • Ilustrações 2D digitais <br />
+                        • Edição de imagens publicitárias <br />
+                        • Storytelling <br />
+                        • Social media
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- ── Formação ── -->
+          <section aria-label="Formação acadêmica">
+            <h2 class="section-title">Formação</h2>
+            <div class="exp-section">
+
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/fatec.svg" alt="Fatec Barueri">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">Fatec Barueri</p>
+                  <p class="exp-company">Curso Superior de Tecnologia (CST) -
+                    Design de Mídia Digital</p>
+                  <p class="exp-period">ago 2023 - ago 2026</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/fmu.svg" alt="FMU">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">FMU</p>
+                  <p class="exp-company">Bacharelado em Design de Games</p>
+                  <p class="exp-period">jul 2020 - jul 2021</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/fmu.svg" alt="FMU">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">FMU</p>
+                  <p class="exp-company">Bacharelado em Arquitetura e
+                    Urbanismo</p>
+                  <p class="exp-period">jan 2019 - jul 2020</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/fieb.svg"
+                    alt="FIEB - Fundação Instituto de Educação de Barueri">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">FIEB - Fundação Instituto de Educação de
+                    Barueri</p>
+                  <p class="exp-company">Ensino Médio Integrado ao Técnico em
+                    Design de Interiores</p>
+                  <p class="exp-period">2016 - 2018</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/senai.svg"
+                    alt="SENAI São Paulo">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">SENAI São Paulo</p>
+                  <p class="exp-company">Curso Profissionalizante UX/UI
+                    Designer</p>
+                  <p class="exp-period">mar 2024 – abr 2024</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/axis.svg"
+                    alt="Axis School of Visual Effects">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">Axis School of Visual Effects</p>
+                  <p class="exp-company">Concept Art e Personagens</p>
+                  <p class="exp-period">mar 2019 – jul 2019</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/microcamp.svg" alt="Microcamp">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">Microcamp</p>
+                  <p class="exp-company">Game and Interactive Media Design</p>
+                  <p class="exp-period">mar 2019 - ago 2018</p>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/camafeu.svg"
+                    alt="Camafeu Escola de Arte e Design">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">Camafeu Escola de Arte e Design</p>
+                  <p class="exp-company">Ilustração</p>
+                  <p class="exp-period">dez 2018 - dez 2019</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- ── Voluntariado ── -->
+          <section aria-label="Voluntariado">
+            <h2 class="section-title">Voluntariado</h2>
+            <div class="exp-section">
+              <div class="exp-item">
+                <div class="exp-logo">
+                  <img src="/images/geral/perfil/rede-mulheres.svg"
+                    alt="Rede Mulheres no Design">
+                </div>
+                <div class="exp-info">
+                  <p class="exp-role">Rede Mulheres no Design</p>
+                  <p class="exp-company">Mentora Voluntária</p>
+                  <p class="exp-period">2022 – 2023</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- ── Portfólio Mudi ── -->
+          <section aria-label="Portfólio">
+            <div class="section-header">
+              <h2 class="section-title">Portfólio Mudi</h2>
+              <button class="btn-sm btn-sm--ghost"
+                onclick="openModal('modal-project')"
+                style="margin-right:var(--gap-md);">
+                <i class="bi bi-plus-lg" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="portfolio-feed" role="list">
+
+              <!-- Post 1 -->
+              <article class="portfolio-item" role="listitem" tabindex="0">
+                <div class="portfolio-item__thumb"
+                  style="background:linear-gradient(135deg,#1a0e2e,#3d1580);">
+                  <img src="/images/geral/feed/project 1.png"
+                    alt="Campanha Cielo" onerror="this.style.display='none'">
+                </div>
+                <div class="portfolio-item__info">
+                  <p class="portfolio-item__title">Campanha Cielo 2025</p>
+                  <p class="portfolio-item__meta">Direção de Arte · Abr 2025</p>
+                  <div class="portfolio-item__tags">
+                    <span class="pill pill--purple"
+                      style="font-size:9px;">Campanha</span>
+                    <span class="pill pill--gray" style="font-size:9px;">Ativações</span> 
+                  </div>
+                </div>
+              </article>
+
+              <!-- Post 1 -->
+              <article class="portfolio-item" role="listitem" tabindex="0">
+                <div class="portfolio-item__thumb"
+                  style="background:linear-gradient(135deg,#0a1a0a,#0e2e14);">
+                  <img src="/images/geral/feed/project 2.png"
+                    alt="UI Maquininha" onerror="this.style.display='none'">
+                </div>
+                <div class="portfolio-item__info">
+                  <p class="portfolio-item__title">Cielo KV's</p>
+                  <p class="portfolio-item__meta">Direção de Arte · Abr 2025</p>
+                  <div class="portfolio-item__tags">
+                    <span class="pill pill--purple"
+                      style="font-size:9px;">KV's</span>
+                    <span class="pill pill--gray" style="font-size:9px;">Campanhas Sazonais</span> 
+                  </div>
+                </div>
+              </article>
+
+              <!-- Post 2 -->
+              <article class="portfolio-item" role="listitem" tabindex="0">
+                <div class="portfolio-item__thumb">
+                  <img src="/images/geral/perfil/concept-art.svg" alt="Ilustração"
+                    onerror="this.style.display='none'">
+                </div>
+                <div class="portfolio-item__info">
+                  <p class="portfolio-item__title">Ilustrações</p>
+                  <p class="portfolio-item__meta">Ilustração · Fev 2026</p>
+                  <div class="portfolio-item__tags">
+                    <span class="pill pill--purple"
+                      style="font-size:9px;">Ilustração</span> 
+                    <span class="pill pill--gray" style="font-size:9px;">Concept
+                      Art</span>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <hr class="divider" aria-hidden="true">
+
+          <!-- ── Recomendações ── -->
+          <section aria-label="Recomendações">
+            <h2 class="section-title">Recomendações</h2>
+            <div class="endorsement-list">
+
+              <div class="endorsement-item">
+                <div class="avatar avatar--purple"
+                  style="width:36px;height:36px;font-size:13px;flex-shrink:0;">
+                  <img src="/images/geral/usuarias/amanda.svg"
+                    alt="Foto da Amanda Torres.">
+                </div>
+                <div>
+                  <p class="endorsement-author">Amanda Torres</p>
+                  <p class="endorsement-role">Product Designer Sênior · Meta</p>
+                  <p
+                    class="endorsement-text">"A Samara tem uma sensibilidade rara une estética e empatia de um jeito que poucos designers conseguem."</p>
+                </div>
+              </div>
+
+              <div class="endorsement-item">
+                <div class="avatar avatar--green"
+                  style="width:36px;height:36px;font-size:13px;flex-shrink:0;">
+                  <img src="/images/geral/usuarias/rafaela.svg"
+                    alt="Foto da Rafaela Mendes.">
+                </div>
+                <div>
+                  <p class="endorsement-author">Rafaela Mendes</p>
+                  <p class="endorsement-role">Product Manager Sênior · Cielo</p>
+                  <p
+                    class="endorsement-text">"Trabalhar com a Samara no time de criação foi incrível. Ela entrega com qualidade, absorve feedback rápido e ainda traz ideias que a gente não tinha pensado. Uma profissional com muito potencial."</p>
+                </div>
+              </div>
+
+              <div class="endorsement-item">
+                <div class="avatar avatar--gradient"
+                  style="width:36px;height:36px;font-size:13px;flex-shrink:0;">
+                  <img src="/images/geral/usuarias/patricia.svg"
+                    alt="Foto da Patricia Oliveira.">
+                </div>
+                <div>
+                  <p class="endorsement-author">Patricia Oliveira</p>
+                  <p class="endorsement-role">Supervisora Administrativa Sênior ·
+                    Supermix Concreto</p>
+                  <p
+                    class="endorsement-text">"A Samara sempre se destacou pela organização e proatividade. Mesmo sob pressão, mantinha o foco, a calma e a responsabilidade. Uma profissional que leva a sério tudo que se propõe a fazer."</p>
+                </div>
+              </div>
+
+              <div class="endorsement-item">
+                <div class="avatar avatar--purple"
+                  style="width:36px;height:36px;font-size:13px;flex-shrink:0;">
+                  <img src="/images/geral/usuarias/julia.svg" alt="Foto da Julia Luna.">
+                </div>
+                <div>
+                  <p class="endorsement-author">Julia Luna</p>
+                  <p class="endorsement-role">Dev Full-stack Júnior · Act Digital</p>
+                  <p
+                    class="endorsement-text">"A Samara é daquelas pessoas que eleva qualquer coisa que toca. Criativa, comprometida e cheia de sensibilidade."</p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <div class="scroll-spacer"></div>
+        </div>
+
+        <!-- Bottom Nav -->
+        <nav class="bottom-nav" aria-label="Navegação principal">
+          <a class="nav-item" href="feed.html" aria-label="Feed">
+            <div class="nav-icon-wrap"><i class="bi bi-grid-fill"
+                aria-hidden="true"></i></div>
+            <span class="nav-label">Feed</span>
+          </a>
+          <a class="nav-item" href="vagas.html" aria-label="Vagas">
+            <div class="nav-icon-wrap"><i class="bi bi-briefcase-fill"
+                aria-hidden="true"></i></div>
+            <span class="nav-label">Vagas</span>
+          </a>
+          <a class="nav-item" href="mentoria.html" aria-label="Mentoria">
+            <div class="nav-icon-wrap"><i class="bi bi-star-fill"
+                aria-hidden="true"></i></div>
+            <span class="nav-label">Mentoria</span>
+          </a>
+          <a class="nav-item active" href="perfil.html" aria-current="page"
+            aria-label="Perfil">
+            <div class="nav-icon-wrap"><i class="bi bi-person-fill"
+                aria-hidden="true"></i></div>
+            <span class="nav-label">Perfil</span>
+          </a>
+        </nav>
+
+        <!-- ── Modal: Menu ── -->
+        <div class="modal-overlay" id="modal-menu" role="dialog"
+          aria-modal="true"
+          aria-labelledby="mm-label" onclick="closeModal('modal-menu')">
+          <div class="modal-sheet" onclick="event.stopPropagation()">
+            <div class="modal-handle" aria-hidden="true"></div>
+
+            <!-- Plano atual -->
+            <div class="menu-plan-card">
+              <div>
+                <p class="menu-plan-card__name">Mudi Pro</p>
+                <p class="menu-plan-card__desc">5 cursos · 6 sessões de mentoria
+                  por mês</p>
+              </div>
+              <button class="btn-sm btn-sm--purple"
+                onclick="closeModal('modal-menu');openModal('modal-upgrade')">
+                Pro+
+              </button>
+            </div>
+
+            <nav aria-label="Menu de opções" id="mm-label">
+              <ul class="menu-list">
+                <li>
+                  <button class="menu-item" onclick="closeModal('modal-menu')">
+                    <i class="bi bi-person-fill" aria-hidden="true"></i>
+                    <span>Editar perfil</span>
+                    <i class="bi bi-chevron-right menu-item__arrow"
+                      aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="menu-item" onclick="closeModal('modal-menu')">
+                    <i class="bi bi-bell-fill" aria-hidden="true"></i>
+                    <span>Notificações</span>
+                    <i class="bi bi-chevron-right menu-item__arrow"
+                      aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="menu-item" onclick="closeModal('modal-menu')">
+                    <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
+                    <span>Privacidade</span>
+                    <i class="bi bi-chevron-right menu-item__arrow"
+                      aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="menu-item" onclick="closeModal('modal-menu')">
+                    <i class="bi bi-palette-fill" aria-hidden="true"></i>
+                    <span>Aparência</span>
+                    <i class="bi bi-chevron-right menu-item__arrow"
+                      aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="menu-item"
+                    onclick="closeModal('modal-menu');openModal('modal-upgrade')">
+                    <i class="bi bi-star-fill" aria-hidden="true"></i>
+                    <span>Meu plano</span>
+                    <i class="bi bi-chevron-right menu-item__arrow"
+                      aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="menu-item" onclick="closeModal('modal-menu')">
+                    <i class="bi bi-question-circle-fill"
+                      aria-hidden="true"></i>
+                    <span>Ajuda e suporte</span>
+                    <i class="bi bi-chevron-right menu-item__arrow"
+                      aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="menu-item menu-item--danger"
+                    onclick="closeModal('modal-menu');showToast('Sessão encerrada')">
+                    <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                    <span>Sair</span>
+                  </button>
+                </li>
+              </ul>
+            </nav> 
+          </div>
+        </div>
+
+        <!-- ── Modal: Upgrade Pro+ ── -->
+        <div class="modal-overlay" id="modal-upgrade" role="dialog"
+          aria-modal="true"
+          aria-labelledby="mu-title" onclick="closeModal('modal-upgrade')">
+          <div class="modal-sheet" onclick="event.stopPropagation()">
+            <div class="modal-handle" aria-hidden="true"></div>
+            <h2 id="mu-title" class="modal-heading">Mudi Pro+</h2>
+            <p class="modal-sub">Acelere sua carreira com mais mentoras e cursos
+              ilimitados.</p>
+
+            <!-- Comparativo -->
+            <div class="plan-compare">
+              <div class="plan-compare__col plan-compare__col--current">
+                <p class="plan-compare__name">Pro atual</p>
+                <ul class="plan-compare__list">
+                  <li><i class="bi bi-check-lg"></i> 5 cursos/mês</li>
+                  <li><i class="bi bi-check-lg"></i> 6 sessões/mês</li>
+                  <li><i class="bi bi-check-lg"></i> 1 mentora fixa</li>
+                  <li class="plan-compare__item--muted"><i
+                      class="bi bi-x-lg"></i> Cursos ilimitados</li>
+                  <li class="plan-compare__item--muted"><i
+                      class="bi bi-x-lg"></i> Até 3 mentoras</li>
+                </ul>
+                <p class="plan-compare__price">R$ 49/mês</p>
+              </div>
+              <div class="plan-compare__col plan-compare__col--upgrade">
+                <p class="plan-compare__name">Pro+ <span
+                    class="plan-compare__badge">Upgrade</span></p>
+                <ul class="plan-compare__list">
+                  <li><i class="bi bi-check-lg"></i> Cursos ilimitados</li>
+                  <li><i class="bi bi-check-lg"></i> 4 sessões/mês</li>
+                  <li><i class="bi bi-check-lg"></i> Até 3 mentoras</li>
+                  <li><i class="bi bi-check-lg"></i> Prioridade nas vagas</li>
+                  <li><i class="bi bi-check-lg"></i> Badge Pro+</li>
+                </ul>
+                <p class="plan-compare__price">R$ 99/mês</p>
+              </div>
+            </div>
+
+            <button class="btn-primary btn-primary--purple"
+              onclick="closeModal('modal-upgrade');showToast('Em breve! 🚀')">
+              Fazer upgrade — R$ 99/mês
+            </button>
+            <button class="btn-outline" style="margin-top:var(--gap-sm);"
+              onclick="closeModal('modal-upgrade')">Continuar no Pro</button>
+          </div>
+        </div>
+
+        <!-- ── Modal: Adicionar projeto ── --> 
+        <div class="modal-overlay" id="modal-project" role="dialog" aria-modal="true"
+          aria-labelledby="mp-title" onclick="closeModal('modal-project')">
+          <div class="modal-sheet" onclick="event.stopPropagation()">
+            <div class="modal-handle" aria-hidden="true"></div>
+            <h2 id="mp-title" class="modal-heading">Nova publicação</h2>
+
+            <!-- Tipo -->
+            <label class="visually-hidden" for="post-tipo">Tipo</label>
+            <select class="input-select" id="post-tipo" required>
+              <option value="" disabled selected>Tipo de publicação</option>
+              <option value="portfolio">Portfólio</option>
+              <option value="case">Case</option>
+              <option value="processo">Processo</option>
+              <option value="wip">WIP</option>
+              <option value="conquista">Conquista</option>
+              <option value="aprendizado">Aprendizado</option>
+              <option value="dev">Dev</option>
+            </select>
+
+            <!-- Imagens -->
+            <div class="upload-area" role="button" tabindex="0" aria-label="Adicionar imagens do projeto">
+              <div class="upload-area__icon"><i class="bi bi-images" aria-hidden="true"></i></div>
+              <p class="upload-area__label">Adicionar imagens <span style="color:var(--text-muted);font-size:11px;">até 5 fotos</span></p>
+            </div>
+
+            <!-- Título -->
+            <label class="visually-hidden" for="post-titulo">Título</label>
+            <input class="input" id="post-titulo" type="text"
+              placeholder="Título do projeto (opcional)" maxlength="60"
+              oninput="updateCount('post-titulo','count-titulo',60)"/>
+            <p class="input-count"><span id="count-titulo">60</span> caracteres restantes</p>
+
+            <!-- Descrição -->
+            <label class="visually-hidden" for="post-desc">Descrição</label>
+            <textarea class="input" id="post-desc" rows="3"
+              placeholder="Descreva o projeto, processo ou conquista... (opcional)"
+              maxlength="280" oninput="updateCount('post-desc','count-desc',280)"></textarea>
+            <p class="input-count"><span id="count-desc">280</span> caracteres restantes</p>
+
+            <!-- Habilidades -->
+            <div class="tag-picker">
+              <div class="tag-picker__selected" id="skills-selected"></div>
+              <label class="visually-hidden" for="select-skills">Habilidades</label>
+              <select class="input-select" id="select-skills" onchange="addTag('skills', this)">
+                <option value="" disabled selected>Adicionar habilidade</option>
+                <option>Acessibilidade</option>
+                <option>Arquitetura de Informação</option>
+                <option>Automação</option>
+                <option>Branding</option>
+                <option>Content Design</option>
+                <option>Design Estratégico</option>
+                <option>Design System</option>
+                <option>Design Thinking</option>
+                <option>Dev Front-end</option>
+                <option>Discovery</option>
+                <option>Experiência do Usuário</option>
+                <option>Gestão de Produto</option>
+                <option>Ilustração</option>
+                <option>Motion</option>
+                <option>Pesquisa Qualitativa</option>
+                <option>Pesquisa Quantitativa</option>
+                <option>Product Design</option>
+                <option>Prototipagem</option>
+                <option>Service Design</option>
+                <option>Storytelling</option>
+                <option>Testes de Usabilidade</option>
+                <option>UI Design</option>
+                <option>UX Design</option>
+                <option>UX Research</option>
+                <option>UX Writing</option>
+                <option>Wireframe</option>
+                <option value="__outro__">+ Outra habilidade</option>
+              </select>
+              <input class="input" id="input-skills-custom" type="text"
+                placeholder="Digite a habilidade e pressione Enter"
+                style="display:none;margin-top:var(--gap-xs);"
+                onkeydown="addCustomTag(event,'skills')"/>
+            </div>
+
+            <!-- Ferramentas -->
+            <div class="tag-picker">
+              <div class="tag-picker__selected" id="tools-selected"></div>
+              <label class="visually-hidden" for="select-tools">Ferramentas</label>
+              <select class="input-select" id="select-tools" onchange="addTag('tools', this)">
+                <option value="" disabled selected>Adicionar ferramenta</option>
+                <option>Adobe XD</option>
+                <option>After Effects</option>
+                <option>Axure</option>
+                <option>Balsamiq</option>
+                <option>Confluence</option>
+                <option>Dovetail</option>
+                <option>Figma</option>
+                <option>FigJam</option>
+                <option>Framer</option>
+                <option>GitHub</option>
+                <option>Google Analytics</option>
+                <option>Hotjar</option>
+                <option>Illustrator</option>
+                <option>InVision</option>
+                <option>Jira</option>
+                <option>Linear</option>
+                <option>Lookback</option>
+                <option>Maze</option>
+                <option>Miro</option>
+                <option>Node.js</option>
+                <option>Notion</option>
+                <option>Optimal Workshop</option>
+                <option>Photoshop</option>
+                <option>Premiere</option>
+                <option>Principal</option>
+                <option>Python</option>
+                <option>Sketch</option>
+                <option>Spline</option>
+                <option>Storybook</option>
+                <option>UserTesting</option>
+                <option>VS Code</option>
+                <option>Webflow</option>
+                <option>Zeroheight</option>
+                <option value="__outro__">+ Outra ferramenta</option>
+              </select>
+              <input class="input" id="input-tools-custom" type="text"
+                placeholder="Digite a ferramenta e pressione Enter"
+                style="display:none;margin-top:var(--gap-xs);"
+                onkeydown="addCustomTag(event,'tools')"/>
+            </div>
+
+            <!-- Link -->
+            <label class="visually-hidden" for="post-link">Link do projeto</label>
+            <input class="input" id="post-link" type="url"
+              placeholder="Link do projeto (Figma, Behance, GitHub...)"/>
+
+            <button class="btn-primary btn-primary--green"
+              onclick="closeModal('modal-post'); showToast('Publicação enviada!')">Publicar</button>
+          </div>
+        </div>
+
+        <output class="toast" id="toast" role="status"
+          aria-live="polite"></output>
+      </article>
+    </main>
+
+    <script>
+      function setMode(mode) {
+        document.documentElement.setAttribute('data-theme', mode);
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+          const active = btn.textContent.trim().toLowerCase().startsWith(mode === 'dark' ? 'd' : 'l');
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-pressed', active);
+        });
+      }
+
+      function openModal(id)  { document.getElementById(id).classList.add('open'); }
+      function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+      function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg; t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2500);
+      }
+
+      const scrollArea = document.querySelector('.scroll-area');
+      const feedHeader = document.querySelector('.feed-header');
+      scrollArea.addEventListener('scroll', () => {
+        feedHeader.classList.toggle('scrolled', scrollArea.scrollTop > 0);
+      });
+    </script>
+  </body>
+</html>

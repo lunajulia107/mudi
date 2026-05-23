@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mudi</title>
+    <link rel="icon" type="image/x-icon" href="/images/brand/mudi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="sass/main.css" />
+  </head>
+  <body>
+
+    <header class="top-bar">
+      <nav class="mode-toggle" aria-label="Seleção de tema">
+        <button class="mode-btn" aria-pressed="false" onclick="setMode('dark')">
+          <i class="bi bi-moon-fill"></i> Dark
+        </button>
+        <button class="mode-btn active" aria-pressed="true" onclick="setMode('light')">
+          <i class="bi bi-sun-fill"></i> Light
+        </button>
+      </nav>
+    </header>
+
+    <main class="phone-wrap">
+      <img class="phone-wrap__mockup" src="images/mockup.png" alt aria-hidden="true">
+
+      <article class="phone" id="phone">
+
+        <header class="feed-header">
+          <div class="feed-header__logo">
+            <img src="images/brand/logo.png" alt="Mudi">
+          </div>
+          <div class="feed-header__actions">
+            <a href="chat.html" class="btn-icon" aria-label="Chat da comunidade">
+              <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+            </a>
+            <button class="btn-icon" aria-label="Notificações (1 nova)" style="position:relative;">
+              <i class="bi bi-bell-fill" aria-hidden="true"></i>
+              <span class="notif-dot" aria-hidden="true"></span>
+            </button>
+            <a href="perfil.html" aria-label="Meu perfil">
+              <div class="avatar avatar--green">
+                <img src="/images/geral/usuarias/samara.svg" alt="Foto da Samara Duarte.">
+              </div>
+            </a>
+          </div>
+        </header>
+
+        <div class="scroll-area">
+
+          <!-- ── Lista principal ── -->
+          <div id="mentoria-wrap">
+            <header class="page-header">
+              <div class="page-header__top">
+                <h1 class="page-title" id="section-title">Mentoras</h1>
+                <span class="plan-badge">
+                  <i class="bi bi-star-fill" aria-hidden="true"></i> Mudi Pro
+                </span>
+              </div>
+              <p class="page-subtitle" id="section-subtitle">Sua mentora do mês</p>
+            </header>
+
+            <!-- Tabs — Mentoras primeiro -->
+            <div class="section-tabs" role="tablist" aria-label="Seções de mentoria">
+              <button class="section-tab on" id="tab-mentoras" role="tab"
+                aria-selected="true" onclick="switchSection('mentoras')">
+                <i class="bi bi-people-fill" aria-hidden="true"></i> Mentoras
+              </button>
+              <button class="section-tab" id="tab-cursos" role="tab"
+                aria-selected="false" onclick="switchSection('cursos')">
+                <i class="bi bi-play-circle-fill" aria-hidden="true"></i> Cursos
+              </button>
+            </div>
+
+            <!-- ── PAINEL: Mentoras ── -->
+            <div id="panel-mentoras" role="tabpanel" aria-labelledby="tab-mentoras"
+              style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
+              <div class="scroll-area">
+
+                <!-- Box upgrade Pro+ -->
+                <div class="upgrade-box" aria-label="Upgrade de plano">
+                  <div class="upgrade-box__text">
+                    <p class="upgrade-box__title">Diversifique sua mentoria</p>
+                    <p class="upgrade-box__desc">Pro+ permite até 3 mentoras diferentes e 4 sessões por mês.</p>
+                  </div>
+                  <button class="btn-sm btn-sm--purple" onclick="openModal('modal-upgrade')">
+                    Conferir Plano
+                  </button>
+                </div>
+
+                <!-- Sessões do mês -->
+                <div class="sessions-bar" aria-label="Sessões do mês">
+                  <p class="sessions-bar__count">2 DE 6 SESSÕES</p> 
+                  <div class="sessions-bar__dots" aria-hidden="true">
+                    <span class="session-dot session-dot--used"></span>
+                    <span class="session-dot session-dot--used"></span>
+                    <span class="session-dot"></span>
+                    <span class="session-dot"></span>
+                    <span class="session-dot"></span>
+                    <span class="session-dot"></span>
+                  </div>
+                  <p class="sessions-bar__label">USADAS ESTE MÊS</p>
+                </div>
+
+                <!-- Minha mentora — destaque -->
+                <p class="section-label" style="padding:0 var(--gap-md);">Minha mentora</p>
+                <button class="mentor-card mentor-card--active" onclick="showMentor(0)"
+                  aria-label="Amanda Torres, sua mentora do mês">
+                  <div class="avatar avatar--gradient" style="width:48px;height:48px;overflow:hidden;" aria-hidden="true">
+                    <img src="/images/geral/usuarias/amanda.svg" alt="Foto da Amanda Torres."
+                      style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                  </div>
+                  <div class="mentor-meta">
+                    <div class="mentor-header">
+                      <div>
+                        <p class="mentor-name">Amanda Torres</p>
+                        <p class="mentor-role">Product Designer Sênior · Meta</p>
+                      </div>
+                      <span class="stars" aria-label="5,0 estrelas">★ 5.0</span>
+                    </div>
+                    <div class="mentor-footer">
+                      <div class="mentor-tags">
+                        <span class="pill pill--gray">Design e Big Tech</span>
+                        <span class="pill pill--gray">UX/UI Designer</span>
+                      </div>
+                      <span class="pill pill--green-solid">Ativa</span>
+                    </div>
+                  </div>
+                </button>
+
+                <!-- Outras mentoras — Pro+ -->
+                <p class="section-label" style="padding:var(--gap-md) var(--gap-md) 0;">Outras mentoras</p>
+                <p class="section-sublabel" style="padding:0 var(--gap-md) var(--gap-sm);">Disponível no Pro+</p>
+
+                <ul class="mentor-list" role="list">
+                  <li>
+                    <button class="mentor-card mentor-card--locked" onclick="openModal('modal-upgrade')"
+                      aria-label="Carol Mendes — disponível no Pro+">
+                      <div class="avatar avatar--purple" style="width:48px;height:48px;overflow:hidden;opacity:.5;" aria-hidden="true">
+                        <img src="/images/geral/usuarias/carol.svg" alt="Foto da Carol Mendes."
+                          style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                      </div>
+                      <div class="mentor-meta" style="opacity:.5;">
+                        <div class="mentor-header">
+                          <div>
+                            <p class="mentor-name">Carol Mendes</p>
+                            <p class="mentor-role">Product Designer Sênior · Elo</p>
+                          </div>
+                          <span class="stars">★ 4.9</span>
+                        </div>
+                        <div class="mentor-footer">
+                          <div class="mentor-tags">
+                            <span class="pill pill--gray">Visão de Negócio</span>
+                            <span class="pill pill--gray">UX/UI Designer</span>
+                          </div>
+                        </div>
+                      </div>
+                      <i class="bi bi-lock-fill mentor-lock" aria-hidden="true"></i>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="mentor-card mentor-card--locked" onclick="openModal('modal-upgrade')"
+                      aria-label="Luana Santos — disponível no Pro+">
+                      <div class="avatar avatar--green" style="width:48px;height:48px;overflow:hidden;opacity:.5;" aria-hidden="true">
+                        <img src="/images/geral/usuarias/luana.svg" alt="Foto da Luana Santos"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                      </div>
+                      <div class="mentor-meta" style="opacity:.5;">
+                        <div class="mentor-header">
+                          <div>
+                            <p class="mentor-name">Luana Santos</p>
+                            <p class="mentor-role">UX Designer Sênior · Google</p>
+                          </div>
+                          <span class="stars">★ 4.8</span>
+                        </div>
+                        <div class="mentor-footer">
+                          <div class="mentor-tags">
+                            <span class="pill pill--gray">Arquitetura da Info</span>
+                            <span class="pill pill--gray">Jornada do Usuário</span>
+                          </div>
+                        </div>
+                      </div>
+                      <i class="bi bi-lock-fill mentor-lock" aria-hidden="true"></i>
+                    </button>
+                  </li>
+                </ul>
+
+                <!-- Pedir orientação -->
+                <div class="guidance-card" aria-label="Pedir orientação">
+                  <p class="guidance-title">
+                    <i class="bi bi-lightbulb-fill" style="color:var(--color-primary);" aria-hidden="true"></i>
+                    Precisa de orientação?
+                  </p>
+                  <p class="guidance-sub">Poste uma dúvida e receba respostas de mentoras sêniores da comunidade.</p>
+                  <button class="btn-sm btn-sm--green" onclick="openModal('modal-guidance')" aria-haspopup="dialog">
+                    <i class="bi bi-send-fill" aria-hidden="true"></i> Pedir orientação
+                  </button>
+                </div>
+
+                <div class="scroll-spacer"></div>
+              </div>
+            </div>
+
+            <!-- ── PAINEL: Cursos ── -->
+            <div id="panel-cursos" role="tabpanel" aria-labelledby="tab-cursos"
+              style="display:none;flex-direction:column;flex:1;overflow:hidden;">
+              <div class="scroll-area">
+
+                <!-- Uso de cursos do mês -->
+                <div class="sessions-bar" style="margin-bottom:0;">
+                  <p class="sessions-bar__count">1 DE 5 CURSOS</p>
+                  <p class="sessions-bar__label">USADOS ESTE MÊS</p> 
+                </div>
+
+                <!-- Em andamento -->
+                <p class="section-label" style="padding:0 var(--gap-md);">Em andamento</p>
+                <div class="course-card course-card--active" onclick="showCourse(0)">
+                  <div class="course-thumb">
+                    <img src="/images/geral/cursos/course1.svg" alt="Curso de UX Writing para Produtos Digitais.">
+                  </div> 
+                  <div class="course-body">
+                    <p class="course-title">UX Writing para Produtos Digitais</p>
+                    <div class="course-meta">
+                      <span class="course-duration"><i class="bi bi-clock" aria-hidden="true"></i> 6h</span>
+                      <span class="course-price course-price--progress">60% concluído</span>
+                    </div>
+                    <div class="course-progress" style="margin-top:var(--gap-sm);">
+                      <div class="course-progress__fill" style="width:60%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Disponíveis no plano -->
+                <p class="section-label" style="padding:var(--gap-md) var(--gap-md) 0;">Disponíveis no Pro</p>
+
+                <div class="course-card" onclick="showCourse(1)">
+                  <div class="course-thumb">
+                    <img src="/images/geral/cursos/course2.svg" alt="Curso de Conceitos Básicos de IA para Designers  .">
+                  </div> 
+                  <div class="course-body">
+                    <p class="course-title">Conceitos Básicos de IA</p>
+                    <div class="course-meta">
+                      <span class="course-duration"><i class="bi bi-clock" aria-hidden="true"></i> 5h</span>
+                      <span class="pill pill--purple" style="font-size:10px;">Incluído</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="course-card" onclick="showCourse(2)">
+                   <div class="course-thumb">
+                    <img src="/images/geral/cursos/course3.svg" alt="Curso de IA aplicada ao Design.">
+                  </div> 
+                  <div class="course-body">
+                    <p class="course-title">IA aplicada ao Design</p>
+                    <div class="course-meta">
+                      <span class="course-duration"><i class="bi bi-clock" aria-hidden="true"></i> 8h</span>
+                      <span class="pill pill--purple" style="font-size:10px;">Incluído</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pro+ lock -->
+                <p class="section-label" style="padding:var(--gap-md) var(--gap-md) 0;">Disponível no Pro+</p>
+                <p class="section-sublabel" style="padding:0 var(--gap-md) var(--gap-sm);">Cursos ilimitados</p>
+
+                <div class="course-card course-card--locked" onclick="openModal('modal-upgrade')">
+                  <div class="course-thumb">
+                    <img src="/images/geral/cursos/course4.svg" alt="Curso de Design System." style="opacity: 0.75;">
+                  </div> 
+                  <div class="course-body" style="opacity:.5;">
+                    <p class="course-title">Design System</p>
+                    <div class="course-meta">
+                      <span class="course-duration"><i class="bi bi-clock" aria-hidden="true"></i> 12h</span>
+                      <i class="bi bi-lock-fill course-lock" aria-hidden="true"></i>
+                    </div>
+                  </div> 
+                </div> 
+                <div class="scroll-spacer"></div>
+              </div>
+            </div>
+
+            <!-- Bottom Nav -->
+            <nav class="bottom-nav" aria-label="Navegação principal">
+              <a class="nav-item" href="feed.html" aria-label="Feed">
+                <div class="nav-icon-wrap"><i class="bi bi-grid-fill" aria-hidden="true"></i></div>
+                <span class="nav-label">Feed</span>
+              </a>
+              <a class="nav-item" href="vagas.html" aria-label="Vagas">
+                <div class="nav-icon-wrap"><i class="bi bi-briefcase-fill" aria-hidden="true"></i></div>
+                <span class="nav-label">Vagas</span>
+              </a>
+              <a class="nav-item active" href="mentoria.html" aria-current="page" aria-label="Mentoria">
+                <div class="nav-icon-wrap"><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+                <span class="nav-label">Mentoria</span>
+              </a>
+              <a class="nav-item" href="perfil.html" aria-label="Perfil">
+                <div class="nav-icon-wrap"><i class="bi bi-person-fill" aria-hidden="true"></i></div>
+                <span class="nav-label">Perfil</span>
+              </a>
+            </nav>
+          </div>
+
+          <!-- ── Detalhe da mentora ── -->
+          <section class="detail-view" id="mentor-detail" aria-label="Perfil da mentora" aria-hidden="true">
+            <header class="detail-header">
+              <button class="back-btn" onclick="hideMentor()" aria-label="Voltar">
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+              </button>
+              <h2 class="detail-title" id="md-title">Mentora</h2>
+            </header>
+            <div class="detail-scroll">
+
+              <div style="margin-bottom:var(--gap-lg);text-align:center;"> 
+                <div class="avatar" style="width:72px;height:72px;font-size:26px;margin:0 auto var(--gap-sm);overflow:hidden;">
+                  <img id="md-avatar" src="/images/geral/usuarias/amanda.svg" alt="Foto de Amanda Torres." style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <h3 style="color:var(--text-contrast);font-size:18px;font-weight:700;" id="md-name"></h3>
+                <p class="body-text" id="md-role" style="margin-top:2px;"></p>
+              </div>
+
+              <dl class="stat-grid">
+                <div class="stat-box"><dt class="stat-box__lbl">Avaliação</dt><dd class="stat-box__num stat-box__num--purple" id="md-rating"></dd></div>
+                <div class="stat-box"><dt class="stat-box__lbl">Mentoradas</dt><dd class="stat-box__num" id="md-students"></dd></div>
+                <div class="stat-box"><dt class="stat-box__lbl">Sessões restantes</dt><dd class="stat-box__num stat-box__num--purple">4</dd></div>
+              </dl>
+
+              <p class="section-label">Sobre</p>
+              <p class="body-text" id="md-about" style="margin-bottom:var(--gap-md);"></p>
+
+              <p class="section-label">Especialidades</p>
+              <div id="md-tags" style="display:flex;flex-wrap:wrap;gap:var(--gap-xs);margin-bottom:var(--gap-lg);"></div>
+
+              <p class="section-label">O que a mentoria cobre</p>
+              <ul class="requirements-list" id="md-offers" style="margin-bottom:var(--gap-lg);"></ul>
+
+              <p class="section-label">Avaliações</p>
+              <div id="md-reviews" style="margin-bottom:var(--gap-lg);"></div>
+
+              <button class="btn-primary btn-primary--green" style="margin-bottom:var(--gap-sm);"
+                onclick="openModal('modal-mentoria')">
+                <i class="bi bi-calendar-check-fill" aria-hidden="true"></i> Solicitar sessão
+              </button>
+              <button class="btn-outline" style="margin-bottom:var(--gap-2xl);"
+                onclick="showToast('Abrindo chat...')">
+                <i class="bi bi-chat-dots" aria-hidden="true"></i> Enviar mensagem
+              </button>
+            </div>
+
+            <!-- Modal solicitação simplificado -->
+            <div class="modal-overlay" id="modal-mentoria" role="dialog" aria-modal="true"
+              aria-labelledby="mm-title" onclick="closeModal('modal-mentoria')">
+              <div class="modal-sheet" onclick="event.stopPropagation()">
+                <div class="modal-handle" aria-hidden="true"></div>
+                <h2 id="mm-title" class="modal-heading">Solicitar sessão</h2>
+                <p class="modal-sub">Você tem <strong>4 sessões restantes</strong> no seu plano Pro este mês.</p>
+                <div class="profile-preview">
+                  <div class="avatar avatar--green" style="width:40px;height:40px;flex-shrink:0;">
+                    <img src="/images/geral/emily.svg" alt="Foto de Emily Souza">
+                  </div>
+                  <div>
+                    <p class="profile-preview__name">Emily Souza</p>
+                    <p class="profile-preview__status">
+                      <i class="bi bi-check-circle-fill" aria-hidden="true"></i> Mudi Pro · 4 sessões restantes
+                    </p>
+                  </div>
+                </div>
+                <label class="visually-hidden" for="mentoria-msg">O que espera da sessão</label>
+                <textarea class="input" id="mentoria-msg" rows="3"
+                  placeholder="O que você quer trabalhar nessa sessão?"></textarea>
+                <button class="btn-primary btn-primary--green"
+                  onclick="closeModal('modal-mentoria'); showToast('✓ Sessão solicitada!')">
+                  <i class="bi bi-send-fill" aria-hidden="true"></i> Solicitar
+                </button>
+              </div>
+            </div>
+
+            <output class="toast" id="toast-detail" role="status" aria-live="polite"></output>
+          </section>
+
+          <!-- Modal: detalhe de curso -->
+          <div class="modal-overlay" id="modal-course" role="dialog" aria-modal="true"
+            aria-labelledby="mco-title" onclick="closeModal('modal-course')">
+            <div class="modal-sheet" onclick="event.stopPropagation()">
+              <div class="modal-handle" aria-hidden="true"></div>
+              <h2 id="mco-title" class="modal-heading"></h2>
+              <p class="modal-sub" id="mco-sub"></p>
+              <div style="display:flex;gap:var(--gap-sm);margin-bottom:var(--gap-md);">
+                <div class="stat-box" style="flex:1;"><p class="stat-box__num stat-box__num--purple" id="mco-rating"></p><p class="stat-box__lbl">Avaliação</p></div>
+                <div class="stat-box" style="flex:1;"><p class="stat-box__num" id="mco-students"></p><p class="stat-box__lbl">Alunas</p></div>
+                <div class="stat-box" style="flex:1;"><p class="stat-box__num" id="mco-include"></p><p class="stat-box__lbl">Plano</p></div>
+              </div>
+              <button class="btn-primary btn-primary--green"
+                onclick="closeModal('modal-course'); showToast('✓ Curso iniciado!')">Começar curso</button>
+            </div>
+          </div>  
+
+          <!-- Modal: upgrade Pro+ -->
+          <div class="modal-overlay" id="modal-upgrade" role="dialog" aria-modal="true"
+            aria-labelledby="mu-title" onclick="closeModal('modal-upgrade')">
+            <div class="modal-sheet" onclick="event.stopPropagation()">
+              <div class="modal-handle" aria-hidden="true"></div>
+              <h2 id="mu-title" class="modal-heading">Mudi Pro+</h2>
+              <p class="modal-sub">Acelere sua carreira com mais mentoras e cursos ilimitados.</p>
+              <div class="upgrade-perks">
+                <div class="upgrade-perk">
+                  <i class="bi bi-people-fill" aria-hidden="true"></i>
+                  <div>
+                    <p class="upgrade-perk__title">Até 3 mentoras diferentes</p>
+                    <p class="upgrade-perk__desc">4 sessões por mês com perspectivas variadas</p>
+                  </div>
+                </div>
+                <div class="upgrade-perk">
+                  <i class="bi bi-play-circle-fill" aria-hidden="true"></i>
+                  <div>
+                    <p class="upgrade-perk__title">Cursos ilimitados</p>
+                    <p class="upgrade-perk__desc">Acesse todo o catálogo sem limite mensal</p>
+                  </div>
+                </div>
+                <div class="upgrade-perk">
+                  <i class="bi bi-send-fill" aria-hidden="true"></i>
+                  <div>
+                    <p class="upgrade-perk__title">Prioridade nas candidaturas</p>
+                    <p class="upgrade-perk__desc">Destaque nas vagas abertas pelo Mudi</p>
+                  </div>
+                </div>
+                <div class="upgrade-perk">
+                  <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+                  <div>
+                    <p class="upgrade-perk__title">Badge Mudi Pro+</p>
+                    <p class="upgrade-perk__desc">Visibilidade no seu perfil para recrutadoras</p>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-primary btn-primary--green"
+                onclick="closeModal('modal-upgrade'); showToast('Em breve! 🚀')">
+                Fazer upgrade — R$ 99/mês
+              </button>
+              <button class="btn-outline" style="margin-top:var(--gap-sm);"
+                onclick="closeModal('modal-upgrade')">Continuar no Pro</button>
+            </div>
+          </div>
+
+          <!-- Modal: pedir orientação -->
+          <div class="modal-overlay" id="modal-guidance" role="dialog" aria-modal="true"
+            aria-labelledby="mg-title" onclick="closeModal('modal-guidance')">
+            <div class="modal-sheet" onclick="event.stopPropagation()">
+              <div class="modal-handle" aria-hidden="true"></div>
+              <h2 id="mg-title" class="modal-heading">Pedir orientação</h2>
+              <p class="modal-sub">Sua dúvida será vista por mentoras sêniores da comunidade.</p>
+              <label class="visually-hidden" for="guidance-area">Área</label>
+              <select class="input-select" id="guidance-area">
+                <option value="" disabled selected>Área da dúvida</option>
+                <option>UX Design</option>
+                <option>UI Design</option>
+                <option>Portfólio</option>
+                <option>Carreira</option>
+                <option>Design System</option>
+                <option>Figma</option>
+                <option>IA aplicada ao Design</option>
+              </select>
+              <label class="visually-hidden" for="guidance-msg">Descreva sua dúvida</label>
+              <textarea class="input" id="guidance-msg" rows="4"
+                placeholder="Descreva sua dúvida com detalhes..."></textarea>
+              <button class="btn-primary btn-primary--green"
+                onclick="closeModal('modal-guidance'); showToast('✓ Orientação enviada!')">Enviar</button>
+            </div>
+          </div>
+
+          <output class="toast" id="toast" role="status" aria-live="polite"></output>
+
+        </div>
+      </article>
+    </main>
+
+    <script>
+      const mentors = [
+        {
+          name: 'Amanda Torres', role: 'Product Designer Sênior · Meta',
+          rating: '5.0', students: '54',
+          letter: 'A', cls: 'avatar--purple', photo: '/images/mentoras/amanda.png',
+          about: 'Designer de produto com mais de 7 anos de experiência em big techs. Passou pelo Instagram e hoje atua no time de WhatsApp Business. Ajuda designers a transitarem para produto e se posicionarem em empresas globais.',
+          tags: ['UI/UI Design', 'Product Design', 'Carreira', 'Big Tech', 'Carreira'],
+          offers: ['Revisão de portfólio com feedback detalhado', 'Simulação de entrevista técnica e comportamental', 'Orientação de carreira para big techs', 'Feedback em cases e apresentações'],
+          reviews: [
+            { name: 'Emily S.', stars: '★★★★★', text: 'Amanda me ajudou a reestruturar meu portfólio em 2 sessões. Clareza e objetividade incríveis.' },
+            { name: 'Julia M.', stars: '★★★★★', text: 'Melhor mentoria que já tive. Ela conhece o processo seletivo da Meta por dentro.' },
+          ],
+        },
+        {
+          name: 'Carol Mendes', role: 'Product Designer Sênior · Elo',
+          rating: '4.9', students: '38',
+          letter: 'C', cls: 'avatar--green', photo: '/images/mentoras/carol.png',
+          about: 'Especialista em Design Systems e UI. Construiu o Design System da Elo do zero e hoje lidera a área de componentes. Apaixonada por consistência visual e acessibilidade.',
+          tags: ['Visão de Negócios', 'UX/UI Design', 'Design Systems', 'Acessibilidade', 'Carreira'],
+          offers: ['Revisão de UI e consistência visual', 'Orientação em Design Systems com Figma', 'Feedback em componentes e tokens', 'Mentoria de carreira para designers de interface'],
+          reviews: [
+            { name: 'Bia R.', stars: '★★★★★', text: 'Aprendi mais sobre Design System em 1h com a Carol do que em meses de curso.' },
+            { name: 'Tati L.', stars: '★★★★☆', text: 'Muito didática e atenciosa. Recomendo para quem quer evoluir em UI.' },
+          ],
+        },
+        {
+          name: 'Luana Santos', role: 'UX Designer Sênior · Google',
+          rating: '5.0', students: '72',
+          letter: 'L', cls: 'avatar--gradient', photo: '/images/mentoras/luana.png',
+          about: 'UX Designer com foco em pesquisa e estratégia de produto. Passou por startups e chegou ao Google Maps Brasil. Ajuda designers a construírem raciocínio de produto e se destacarem em processos seletivos.',
+          tags: ['Arquitetura da Informação', 'Research', 'Estratégia', 'Jornada do Usuário', 'Carreira'],
+          offers: ['Orientação em UX e raciocínio de produto', 'Revisão de cases com foco em processo', 'Simulação de portfólio review', 'Mentoria de carreira para transição ou crescimento'],
+          reviews: [
+            { name: 'Carol V.', stars: '★★★★★', text: 'Em 3 sessões reformulei meu portfólio e passei em uma entrevista no iFood.' },
+            { name: 'Ana P.', stars: '★★★★★', text: 'A Luana tem uma visão de produto incrível. Mudou a forma como penso design.' },
+          ],
+        },
+      ];
+
+      const courses = [
+        { title: 'UX Writing para produtos digitais', duration: '6h', rating: '4.8', students: '210', include: 'Pro' },
+        { title: 'Conceitos Básicos de IA',           duration: '5h', rating: '4.9', students: '380', include: 'Pro' },
+        { title: 'IA aplicada ao Design',             duration: '8h', rating: '4.9', students: '520', include: 'Pro' },
+        { title: 'Design System',                     duration: '12h',rating: '4.8', students: '290', include: 'Pro+' },
+      ];
+
+      function setMode(mode) {
+        document.documentElement.setAttribute('data-theme', mode);
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+          const active = btn.textContent.trim().toLowerCase().startsWith(mode === 'dark' ? 'd' : 'l');
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-pressed', active);
+        });
+      }
+
+      function openModal(id)  { document.getElementById(id).classList.add('open'); }
+      function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+      function showToast(msg) {
+        ['toast', 'toast-detail'].forEach(id => {
+          const t = document.getElementById(id);
+          if (t) { t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }
+        });
+      }
+
+      function toggleChip(el) {
+        el.closest('.filter-row').querySelectorAll('.filter-chip').forEach(c => {
+          c.classList.remove('on'); c.setAttribute('aria-selected', 'false');
+        });
+        el.classList.add('on'); el.setAttribute('aria-selected', 'true');
+      }
+
+      function switchSection(sec) {
+        const isMentoras = sec === 'mentoras';
+        document.getElementById('tab-mentoras').classList.toggle('on', isMentoras);
+        document.getElementById('tab-mentoras').setAttribute('aria-selected', isMentoras);
+        document.getElementById('tab-cursos').classList.toggle('on', !isMentoras);
+        document.getElementById('tab-cursos').setAttribute('aria-selected', !isMentoras);
+        document.getElementById('panel-mentoras').style.display = isMentoras ? 'flex' : 'none';
+        document.getElementById('panel-cursos').style.display   = isMentoras ? 'none' : 'flex';
+        document.getElementById('section-title').textContent    = isMentoras ? 'Mentoras' : 'Cursos';
+        document.getElementById('section-subtitle').textContent = isMentoras ? 'Sua mentora do mês' : '1 de 5 cursos usados este mês';
+      }
+
+      function showMentor(idx) {
+        const m = mentors[idx];
+        document.getElementById('md-title').textContent    = m.name;
+        document.getElementById('md-name').textContent     = m.name;
+        document.getElementById('md-role').textContent     = m.role;
+        document.getElementById('md-rating').textContent   = m.rating;
+        document.getElementById('md-students').textContent = m.students;
+        document.getElementById('md-about').textContent    = m.about;
+
+        const av = document.getElementById('md-avatar');
+        av.className = 'avatar ' + m.cls;
+        av.innerHTML = `<img src="${m.photo}" alt="Foto de ${m.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.textContent='${m.letter}'">`;
+
+        document.getElementById('md-tags').innerHTML = m.tags.map(t =>
+          `<span class="pill pill--gray">${t}</span>`).join('');
+
+        document.getElementById('md-offers').innerHTML = m.offers.map(o =>
+          `<li class="req-item">${o}</li>`).join('');
+
+        document.getElementById('md-reviews').innerHTML = m.reviews.map(r => `
+          <div class="review-card">
+            <div class="review-header">
+              <div class="avatar avatar--purple" style="width:28px;height:28px;font-size:10px;">${r.name[0]}</div>
+              <p class="review-author">${r.name}</p>
+              <span class="stars">${r.stars}</span>
+            </div>
+            <p class="review-text">${r.text}</p>
+          </div>`).join('');
+
+        document.getElementById('mentoria-wrap').style.display = 'none';
+        const d = document.getElementById('mentor-detail');
+        d.classList.add('show'); d.removeAttribute('aria-hidden');
+        d.querySelector('.detail-scroll').scrollTop = 0;
+      }
+
+      function hideMentor() {
+        document.getElementById('mentoria-wrap').style.display = '';
+        const d = document.getElementById('mentor-detail');
+        d.classList.remove('show'); d.setAttribute('aria-hidden', 'true');
+      }
+
+      function showCourse(idx) {
+        const c = courses[idx];
+        document.getElementById('mco-title').textContent   = c.title;
+        document.getElementById('mco-sub').textContent     = `${c.duration} de conteúdo`;
+        document.getElementById('mco-rating').textContent  = c.rating;
+        document.getElementById('mco-students').textContent = c.students;
+        document.getElementById('mco-include').textContent = c.include;
+        openModal('modal-course');
+      }
+    </script>
+  </body>
+</html>

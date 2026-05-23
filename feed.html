@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mudi</title>
+    <link rel="icon" type="image/x-icon" href="/images/brand/mudi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="sass/main.css" /> 
+  </head>
+  <body>
+
+    <header class="top-bar">
+      <nav class="mode-toggle" aria-label="Seleção de tema">
+        <button class="mode-btn" aria-pressed="false" onclick="setMode('dark')">
+          <i class="bi bi-moon-fill"></i> Dark
+        </button>
+        <button class="mode-btn active" aria-pressed="true" onclick="setMode('light')">
+          <i class="bi bi-sun-fill"></i> Light
+        </button>
+      </nav>
+    </header>
+
+    <main class="phone-wrap" aria-label="Feed Mudi">
+      <img class="phone-wrap__mockup" src="images/mockup.png" alt aria-hidden="true">
+
+      <article class="phone" id="phone">
+
+        <!-- Header -->
+        <header class="feed-header">
+          <div class="feed-header__logo">
+            <img src="images/brand/logo.png" alt="Mudi">
+          </div>
+          <div class="feed-header__actions">
+            <a href="chat.html" class="btn-icon" aria-label="Chat da comunidade">
+              <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+            </a>
+            <button class="btn-icon" aria-label="Notificações (1 nova)" style="position:relative;">
+              <i class="bi bi-bell-fill" aria-hidden="true"></i>
+              <span class="notif-dot" aria-hidden="true"></span>
+            </button>
+            <a href="perfil.html" aria-label="Meu perfil">
+              <div class="avatar avatar--green">
+                <img src="/images/geral/usuarias/samara.svg" alt="Foto da Samara Duarte.">
+              </div>
+            </a>
+          </div>
+        </header>
+
+        <div class="scroll-area">
+
+          <!-- Stories -->
+          <section aria-label="Stories">
+            <ol class="feed-stories" role="list">
+              <li class="story-item">
+                <button class="story-add" aria-label="Criar story">
+                  <i class="bi bi-plus" aria-hidden="true"></i>
+                </button>
+                <span class="story-name">Postar</span>
+              </li>
+              <li class="story-item" onclick="openStory('amanda')">
+                <div class="story-ring"><div class="story-inner"><img src="/images/geral/usuarias/amanda.svg" alt="Foto da Amanda."></div></div>
+                <span class="story-name">Amanda</span>
+              </li> 
+              <li class="story-item" onclick="openStory('carol')">
+                <div class="story-ring"><div class="story-inner"><img src="/images/geral/usuarias/carol.svg" alt="Foto da Carol."></div></div>
+                <span class="story-name">Carol</span>
+              </li> 
+              <li class="story-item" onclick="openStory('camila')">
+                <div class="story-ring"><div class="story-inner"><img src="/images/geral/usuarias/camila.svg" alt="Foto da Camila."></div></div>
+                <span class="story-name">Camila</span>
+              </li> 
+              <li class="story-item" onclick="openStory('luana')">
+                <div class="story-ring"><div class="story-inner"><img src="/images/geral/usuarias/luana.svg" alt="Foto da Luana."></div></div>
+                <span class="story-name">Luana</span>
+              </li>
+              <li class="story-item" onclick="openStory('andressa')">
+                <div class="story-ring"><div class="story-inner"><img src="/images/geral/usuarias/andressa.svg" alt="Foto da Andressa."></div></div>
+                <span class="story-name">Andressa</span>
+              </li> 
+              <li class="story-item" onclick="openStory('julia')">
+                <div class="story-ring"><div class="story-inner"><img src="/images/geral/usuarias/julia.svg" alt="Foto da Julia."></div></div>
+                <span class="story-name">Julia</span>
+              </li> 
+            </ol>
+          </section>
+
+          <!-- Composer -->
+          <button class="composer" onclick="openModal('modal-post')" aria-haspopup="dialog" aria-label="Criar publicação">
+            <span class="composer__placeholder">Compartilhe um projeto...</span>
+            <span class="composer__btn">Postar</span>
+          </button> 
+
+          <!-- Feed -->
+          <section aria-label="Publicações">
+
+            <!-- Post 1 — Camila Bonilha · UX Researcher · Estagiária -->
+            <article class="feed-post">
+              <header class="post-header">
+                <div class="avatar" style="height:46px;width:46px;" aria-hidden="true">
+                  <img src="/images/geral/usuarias/camila.svg" alt="Foto da Camila Bonilha.">
+                </div>
+                <div class="post-meta">
+                  <p class="post-name">Camila Bonilha</p>
+                  <p class="post-role">UX Researcher · Estagiária</p>
+                  <time class="post-time">Há 6 horas</time>
+                </div>
+                <span class="pill pill--purple">Pesquisa</span>
+              </header>
+              <div class="post-img post-thumb--neutral" aria-label="Preview: Affinity Diagram de Usabilidade"
+                   onclick="openPostDetail('post1')" style="cursor:pointer;" role="button" tabindex="0" aria-label="Ver projeto">
+                <img src="/images/geral/feed/project1.svg" alt="Capa do projeto Affinity Diagram de Usabilidade.">
+              </div>
+              <footer class="post-actions">
+                <button class="post-action-btn" id="like1" onclick="toggleLike('like1','lc1')" aria-label="Curtir">
+                  <i class="bi bi-heart" aria-hidden="true"></i> <span id="lc1">180</span>
+                </button>
+                <button class="post-action-btn" onclick="toggleComments('comments1')" aria-expanded="false" id="btn-comments1" aria-label="Comentários">
+                  <i class="bi bi-chat" aria-hidden="true"></i> <span id="cc1">25</span>
+                </button>
+                <button class="post-action-btn" aria-label="Compartilhar">
+                  <i class="bi bi-send" aria-hidden="true"></i> Compartilhar
+                </button>
+              </footer>
+              <p class="post-caption"><strong>Affinity Diagram (Pesquisa de Usabilidade)</strong><br>
+                Meu primeiro teste moderado — 5 entrevistas com correntistas para mapear fricções no fluxo de Pix.</p>
+              <div class="comments-inline" id="comments1" hidden>
+                <ul class="comment-list">
+                  <li class="comment-item">
+                    <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                      <img src="/images/geral/usuarias/luana.svg" alt="Foto da Luana Santos.">
+                    </div>
+                    <div class="comment-bubble">
+                      <div class="comment-bubble__header">
+                        <p class="comment-author">Luana Santos</p>
+                        <time class="comment-time">Há 4 horas</time>
+                      </div>
+                      <p class="comment-text">Que metodologia bem estruturada! Você usou algum framework pra análise temática?</p>
+                    </div>
+                  </li>
+                  <li class="comment-item">
+                    <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                      <img src="/images/geral/usuarias/andressa.svg" alt="Foto da Andressa Oliveira.">
+                    </div>
+                    <div class="comment-bubble">
+                      <div class="comment-bubble__header">
+                        <p class="comment-author">Andressa Oliveira</p>
+                        <time class="comment-time">Há 3 horas</time>
+                      </div>
+                      <p class="comment-text">Esses insights vão mudar muito o produto! Como você documentou os padrões?</p>
+                    </div>
+                  </li>
+                  <li>
+                    <button class="post-action-btn" style="text-align:end;">Ver todos</button>
+                  </li>
+                </ul>
+                <div class="comment-form">
+                  <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                    <img src="/images/geral/usuarias/samara.svg" alt="Foto da Samara Duarte.">
+                  </div>
+                  <label class="visually-hidden" for="new-comment1">Comentário</label>
+                  <input class="input" id="new-comment1" type="text" placeholder="Adicionar comentário..."/>
+                  <button class="chat-send-btn" aria-label="Enviar"><i class="bi bi-send-fill" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </article> 
+
+            <!-- Post 2 — Andressa Oliveira · Product Designer · Sênior -->
+            <article class="feed-post">
+              <header class="post-header">
+                <div class="avatar" style="height:46px;width:46px;" aria-hidden="true">
+                  <img src="/images/geral/usuarias/andressa.svg" alt="Foto da Andressa Oliveira.">
+                </div>
+                <div class="post-meta">
+                  <p class="post-name">Andressa Oliveira</p>
+                  <p class="post-role">Product Designer · Sênior</p>
+                  <time class="post-time">Há 7 horas</time>
+                </div>
+                <span class="pill pill--purple">Design System</span>
+              </header>
+              <div class="post-img post-thumb--green" aria-label="Preview: Design System"
+                   onclick="openPostDetail('post2')" style="cursor:pointer;" role="button" tabindex="0" aria-label="Ver projeto">
+                <img src="/images/geral/feed/project2.svg" alt="Capa do projeto Design System do zero.">
+              </div>
+              <footer class="post-actions">
+                <button class="post-action-btn" id="like2" onclick="toggleLike('like2','lc2')" aria-label="Curtir">
+                  <i class="bi bi-heart" aria-hidden="true"></i> <span id="lc2">312</span>
+                </button>
+                <button class="post-action-btn" onclick="toggleComments('comments2')" aria-expanded="false" id="btn-comments2" aria-label="Comentários">
+                  <i class="bi bi-chat" aria-hidden="true"></i> <span id="cc2">47</span>
+                </button>
+                <button class="post-action-btn" aria-label="Compartilhar">
+                  <i class="bi bi-send" aria-hidden="true"></i> Compartilhar
+                </button>
+              </footer>
+              <p class="post-caption"><strong>Design System do zero</strong><br>
+                Como estruturei um sistema completo para um produto SaaS B2B com times distribuídos em 3 países.</p>
+              <div class="comments-inline" id="comments2" hidden>
+                <ul class="comment-list">
+                  <li class="comment-item">
+                    <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                      <img src="/images/geral/usuarias/luana.svg" alt="Foto da Luana Santos .">
+                    </div>
+                    <div class="comment-bubble">
+                      <div class="comment-bubble__header">
+                        <p class="comment-author">Luana Santos</p>
+                        <time class="comment-time">Há 5 horas</time>
+                      </div>
+                      <p class="comment-text">Usou algum padrão específico pra nomenclatura dos tokens? Tô no mesmo desafio agora.</p>
+                    </div>
+                  </li>
+                  <li class="comment-item">
+                    <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                      <img src="/images/geral/usuarias/camila.svg" alt="Foto da Camila Bonilha.">
+                    </div>
+                    <div class="comment-bubble">
+                      <div class="comment-bubble__header">
+                        <p class="comment-author">Camila Bonilha</p>
+                        <time class="comment-time">Há 4 horas</time>
+                      </div>
+                      <p class="comment-text">Como você validou os componentes com o time de research? Esse fluxo me interessa muito.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <button class="post-action-btn" style="text-align:end;">Ver todos</button>
+                  </li>
+                </ul>
+                <div class="comment-form">
+                  <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                    <img src="/images/geral/usuarias/samara.svg" alt="Foto da Samara Duarte.">
+                  </div>
+                  <label class="visually-hidden" for="new-comment3">Comentário</label>
+                  <input class="input" id="new-comment3" type="text" placeholder="Adicionar comentário..."/>
+                  <button class="chat-send-btn" aria-label="Enviar"><i class="bi bi-send-fill" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 — Luana Santos · UX Designer · Sênior -->
+            <article class="feed-post">
+              <header class="post-header">
+                <div class="avatar" style="height:46px;width:46px;" aria-hidden="true">
+                  <img src="/images/geral/usuarias/luana.svg" alt="Foto da Luana Santos.">
+                </div>
+                <div class="post-meta">
+                  <p class="post-name">Luana Santos</p>
+                  <p class="post-role">UX Designer · Sênior</p>
+                  <time class="post-time">19/04/2026 às 09:22</time>
+                </div>
+                <span class="pill pill--purple">Processo</span>
+              </header>
+              <div class="post-img post-thumb--neutral" aria-label="Preview: Discovery"
+                   onclick="openPostDetail('post3')" style="cursor:pointer;" role="button" tabindex="0" aria-label="Ver projeto">
+                <img src="/images/geral/feed/project3.svg" alt="Capa do projeto Como eu faço discovery.">
+              </div>
+              <footer class="post-actions">
+                <button class="post-action-btn" id="like3" onclick="toggleLike('like3','lc3')" aria-label="Curtir">
+                  <i class="bi bi-heart" aria-hidden="true"></i> <span id="lc3">278</span>
+                </button>
+                <button class="post-action-btn" onclick="toggleComments('comments3')" aria-expanded="false" id="btn-comments3" aria-label="Comentários">
+                  <i class="bi bi-chat" aria-hidden="true"></i> <span id="cc3">63</span>
+                </button>
+                <button class="post-action-btn" aria-label="Compartilhar">
+                  <i class="bi bi-send" aria-hidden="true"></i> Compartilhar
+                </button>
+              </footer>
+              <p class="post-caption"><strong>Como eu faço discovery</strong><br>
+                Meu processo de 4 semanas para entender o problema antes de abrir o Figma.</p>
+              <div class="comments-inline" id="comments3" hidden>
+                <ul class="comment-list">
+                  <li class="comment-item">
+                    <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                      <img src="/images/geral/usuarias/camila.svg" alt="Foto de Camila Bonilha.">
+                    </div>
+                    <div class="comment-bubble">
+                      <div class="comment-bubble__header">
+                        <p class="comment-author">Camila Bonilha</p>
+                        <time class="comment-time">19/04/2026 às 16:10</time>
+                      </div>
+                      <p class="comment-text">Você usa entrevistas exploratórias nessa fase ou vai direto pra dados quantitativos?</p>
+                    </div>
+                  </li>
+                  <li class="comment-item">
+                    <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                      <img src="/images/geral/usuarias/andressa.svg" alt="Foto da Andressa Oliveira.">
+                    </div>
+                    <div class="comment-bubble">
+                      <div class="comment-bubble__header">
+                        <p class="comment-author">Andressa Oliveira</p>
+                        <time class="comment-time">20/04/2026 às 11:08</time>
+                      </div>
+                      <p class="comment-text">Como você apresenta os resultados pro stakeholder? Posso te perguntar como estrutura o readout?</p>
+                    </div>
+                  </li>
+                  <li>
+                    <button class="post-action-btn" style="text-align:end;">Ver todos</button>
+                  </li>
+                </ul>
+                <div class="comment-form">
+                  <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                    <img src="/images/geral/usuarias/samara.svg" alt="Foto da Samara Duarte.">
+                  </div>
+                  <label class="visually-hidden" for="new-comment4">Comentário</label>
+                  <input class="input" id="new-comment4" type="text" placeholder="Adicionar comentário..."/>
+                  <button class="chat-send-btn" aria-label="Enviar"><i class="bi bi-send-fill" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 4 — Julia Luna · Dev Full-stack · Júnior -->
+            <article class="feed-post">
+              <header class="post-header">
+                <div class="avatar" style="height:46px;width:46px;" aria-hidden="true">
+                  <img src="/images/geral/usuarias/julia.svg" alt="Foto da Julia Luna.">
+                </div>
+                <div class="post-meta">
+                  <p class="post-name">Julia Luna</p>
+                  <p class="post-role">Dev Full-stack · Júnior</p>
+                  <time class="post-time">Há 8 horas</time>
+                </div>
+                <span class="pill pill--purple">Dev</span>
+              </header>
+              <div class="post-img post-thumb--neutral" aria-label="Preview: Handoff automatizado Figma para GitHub"
+                   onclick="openPostDetail('post4')" style="cursor:pointer;" role="button" tabindex="0" aria-label="Ver projeto">
+                <img src="/images/geral/feed/project4.svg" alt="Capa do projeto Handoff automatizado Figma para GitHub.">
+              </div>
+              <footer class="post-actions">
+                <button class="post-action-btn" id="like4" onclick="toggleLike('like4','lc4')" aria-label="Curtir">
+                  <i class="bi bi-heart" aria-hidden="true"></i> <span id="lc4">135</span>
+                </button>
+                <button class="post-action-btn" onclick="toggleComments('comments4')" aria-expanded="false" id="btn-comments4" aria-label="Comentários">
+                  <i class="bi bi-chat" aria-hidden="true"></i> <span id="cc4">27</span>
+                </button>
+                <button class="post-action-btn" aria-label="Compartilhar">
+                  <i class="bi bi-send" aria-hidden="true"></i> Compartilhar
+                </button>
+              </footer>
+              <p class="post-caption"><strong>Handoff automatizado Figma → GitHub</strong><br>
+                Script que exporta assets aprovados do Figma e abre um PR automático no repositório. O time de design aprova, o código já tá pronto. Zero retrabalho.</p>
+              <div class="comments-inline" id="comments4" hidden>
+                <ul class="comment-list">
+                  <li class="comment-item">
+                    <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                      <img src="/images/geral/usuarias/amanda.svg" alt="Foto da Amanda Torres.">
+                    </div>
+                    <div class="comment-bubble">
+                      <div class="comment-bubble__header">
+                        <p class="comment-author">Amanda Torres</p>
+                        <time class="comment-time">Há 5 horas</time>
+                      </div>
+                      <p class="comment-text">Isso resolve uma dor enorme! Qual API do Figma você usou?</p>
+                    </div>
+                  </li>
+                  <li class="comment-item">
+                    <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                      <img src="/images/geral/usuarias/andressa.svg" alt="Foto da Andressa Oliveira.">
+                    </div>
+                    <div class="comment-bubble">
+                      <div class="comment-bubble__header">
+                        <p class="comment-author">Andressa Oliveira</p>
+                        <time class="comment-time">Há 3 horas</time>
+                      </div>
+                      <p class="comment-text">Preciso disso no meu time! Você toparia apresentar isso numa call?</p>
+                    </div>
+                  </li>
+                  <li>
+                    <button class="post-action-btn" style="text-align:end;">Ver todos</button>
+                  </li>
+                </ul>
+                <div class="comment-form">
+                  <div class="avatar" style="width:34px;height:34px;flex-shrink:0;">
+                    <img src="/images/geral/usuarias/samara.svg" alt="Foto da Samara Duarte.">
+                  </div>
+                  <label class="visually-hidden" for="new-comment4">Comentário</label>
+                  <input class="input" id="new-comment4" type="text" placeholder="Adicionar comentário..."/>
+                  <button class="chat-send-btn" aria-label="Enviar"><i class="bi bi-send-fill" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </article>
+
+          </section>
+          
+          <div class="scroll-area"> 
+            <!-- Carregar mais -->
+            <div
+              style="display:flex;justify-content:center;padding:var(--gap-md) 0 var(--gap-sm);">
+              <button class="btn-sm btn-sm--ghost" id="btn-load-more"
+                onclick="loadMore()">
+                <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                Carregar mais
+              </button>
+            </div>
+
+            <div class="scroll-spacer"></div>
+          </div>
+        </div>
+
+        <!-- Bottom Nav -->
+        <nav class="bottom-nav" aria-label="Navegação principal">
+          <a class="nav-item active" href="feed.html" aria-current="page" aria-label="Feed">
+            <div class="nav-icon-wrap"><i class="bi bi-grid-fill" aria-hidden="true"></i></div>
+            <span class="nav-label">Feed</span>
+          </a>
+          <a class="nav-item" href="vagas.html" aria-label="Vagas">
+            <div class="nav-icon-wrap"><i class="bi bi-briefcase-fill" aria-hidden="true"></i></div>
+            <span class="nav-label">Vagas</span>
+          </a>
+          <a class="nav-item" href="mentoria.html" aria-label="Mentoria">
+            <div class="nav-icon-wrap"><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+            <span class="nav-label">Mentoria</span>
+          </a>
+          <a class="nav-item" href="perfil.html" aria-label="Perfil">
+            <div class="nav-icon-wrap"><i class="bi bi-person-fill" aria-hidden="true"></i></div>
+            <span class="nav-label">Perfil</span>
+          </a>
+        </nav>
+
+        <!-- Modal: Novo post -->
+        <div class="modal-overlay" id="modal-post" role="dialog" aria-modal="true"
+          aria-labelledby="mp-title" onclick="closeModal('modal-post')">
+          <div class="modal-sheet" onclick="event.stopPropagation()">
+            <div class="modal-handle" aria-hidden="true"></div>
+            <h2 id="mp-title" class="modal-heading">Nova publicação</h2>
+
+            <!-- Tipo -->
+            <label class="visually-hidden" for="post-tipo">Tipo</label>
+            <select class="input-select" id="post-tipo" required>
+              <option value="" disabled selected>Tipo de publicação</option>
+              <option value="portfolio">Portfólio</option>
+              <option value="case">Case</option>
+              <option value="processo">Processo</option>
+              <option value="wip">WIP</option>
+              <option value="conquista">Conquista</option>
+              <option value="aprendizado">Aprendizado</option>
+              <option value="dev">Dev</option>
+            </select>
+
+            <!-- Imagens -->
+            <div class="upload-area" role="button" tabindex="0" aria-label="Adicionar imagens do projeto">
+              <div class="upload-area__icon"><i class="bi bi-images" aria-hidden="true"></i></div>
+              <p class="upload-area__label">Adicionar imagens <span style="color:var(--text-muted);font-size:11px;">até 5 fotos</span></p>
+            </div>
+
+            <!-- Título -->
+            <label class="visually-hidden" for="post-titulo">Título</label>
+            <input class="input" id="post-titulo" type="text"
+              placeholder="Título do projeto (opcional)" maxlength="60"
+              oninput="updateCount('post-titulo','count-titulo',60)"/>
+            <p class="input-count"><span id="count-titulo">60</span> caracteres restantes</p>
+
+            <!-- Descrição -->
+            <label class="visually-hidden" for="post-desc">Descrição</label>
+            <textarea class="input" id="post-desc" rows="3"
+              placeholder="Descreva o projeto, processo ou conquista... (opcional)"
+              maxlength="280" oninput="updateCount('post-desc','count-desc',280)"></textarea>
+            <p class="input-count"><span id="count-desc">280</span> caracteres restantes</p>
+
+            <!-- Habilidades -->
+            <div class="tag-picker">
+              <div class="tag-picker__selected" id="skills-selected"></div>
+              <label class="visually-hidden" for="select-skills">Habilidades</label>
+              <select class="input-select" id="select-skills" onchange="addTag('skills', this)">
+                <option value="" disabled selected>Adicionar habilidade</option>
+                <option>Acessibilidade</option>
+                <option>Arquitetura de Informação</option>
+                <option>Automação</option>
+                <option>Branding</option>
+                <option>Content Design</option>
+                <option>Design Estratégico</option>
+                <option>Design System</option>
+                <option>Design Thinking</option>
+                <option>Dev Front-end</option>
+                <option>Discovery</option>
+                <option>Experiência do Usuário</option>
+                <option>Gestão de Produto</option>
+                <option>Ilustração</option>
+                <option>Motion</option>
+                <option>Pesquisa Qualitativa</option>
+                <option>Pesquisa Quantitativa</option>
+                <option>Product Design</option>
+                <option>Prototipagem</option>
+                <option>Service Design</option>
+                <option>Storytelling</option>
+                <option>Testes de Usabilidade</option>
+                <option>UI Design</option>
+                <option>UX Design</option>
+                <option>UX Research</option>
+                <option>UX Writing</option>
+                <option>Wireframe</option>
+                <option value="__outro__">+ Outra habilidade</option>
+              </select>
+              <input class="input" id="input-skills-custom" type="text"
+                placeholder="Digite a habilidade e pressione Enter"
+                style="display:none;margin-top:var(--gap-xs);"
+                onkeydown="addCustomTag(event,'skills')"/>
+            </div>
+
+            <!-- Ferramentas -->
+            <div class="tag-picker">
+              <div class="tag-picker__selected" id="tools-selected"></div>
+              <label class="visually-hidden" for="select-tools">Ferramentas</label>
+              <select class="input-select" id="select-tools" onchange="addTag('tools', this)">
+                <option value="" disabled selected>Adicionar ferramenta</option>
+                <option>Adobe XD</option>
+                <option>After Effects</option>
+                <option>Axure</option>
+                <option>Balsamiq</option>
+                <option>Confluence</option>
+                <option>Dovetail</option>
+                <option>Figma</option>
+                <option>FigJam</option>
+                <option>Framer</option>
+                <option>GitHub</option>
+                <option>Google Analytics</option>
+                <option>Hotjar</option>
+                <option>Illustrator</option>
+                <option>InVision</option>
+                <option>Jira</option>
+                <option>Linear</option>
+                <option>Lookback</option>
+                <option>Maze</option>
+                <option>Miro</option>
+                <option>Node.js</option>
+                <option>Notion</option>
+                <option>Optimal Workshop</option>
+                <option>Photoshop</option>
+                <option>Premiere</option>
+                <option>Principal</option>
+                <option>Python</option>
+                <option>Sketch</option>
+                <option>Spline</option>
+                <option>Storybook</option>
+                <option>UserTesting</option>
+                <option>VS Code</option>
+                <option>Webflow</option>
+                <option>Zeroheight</option>
+                <option value="__outro__">+ Outra ferramenta</option>
+              </select>
+              <input class="input" id="input-tools-custom" type="text"
+                placeholder="Digite a ferramenta e pressione Enter"
+                style="display:none;margin-top:var(--gap-xs);"
+                onkeydown="addCustomTag(event,'tools')"/>
+            </div>
+
+            <!-- Link -->
+            <label class="visually-hidden" for="post-link">Link do projeto</label>
+            <input class="input" id="post-link" type="url"
+              placeholder="Link do projeto (Figma, Behance, GitHub...)"/>
+
+            <button class="btn-primary btn-primary--green"
+              onclick="closeModal('modal-post'); showToast('Publicação enviada!')">Publicar</button>
+          </div>
+        </div>
+
+        <!-- Story viewer -->
+        <div class="story-overlay" id="story-overlay">
+          <div class="story-nav story-nav--prev" onclick="prevStory()" aria-label="Story anterior"></div>
+          <div class="story-nav story-nav--next" onclick="nextStory()" aria-label="Próximo story"></div>
+          <div class="story-viewer">
+            <div class="story-bg" id="story-bg"></div>
+            <div class="story-bg-overlay"></div>
+            <div class="story-bars" id="story-bars"></div>
+            <header class="story-viewer__header">
+              <div class="avatar" style="width:36px;height:36px;flex-shrink:0;">
+                <img id="story-avatar-img" src="" alt="">
+              </div>
+              <div>
+                <p class="story-viewer__name" id="story-name"></p>
+                <p class="story-viewer__time" id="story-time"></p>
+              </div>
+              <button class="btn-icon" onclick="event.stopPropagation(); closeStory()" aria-label="Fechar story">
+                <i class="bi bi-x-lg" aria-hidden="true"></i>
+              </button>
+            </header> 
+            <div class="story-viewer__reply">
+              <label class="visually-hidden" for="story-reply">Responder</label>
+              <input class="input" id="story-reply" type="text" placeholder="Responder..."/>
+              <button class="chat-send-btn" aria-label="Enviar resposta">
+                <i class="bi bi-send-fill" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Detalhe do post ── -->
+        <section class="post-detail" id="post-detail" aria-label="Detalhe do projeto" aria-hidden="true">
+          <header class="post-detail__header">
+            <button class="back-btn" onclick="closePostDetail()" aria-label="Voltar ao feed">
+              <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            </button>
+            <h2 class="post-detail__title" id="pd-title">Projeto</h2>
+          </header>
+
+          <div class="post-detail__scroll">
+
+            <!-- Carousel de imagens -->
+            <div class="pd-carousel" id="pd-carousel">
+              <div class="pd-carousel__track" id="pd-track"></div>
+              <div class="pd-carousel__dots" id="pd-dots"></div>
+            </div>
+
+            <div class="post-detail__body">
+
+              <!-- Autora -->
+              <div class="post-detail__author">
+                <div class="avatar" style="width:40px;height:40px;flex-shrink:0;">
+                  <img id="pd-avatar" src="" alt="">
+                </div>
+                <div>
+                  <p class="post-detail__name" id="pd-name"></p>
+                  <p class="post-detail__role" id="pd-role"></p>
+                  <time class="post-detail__date" id="pd-date"></time>
+                </div>
+              </div>
+
+              <!-- Stats -->
+              <div class="post-detail__stats">
+                <p class="post-detail__stat" id="pd-likes"></p>
+                <p class="post-detail__stat" id="pd-comments"></p>
+              </div>
+
+              <!-- Sobre o projeto -->
+              <p class="post-detail__section-label">Sobre o projeto</p>
+              <p class="post-detail__desc" id="pd-desc"></p>
+
+              <!-- Habilidades -->
+              <p class="post-detail__section-label">Habilidades</p>
+              <div class="post-detail__pills" id="pd-skills"></div>
+
+              <!-- Ferramentas -->
+              <p class="post-detail__section-label">Ferramentas</p>
+              <div class="post-detail__pills" id="pd-tools"></div>
+
+              <!-- CTAs -->
+              <div class="post-detail__ctas">
+                <button class="btn-primary btn-primary--green" onclick="showToast('Abrindo projeto...')">
+                  <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                  Ver projeto completo
+                </button>
+                <button class="btn-primary btn-sm--ghost" onclick="showToast('Link copiado!')">
+                  <i class="bi bi-send" aria-hidden="true"></i>
+                  Compartilhar
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <output class="toast" id="toast" role="status" aria-live="polite"></output>
+      </article>
+    </main>
+
+    <script>
+      function setMode(mode) {
+        document.documentElement.setAttribute('data-theme', mode);
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+          const active = btn.textContent.trim().toLowerCase().startsWith(mode === 'dark' ? 'd' : 'l');
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-pressed', active);
+        });
+      }
+
+      function openModal(id)  { document.getElementById(id).classList.add('open'); }
+      function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+      function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg; t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2500);
+      }
+
+      function toggleLike(btnId, countId) {
+        const btn = document.getElementById(btnId);
+        const cnt = document.getElementById(countId);
+        const liked = btn.classList.toggle('liked');
+        btn.querySelector('.bi').className = liked ? 'bi bi-heart-fill' : 'bi bi-heart';
+        cnt.textContent = parseInt(cnt.textContent) + (liked ? 1 : -1);
+        btn.setAttribute('aria-label', liked ? 'Descurtir' : 'Curtir');
+      }
+
+      function toggleComments(id) {
+        const el   = document.getElementById(id);
+        const btn  = document.getElementById('btn-' + id);
+        const open = el.hidden;
+        el.hidden  = !open;
+        btn.setAttribute('aria-expanded', open);
+        if (open) {
+          const input = el.querySelector('input');
+          const area  = document.querySelector('.scroll-area');
+          setTimeout(() => {
+            const elTop   = el.getBoundingClientRect().top;
+            const areaTop = area.getBoundingClientRect().top;
+            area.scrollTop += (elTop - areaTop) - 20;
+            input.focus();
+          }, 50);
+        }
+      }
+
+      function updateCount(inputId, countId, max) {
+        const len = document.getElementById(inputId).value.length;
+        const el  = document.getElementById(countId);
+        el.textContent = max - len;
+        el.style.color = (max - len) < 20 ? 'var(--color-error)' : '';
+      }
+
+      // ── Tag picker ──
+      const tagState = { skills: [], tools: [] };
+
+      function addTag(type, select) {
+        const val = select.value;
+        if (!val) return;
+        if (val === '__outro__') {
+          document.getElementById(`input-${type}-custom`).style.display = 'block';
+          document.getElementById(`input-${type}-custom`).focus();
+          select.value = '';
+          return;
+        }
+        if (!tagState[type].includes(val)) {
+          tagState[type].push(val);
+          renderTags(type);
+        }
+        select.value = '';
+      }
+
+      function addCustomTag(e, type) {
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
+        const input = document.getElementById(`input-${type}-custom`);
+        const val   = input.value.trim();
+        if (val && !tagState[type].includes(val)) {
+          tagState[type].push(val);
+          renderTags(type);
+        }
+        input.value = '';
+        input.style.display = 'none';
+      }
+
+      function removeTag(type, val) {
+        tagState[type] = tagState[type].filter(t => t !== val);
+        renderTags(type);
+      }
+
+      function renderTags(type) {
+        const container = document.getElementById(`${type}-selected`);
+        container.innerHTML = tagState[type].map(t =>
+          `<span class="tag-pill">${t}
+             <button class="tag-pill__remove" onclick="removeTag('${type}','${t}')" aria-label="Remover ${t}">×</button>
+           </span>`
+        ).join('');
+      }
+
+      const scrollArea = document.querySelector('.scroll-area');
+      const feedHeader = document.querySelector('.feed-header');
+      scrollArea.addEventListener('scroll', () => {
+        feedHeader.classList.toggle('scrolled', scrollArea.scrollTop > 0);
+      });
+
+      // ── Detalhe do post ──
+      const postData = {
+        post1: {
+          title:    'Affinity Diagram (Pesquisa de Usabilidade)',
+          images:   ['/images/geral/feed/project1.svg'],
+          avatar:   '/images/geral/usuarias/camila.svg',
+          name:     'Camila Bonilha',
+          role:     'UX Researcher · Estagiária',
+          date:     'Há 6 horas', 
+          desc:     'Conduzi meu primeiro ciclo completo de pesquisa qualitativa — 5 entrevistas moderadas com correntistas para mapear fricções no fluxo de Pix. Os dados foram organizados em um affinity diagram com 4 clusters principais: clareza das etapas, confiança, velocidade e recuperação de erros. Os insights orientaram diretamente as próximas iterações do produto.',
+          skills:   ['Pesquisa qualitativa', 'Análise temática', 'Moderação de entrevistas', 'Síntese de dados'],
+          tools:    ['Dovetail', 'Miro', 'Zoom', 'Google Forms'],
+        }, 
+        post2: {
+          title:    'Design System do zero',
+          images:   ['/images/geral/feed/project2.svg'],
+          avatar:   '/images/geral/usuarias/andressa.svg',
+          name:     'Andressa Oliveira',
+          role:     'Product Designer · Sênior', 
+          comments: '47 comentários',
+          desc:     'Estruturamos o Design System da Mary Kay com foco em padronização visual, documentação de componentes e melhoria da consistência entre interfaces digitais. O projeto envolveu auditoria de telas existentes, definição de tokens semânticos e organização da comunicação entre design e desenvolvimento para facilitar futuras evoluções do produto.',
+          skills:   ['Design System', 'Tokens semânticos', 'Documentação', 'Design para escala'],
+          tools:    ['Figma', 'Storybook', 'GitHub', 'Notion'],
+        },
+        post3: {
+          title:    'Como eu faço discovery',
+          images:   ['/images/geral/feed/project3.svg'],
+          avatar:   '/images/geral/usuarias/luana.svg',
+          name:     'Luana Santos',
+          role:     'UX Designer · Sênior',
+          date:     '19/04/2026 às 09:22', 
+          desc:     'Documentei meu processo de discovery de 4 semanas que uso antes de abrir qualquer tela no Figma. O fluxo envolve: alinhamento de problema com stakeholders, pesquisa exploratória, benchmark, síntese de oportunidades e apresentação de direções. Esse processo reduziu em 60% o retrabalho nos últimos 12 meses.',
+          skills:   ['Discovery', 'Alinhamento com stakeholders', 'Benchmark', 'Estratégia de produto'],
+          tools:    ['FigJam', 'Notion', 'Dovetail', 'Maze'],
+        },
+        post4: {
+          title:    'Handoff automatizado Figma → GitHub',
+          images:   ['/images/geral/feed/project4.svg'],
+          avatar:   '/images/geral/usuarias/julia.svg',
+          name:     'Julia Luna',
+          role:     'Dev Full-stack · Júnior',
+          date:     'Há 8 horas', 
+          desc:     'Script que consome a API do Figma, exporta os assets aprovados pelo time de design e abre um Pull Request automático no repositório com os arquivos organizados por categoria. O time de design aprova no Figma, o código já aparece no PR. Economizamos cerca de 2h por sprint de retrabalho manual.',
+          skills:   ['Automação', 'Integração de APIs', 'Git workflow', 'Design-Dev handoff'],
+          tools:    ['Python', 'Figma API', 'GitHub API', 'Node.js'],
+        },
+      };
+
+      let carouselIndex = 0;
+      let carouselImages = [];
+
+      function openPostDetail(id) {
+        const p = postData[id];
+        carouselImages = p.images;
+        carouselIndex  = 0;
+
+        document.getElementById('pd-title').textContent  = p.title;
+        document.getElementById('pd-avatar').src         = p.avatar;
+        document.getElementById('pd-avatar').alt         = 'Foto de ' + p.name;
+        document.getElementById('pd-name').textContent   = p.name;
+        document.getElementById('pd-role').textContent   = p.role;
+        document.getElementById('pd-date').textContent   = p.date; 
+        document.getElementById('pd-desc').textContent   = p.desc;
+
+        // skills
+        document.getElementById('pd-skills').innerHTML = p.skills.map(s =>
+          `<span class="pill pill--gray">${s}</span>`).join('');
+
+        // tools
+        document.getElementById('pd-tools').innerHTML = p.tools.map(t =>
+          `<span class="pill pill--gray">${t}</span>`).join('');
+
+        // carousel
+        const track = document.getElementById('pd-track');
+        const dots  = document.getElementById('pd-dots');
+        track.innerHTML = p.images.map((img, i) =>
+          `<div class="pd-carousel__slide">
+             <img src="${img}" alt="Imagem ${i+1} do projeto ${p.title}">
+           </div>`
+        ).join('');
+        dots.innerHTML = p.images.map((_, i) =>
+          `<div class="pd-carousel__dot ${i === 0 ? 'active' : ''}" onclick="goCarousel(${i})"></div>`
+        ).join('');
+        track.style.transform = 'translateX(0)';
+
+        // swipe no carousel
+        setupCarouselSwipe();
+
+        const detail = document.getElementById('post-detail');
+        detail.classList.add('show');
+        detail.removeAttribute('aria-hidden');
+        detail.querySelector('.post-detail__scroll').scrollTop = 0;
+      }
+
+      function goCarousel(index) {
+        carouselIndex = index;
+        document.getElementById('pd-track').style.transform = `translateX(-${index * 100}%)`;
+        document.querySelectorAll('.pd-carousel__dot').forEach((d, i) =>
+          d.classList.toggle('active', i === index));
+      }
+
+      function setupCarouselSwipe() {
+        const carousel = document.getElementById('pd-carousel');
+        let startX = 0;
+        carousel.ontouchstart = e => { startX = e.touches[0].clientX; };
+        carousel.ontouchend   = e => {
+          const diff = startX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) {
+            const next = diff > 0
+              ? Math.min(carouselIndex + 1, carouselImages.length - 1)
+              : Math.max(carouselIndex - 1, 0);
+            goCarousel(next);
+          }
+        };
+      }
+
+      function closePostDetail() {
+        const detail = document.getElementById('post-detail');
+        detail.classList.remove('show');
+        detail.setAttribute('aria-hidden', 'true');
+      }
+
+      // ── Stories ──
+      const storyOrder = ['andressa','carol','amanda','camila','samara','luana','julia'];
+      let currentStoryIndex = 0;
+      let storyTimer = null;
+
+      const storyData = {
+        amanda:   { name:'Amanda Torres',     time:'12 min', photo:'/images/geral/usuarias/amanda.svg',   content:'/images/geral/feed/story 1.svg' },
+        carol:    { name:'Carol Mendes',      time:'5 min',  photo:'/images/geral/usuarias/carol.svg',    content:'/images/geral/feed/story 2.svg' },
+        camila:   { name:'Camila Bonilha',    time:'28 min', photo:'/images/geral/usuarias/camila.svg',   content:'/images/geral/feed/story 3.svg' },
+        luana:    { name:'Luana Santos',      time:'2h',     photo:'/images/geral/usuarias/luana.svg',    content:'/images/geral/feed/story 4.svg' },
+        andressa: { name:'Andressa Oliveira', time:'Agora',  photo:'/images/geral/usuarias/andressa.svg', content:'/images/geral/feed/story 5.svg' },
+        julia:    { name:'Julia Luna',        time:'3h',     photo:'/images/geral/usuarias/julia.svg',    content:'/images/geral/feed/story 6.svg' },
+      };
+
+      function openStory(id) {
+        currentStoryIndex = storyOrder.indexOf(id);
+        showStory(currentStoryIndex);
+        document.getElementById('story-overlay').classList.add('open');
+      }
+
+      function showStory(index) {
+        const id = storyOrder[index];
+        const s  = storyData[id];
+        document.getElementById('story-name').textContent         = s.name;
+        document.getElementById('story-time').textContent         = 'Há ' + s.time;
+        document.getElementById('story-avatar-img').src           = s.photo;
+        document.getElementById('story-avatar-img').alt           = 'Foto de ' + s.name;
+        document.getElementById('story-bg').style.backgroundImage = `url('${s.content}')`;
+        document.getElementById('story-reply').value              = ''; 
+        
+        const bars = document.getElementById('story-bars');
+        bars.innerHTML = storyOrder.map((_, i) => `
+          <div class="story-bar">
+            <div class="story-bar__fill ${i < index ? 'done' : ''}"
+                 id="bar-${i}"
+                 style="${i === index ? 'animation: story-fill 5s linear forwards' : ''}">
+            </div>
+          </div>
+        `).join('');
+
+        clearTimeout(storyTimer);
+        storyTimer = setTimeout(() => nextStory(), 5000);
+      }
+
+      function nextStory() {
+        if (currentStoryIndex < storyOrder.length - 1) { currentStoryIndex++; showStory(currentStoryIndex); }
+        else { closeStory(); }
+      }
+
+      function prevStory() {
+        if (currentStoryIndex > 0) { currentStoryIndex--; showStory(currentStoryIndex); }
+      }
+
+      function closeStory() {
+        clearTimeout(storyTimer);
+        document.getElementById('story-overlay').classList.remove('open');
+      }
+
+      function loadMore() {
+        const btn = document.getElementById('btn-load-more');
+        btn.innerHTML = '<i class="bi bi-check-lg"></i> Todas as publicações carregadas';
+        btn.disabled = true;
+      }
+    </script>
+  </body>
+</html>

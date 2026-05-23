@@ -1,0 +1,175 @@
+// =============================================================
+// _buttons.scss — Estilos para botões e ações clicáveis
+// =============================================================
+
+%btn-base {
+  border: none;
+  border-radius: var(--radius-action);  
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast),
+    background var(--transition-fast);
+  width: 100%;
+
+  &:active        { transform: scale(0.97); }
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+}
+
+// ── Primário ───────────────────────────────────────────────────
+.btn-primary {
+  @extend %btn-base;
+  font-size: var(--font-size-md);
+  padding: 14px var(--gap-lg);
+
+  &:hover { opacity: 0.88; }
+
+  &--green  { background: var(--color-secondary); color: var(--color-gray-6); }
+  &--purple { background: var(--color-primary);   color: var(--color-white);  }
+  &--white  { background: var(--color-white);     color: var(--color-primary); }
+}
+
+// ── Outline ────────────────────────────────────────────────────
+.btn-outline {
+  @extend %btn-base;
+  background: transparent;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-main);
+  font-size: var(--font-size-md);
+  padding: 13px var(--gap-lg);
+
+  &:hover { background: rgba(255, 255, 255, .04); }
+}
+
+// ── Pequeno ────────────────────────────────────────────────────
+.btn-sm {
+  border: none;
+  border-radius: var(--radius-action);  
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: 7px var(--gap-md);
+  transition: opacity var(--transition-fast);
+  width: auto;
+
+  &:hover         { opacity: 0.85; }
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+  &--green  { background: var(--color-secondary); color: var(--color-gray-6); }
+  &--purple { background: var(--color-primary);   color: var(--color-white);  }
+  &--ghost  {
+    background: transparent;
+    border: 1.5px solid var(--border-color);
+    color: var(--text-main);
+  }
+}
+
+// ── OAuth (Google, Apple) ───────────────────────────
+.btn-oauth {
+  align-items: center;
+  border-radius: var(--radius-action);
+  border: 1.5px solid var(--border-color);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 600;
+  gap: var(--gap-sm);
+  justify-content: center;
+  margin-bottom: var(--gap-sm);
+  padding: 12px var(--gap-md);
+  transition: background var(--transition-normal);
+  width: 100%;
+ 
+  background: var(--bg-input);
+  color: var(--text-contrast);
+
+  &:hover { background: var(--bg-card); }
+ 
+  &--dark {
+    background: rgba(255, 255, 255, .07);
+    border-color: rgba(255, 255, 255, .14);
+    color: rgba(255, 255, 255, .85);
+    &:hover { background: rgba(255, 255, 255, .12); }
+  }
+}
+
+// ── Skip / texto ───────────────────────────────────────────────
+.btn-skip {
+  background: none;
+  border: none;
+  border-radius: var(--radius-action);
+  color: rgba(255, 255, 255, .45);
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-top: var(--gap-md);
+  padding: var(--gap-sm) 0;
+  text-align: center;
+  transition: color var(--transition-normal);
+  width: 100%;
+
+  &:hover { color: rgba(255, 255, 255, .75); }
+}
+
+// ── Esqueci a senha ────────────────────────────────────────────
+.btn-forgot {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-bottom: var(--gap-md);
+  padding: var(--gap-xs) 0;
+  text-align: right;
+  width: 100%;
+
+  &:hover { text-decoration: underline; }
+}
+
+// ── Ícone isolado (header) ─────────────────────────────────────
+.btn-icon {
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-action);
+  color: var(--color-primary);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-xl);
+  height: var(--gap-xl);
+  justify-content: center;
+  padding: var(--gap-xs);
+  position: relative;
+  transition: color var(--transition-fast), background var(--transition-fast);
+  width: var(--gap-xl);
+
+  &:hover         { background: var(--bg-input); }
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+}
+
+// ── Back button ────────────────────────────────────────────────
+.back-btn {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 34px;
+  justify-content: center;
+  transition: background var(--transition-fast);
+  width: 34px;
+
+  &:hover         { background: var(--border-color); }
+  &:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+}

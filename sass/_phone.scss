@@ -1,0 +1,58 @@
+// =============================================================
+// _phone.scss — Wrapper do mockup de telefone
+// =============================================================
+
+.phone-wrap {
+  height: 750px;
+  margin: 0 auto;
+  position: relative;
+  width: 363px;
+}
+
+// Imagem do iPhone sobreposta aos slides via mix-blend-mode dinâmico
+.phone-wrap__mockup {
+  height: 100%;
+  left: 0; 
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+// ── Tela interna (área ativa do mockup.png) ────────────────────
+.ob-screen {
+  border-radius: 56px;
+  bottom: 7px;
+  left: 10px;
+  overflow: hidden;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  z-index: 1;
+}
+
+// ── Phone frame (telas 02–05) ───────────────────────────────── 
+.phone {
+  background: var(--bg-surface);
+  border-radius: 78px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  padding: var(--gap-md);
+  position: relative; 
+}
+
+// ── Scroll area ────────────────────────────────────────────────
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+// Espaçador de fundo para não ficar colado na bottom-nav
+.scroll-spacer { height: 16px; }

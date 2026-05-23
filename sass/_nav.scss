@@ -1,0 +1,99 @@
+// =============================================================
+// _nav.scss — Bottom navigation bar + header
+// =============================================================
+
+// ── Bottom Nav ─────────────────────────────────────────────────
+.bottom-nav {
+  align-items: flex-start;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-around;
+  padding: var(--gap-sm) var(--gap-xs) var(--gap-md);
+}
+
+// ── Item de navegação ──────────────────────────────────────────
+.nav-item {
+  align-items: center;
+  color: var(--color-gray-3);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  gap:  var(--gap-sm);
+  padding: var(--gap-xs) var(--gap-xs);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+
+  &:focus-visible {
+    border-radius: var(--radius-card);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ── Ícone do item ──────────────────────────────────────────────
+.nav-icon-wrap {
+  align-items: center;
+  border-radius: var(--radius-action); 
+  display: flex;
+  height: var(--gap-xl);
+  justify-content: center;
+  position: relative;
+  transition: background var(--transition-normal), color var(--transition-normal);
+  width: var(--gap-xl);
+}
+
+.nav-label {
+  font-size: var(--font-size-2xs);
+  font-weight: 600;
+  line-height: 1;
+}
+
+// ── Estado ativo: pill colorido ────────────────────────────────
+.nav-item.active .nav-icon-wrap,
+.nav-item[aria-current="page"] .nav-icon-wrap {
+  background: rgba(139, 83, 254, .15); // pill tinted
+}
+
+.nav-item.active,
+.nav-item[aria-current="page"] {
+  color: var(--color-primary);
+}
+
+// ── Dot de notificação ─────────────────────────────────────────
+.nav-notif {
+  background: var(--color-error);
+  border: 2px solid var(--bg-surface);
+  border-radius: 50%;
+  height: 8px;
+  position: absolute;
+  right: 6px;
+  top: 4px;
+  width: 8px;
+} 
+
+// ── Cabeçalho de página interna ────────────────────────────────
+.page-header {
+  flex-shrink: 0;
+  padding: 0 var(--gap-md) 0 var(--gap-md);
+}
+
+.page-title {
+  align-items: center;
+  color: var(--text-contrast);
+  display: inline-flex;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  gap: var(--gap-xs);
+  margin-bottom: var(--gap-sm);
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--gap-md);
+}

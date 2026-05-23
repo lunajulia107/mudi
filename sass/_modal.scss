@@ -1,0 +1,231 @@
+// =============================================================
+// _modal.scss — Bottom-sheet e toast
+// =============================================================
+
+.modal-overlay {
+  align-items: flex-end;
+  background: rgba(0, 0, 0, .55);
+  bottom: 0;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 9;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+
+    .modal-sheet { transform: translateY(0); }
+  }
+}
+
+.modal-sheet {
+  background: var(--bg-surface);
+  border-radius: var(--radius-surface) var(--radius-surface) 0 0;
+  max-height: 85vh;         
+  overflow-y: auto;         
+  padding: var(--gap-sm) var(--gap-md) var(--gap-2xl);
+  scrollbar-width: none;    
+  transform: translateY(100%);
+  transition: transform var(--transition-slow);
+  width: 91%;
+}
+
+.modal-handle {
+  background: var(--border-color);
+  border-radius: var(--radius-action);
+  height: 4px;
+  margin: 0 auto var(--gap-md);
+  width: 40px;
+}
+
+.modal-heading {
+  color: var(--text-contrast);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--gap-md);
+}
+
+.modal-sub {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--gap-md);
+}
+
+.modal-actions { 
+  margin-bottom: var(--gap-md);
+}
+
+// ── Toast — feedback de confirmação ───────────────────────────
+// BADGE → radius-action (pill)
+.toast {
+  background: var(--color-gray-5);
+  border-radius: var(--radius-action); 
+  bottom: 88px;
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  left: 50%;
+  opacity: 0;
+  padding: 10px 20px;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-50%) translateY(8px);
+  transition: opacity 0.3s, transform 0.3s;
+  white-space: nowrap;
+  z-index: 200;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// ── Story overlay ─────────────────────────── 
+.story-overlay {
+  border-radius: 78px;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  padding: 11px;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 9;   
+
+  &.open { 
+    opacity: 1; 
+    pointer-events: all; 
+  }
+}
+
+.story-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--gap-2xl) var(--gap-lg) var(--gap-lg);
+  position: relative;
+  z-index: 2;
+}
+
+.story-bg {
+  background-position: center top;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.story-bg-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.5) 0%,
+    rgba(0,0,0,.1) 40%,
+    rgba(0,0,0,.1) 60%,
+    rgba(0,0,0,.6) 100%
+  );
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.story-nav {
+  bottom: 47px;
+  height: 72%;
+  position: absolute;
+  top: 125px;
+  width: 50%;
+  z-index: 3;
+
+  &--prev { left: 0; }
+  &--next { right: 0; }
+}
+
+.story-bars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: var(--gap-sm);
+  position: relative;
+  z-index: 10;
+}
+
+.story-bar {
+  background: rgba(255,255,255,.35);
+  border-radius: var(--radius-action);
+  flex: 1;
+  height: 2px;
+  overflow: hidden;
+
+  &__fill {
+    background: var(--color-white);
+    height: 100%;
+    width: 0%;
+
+    &.done { width: 100%; }
+  }
+}
+
+@keyframes story-fill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.story-viewer__header {
+  align-items: center;
+  display: flex;
+  gap: var(--gap-sm);
+  margin-bottom: auto;
+  position: relative;
+  z-index: 10;
+
+  .btn-icon { 
+    color: var(--color-white); 
+    margin-left: auto; 
+  }
+}
+
+.story-viewer__name { 
+  color: var(--color-white); 
+  font-size: 13px; 
+  font-weight: 600; 
+}
+
+.story-viewer__time { 
+  color: rgba(255,255,255,.65); 
+  font-size: var(--font-size-xs); 
+}
+
+.story-viewer__reply {
+  align-items: center;
+  display: flex;
+  gap: var(--gap-sm);
+  position: relative;
+  z-index: 10;
+
+  .input {
+    background: rgba(255,255,255,.15);
+    border-color: rgba(255,255,255,.4);
+    color: var(--color-white);
+    flex: 1;
+    margin-bottom: 0;
+
+    &::placeholder { color: rgba(255,255,255,.6); }
+    &:focus { border-color: var(--color-white); }
+  }
+}
