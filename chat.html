@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mudi</title>
-    <link rel="icon" type="image/x-icon" href="/images/brand/mudi.png">
+    <link rel="icon" type="image/x-icon" href="./images/brand/mudi.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@
             </button>
             <a href="perfil.html" aria-label="Meu perfil">
               <div class="avatar avatar--green">
-                <img src="/images/geral/usuarias/samara.svg" alt="Samara Duarte">
+                <img src="./images/geral/usuarias/samara.svg" alt="Samara Duarte">
               </div>
             </a>
           </div>
@@ -133,7 +133,7 @@
               <button class="channel-item" onclick="openChannel('dm-amanda')"
                 aria-label="Mensagem direta com Amanda Torres, 1 não lida">
                 <div class="avatar" style="width:40px;height:40px;flex-shrink:0;overflow:hidden;border-radius:50%;">
-                  <img src="/images/geral/usuarias/amanda.svg" alt="Amanda Torres" style="width:100%;height:100%;object-fit:cover;">
+                  <img src="./images/geral/usuarias/amanda.svg" alt="Amanda Torres" style="width:100%;height:100%;object-fit:cover;">
                 </div>
                 <div class="channel-info">
                   <p class="channel-name">Amanda Torres <span class="pill pill--purple" style="padding: 0 4px;">Mentora</span></p>
@@ -149,7 +149,7 @@
               <button class="channel-item" onclick="openChannel('dm-julia')"
                 aria-label="Mensagem direta com Julia Luna">
                 <div class="avatar" style="width:40px;height:40px;flex-shrink:0;overflow:hidden;border-radius:50%;">
-                  <img src="/images/geral/usuarias/julia.svg" alt="Julia Luna" style="width:100%;height:100%;object-fit:cover;">
+                  <img src="./images/geral/usuarias/julia.svg" alt="Julia Luna" style="width:100%;height:100%;object-fit:cover;">
                 </div>
                 <div class="channel-info">
                   <p class="channel-name">Julia Luna</p>
@@ -164,7 +164,7 @@
               <button class="channel-item" onclick="openChannel('dm-rafaela')"
                 aria-label="Mensagem direta com Rafaela Mendes">
                 <div class="avatar" style="width:40px;height:40px;flex-shrink:0;overflow:hidden;border-radius:50%;">
-                  <img src="/images/geral/usuarias/rafaela.svg" alt="Rafaela Mendes" style="width:100%;height:100%;object-fit:cover;">
+                  <img src="./images/geral/usuarias/rafaela.svg" alt="Rafaela Mendes" style="width:100%;height:100%;object-fit:cover;">
                 </div>
                 <div class="channel-info">
                   <p class="channel-name">Rafaela Mendes</p>
@@ -238,14 +238,14 @@
 
     <script>
       const P = {
-        samara:   { photo: '/images/geral/usuarias/samara.svg',   cls: 'avatar--green'    },
-        amanda:   { photo: '/images/geral/usuarias/amanda.svg',   cls: 'avatar--purple'   },
-        andressa: { photo: '/images/geral/usuarias/andressa.svg', cls: 'avatar--purple'   },
-        camila:   { photo: '/images/geral/usuarias/camila.svg',   cls: 'avatar--green'    },
-        carol:    { photo: '/images/geral/usuarias/carol.svg',    cls: 'avatar--green'    },
-        julia:    { photo: '/images/geral/usuarias/julia.svg',    cls: 'avatar--purple'   },
-        luana:    { photo: '/images/geral/usuarias/luana.svg',    cls: 'avatar--gradient' },
-        rafaela:  { photo: '/images/geral/usuarias/rafaela.svg',  cls: 'avatar--pink'     },
+        samara:   { photo: './images/geral/usuarias/samara.svg',   cls: 'avatar--green'    },
+        amanda:   { photo: './images/geral/usuarias/amanda.svg',   cls: 'avatar--purple'   },
+        andressa: { photo: './images/geral/usuarias/andressa.svg', cls: 'avatar--purple'   },
+        camila:   { photo: './images/geral/usuarias/camila.svg',   cls: 'avatar--green'    },
+        carol:    { photo: './images/geral/usuarias/carol.svg',    cls: 'avatar--green'    },
+        julia:    { photo: './images/geral/usuarias/julia.svg',    cls: 'avatar--purple'   },
+        luana:    { photo: './images/geral/usuarias/luana.svg',    cls: 'avatar--gradient' },
+        rafaela:  { photo: './images/geral/usuarias/rafaela.svg',  cls: 'avatar--pink'     },
       };
 
       const msg = (who, text, time) => ({ who, text, time, own: false });
