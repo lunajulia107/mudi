@@ -129,14 +129,7 @@
   z-index: 0;
 }
 
-.story-bg-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,.5) 0%,
-    rgba(0,0,0,.1) 40%,
-    rgba(0,0,0,.1) 60%,
-    rgba(0,0,0,.6) 100%
-  );
+.story-bg-overlay { 
   bottom: 0;
   left: 0;
   position: absolute;
