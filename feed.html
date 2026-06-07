@@ -904,25 +904,32 @@
       function showStory(index) {
         const id = storyOrder[index];
         const s  = storyData[id];
-        document.getElementById('story-name').textContent         = s.name;
-        document.getElementById('story-time').textContent         = 'Há ' + s.time;
-        document.getElementById('story-avatar-img').src           = s.photo;
-        document.getElementById('story-avatar-img').alt           = 'Foto de ' + s.name;
-        document.getElementById('story-bg').style.backgroundImage = `url('${s.content}')`;
-        document.getElementById('story-reply').value              = ''; 
-        
-        const bars = document.getElementById('story-bars');
-        bars.innerHTML = storyOrder.map((_, i) => `
-          <div class="story-bar">
-            <div class="story-bar__fill ${i < index ? 'done' : ''}"
-                 id="bar-${i}"
-                 style="${i === index ? 'animation: story-fill 5s linear forwards' : ''}">
-            </div>
-          </div>
-        `).join('');
 
-        clearTimeout(storyTimer);
-        storyTimer = setTimeout(() => nextStory(), 5000);
+        document.getElementById('story-name').textContent   = s.name;
+        document.getElementById('story-time').textContent   = 'Há ' + s.time;
+        document.getElementById('story-avatar-img').src     = s.photo;
+        document.getElementById('story-avatar-img').alt     = 'Foto de ' + s.name;
+        document.getElementById('story-reply').value        = '';
+
+        // Pré-carrega a imagem antes de aplicar no background
+        const img = new Image();
+        img.onload = () => {
+          document.getElementById('story-bg').style.backgroundImage = `url('${s.content}')`;
+
+          const bars = document.getElementById('story-bars');
+          bars.innerHTML = storyOrder.map((_, i) => `
+            <div class="story-bar">
+              <div class="story-bar__fill ${i < index ? 'done' : ''}"
+                  id="bar-${i}"
+                  style="${i === index ? 'animation: story-fill 5s linear forwards' : ''}">
+              </div>
+            </div>
+          `).join('');
+
+          clearTimeout(storyTimer);
+          storyTimer = setTimeout(() => nextStory(), 5000);
+        };
+        img.src = s.content;
       }
 
       function nextStory() {

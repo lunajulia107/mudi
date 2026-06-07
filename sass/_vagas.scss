@@ -84,8 +84,9 @@
 
 .vaga-footer {
   align-items: center;
-  display: flex;
+  display: flex; 
   justify-content: space-between;
+  width: 100%;
 }
 
 .vaga-salary { color: var(--color-primary); font-size: 14px; font-weight: 700; }
