@@ -910,8 +910,7 @@
         document.getElementById('story-avatar-img').src     = s.photo;
         document.getElementById('story-avatar-img').alt     = 'Foto de ' + s.name;
         document.getElementById('story-reply').value        = '';
-
-        // Pré-carrega a imagem antes de aplicar no background
+ 
         const img = new Image();
         img.onload = () => {
           document.getElementById('story-bg').style.backgroundImage = `url('${s.content}')`;
